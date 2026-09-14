@@ -273,6 +273,8 @@ Tests cover allowlist/pin, API path/revision, blob/size/checksum integrity, malf
 
 ## Smallest recommended next milestone
 
+**Historical Phase 1E recommendation:** the Phase 1F review below is now [completed](wta-2021-montreal-admission-review.md). It confirms the gaps and provides denominator sensitivities and unimplemented admission options. See [current status](status.md) for the proposed Phase 1G reference-feasibility investigation; no new acquisition or admission is authorized.
+
 **Proposed Phase 1F:** review the WTA 2021 Canada/Montreal missing-statistics pattern and unexplained score suffix using saved local evidence first; document affected rows and an admission-review plan without repairing values or assuming eligibility. Any official-reference acquisition needs a separate explicit URL allowance. This focused review should precede a decision on wider acquisition; 2022 requires its own authorization, not automatic continuation.
 
 No portfolio files, models, analytical plots, publishing, deployment, push or pull request are part of this milestone. The next task must end with a response-only ChatGPT Handoff of approximately 2,000 words, strictly no more than 2,000.

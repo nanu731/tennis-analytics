@@ -234,6 +234,7 @@ annual_2021_report <- function(o, m) {
     'Tests cover allowlist/pin, API path/revision, blob/size/checksum integrity, malformed/HTML CSV rejection, required-field failure, visible schema differences, alias collisions, missing/ambiguous cells, wrong-year exclusion and status evidence. Final checks include downloader idempotence, byte-identical audit reruns, unchanged prior data/policy hashes, allowed raw inventory, ignore rules, documentation links/anchors, paths/placeholders, complete diff and Git whitespace.','',
     '**Failed approaches:** the sandboxed request could not resolve api.github.com; the explicitly authorized network-enabled retry used the same four-URL downloader and succeeded. No source fallback occurred. An in-memory parser refactor exposed a trailing-newline counting issue; single-row synthetic tests exposed vector simplification in joint-count calculation. Temporary report-assembly syntax errors were also corrected before final verification. These fixes did not edit raw bytes. The narrow metadata scalar parser rejects unexpected response formatting rather than guessing.','',
     '## Smallest recommended next milestone','',
+    '**Historical Phase 1E recommendation:** the Phase 1F review below is now [completed](wta-2021-montreal-admission-review.md). It confirms the gaps and provides denominator sensitivities and unimplemented admission options. See [current status](status.md) for the proposed Phase 1G reference-feasibility investigation; no new acquisition or admission is authorized.','',
     '**Proposed Phase 1F:** review the WTA 2021 Canada/Montreal missing-statistics pattern and unexplained score suffix using saved local evidence first; document affected rows and an admission-review plan without repairing values or assuming eligibility. Any official-reference acquisition needs a separate explicit URL allowance. This focused review should precede a decision on wider acquisition; 2022 requires its own authorization, not automatic continuation.','',
     'No portfolio files, models, analytical plots, publishing, deployment, push or pull request are part of this milestone. The next task must end with a response-only ChatGPT Handoff of approximately 2,000 words, strictly no more than 2,000.','')
   while(length(lines)&&!nzchar(tail(lines,1)))lines<-head(lines,-1)
@@ -290,7 +291,7 @@ annual_2021_self_test <- function() {
   on.exit(assign("annual_2021_request",original_request,envir=.GlobalEnv),add=TRUE)
   download_2021_annual_data();download_2021_annual_data()
   stopifnot(identical(before,snapshot(paths)))
-  paths<-c(list.files("data/pilot/development-2021",full.names=TRUE),"docs/2021-annual-source-audit.md")
+  paths<-c(list.files("data/pilot/development-2021",pattern="[.]csv$",full.names=TRUE),"docs/2021-annual-source-audit.md")
   before<-snapshot(paths)
   invisible(capture.output(audit_2021_annual_data()));invisible(capture.output(audit_2021_annual_data()))
   stopifnot(identical(before,snapshot(paths)))

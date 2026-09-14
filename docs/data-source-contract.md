@@ -1,6 +1,6 @@
 # Phase 1 tennis data-source contract
 
-Verification date: **2026-09-14**. Status: **Phase 1E implemented: pinned ATP/WTA 2021 annual files acquired and audited; all 20 target cells have source candidates. WTA Canada count availability needs review. Existing Indian Wells 2023 gates and policies remain unchanged. Broader panel admission and modeling remain unvalidated**.
+Verification date: **2026-09-14**. Status: **Phase 1F completed: offline WTA Montreal gap and score review. Seven bundles remain missing; suffix and completion evidence remain unresolved. Admission options are documented, not adopted. Existing Indian Wells 2023 gates and policies remain unchanged. Broader panel admission and modeling remain unvalidated**.
 
 ## 1. Research question
 
@@ -25,6 +25,8 @@ Phase 1B subsequently acquired four specifically authorized anomaly references, 
 **PHASE 1E IMPLEMENTED / VERIFIED:** The separately authorized [2021 annual-source audit](2021-annual-source-audit.md) verifies two files and their pinned metadata at the existing archive revision. ATP has 2,733 rows; WTA has 2,597. All four 2021/2023 annual headers agree in order across 49 fields; all 36 required columns exist. Each tour has ten found, zero missing and zero ambiguous source candidate cells. These are not official event confirmations or inventory gates. WTA Canada/Montreal has all 18 counts in 47/54 apparent-play rows (87.0370%); seven late-round bundles are missing and an unexplained `RET+H64` score suffix remains flagged. The [development manifest](../data/manifests/development-source-files.csv) contains only the two new 2021 records. No 2022, 2024 or 2025 acquisition is authorized.
 
 ### Evidence labels
+
+**PHASE 1F IMPLEMENTED / VERIFIED:** The [Montreal admission review](wta-2021-montreal-admission-review.md) confirms seven entire count bundles absent in four QFs, two SFs and the final. Baseline remains 47/54 (87.0370%); numeric completed-score sensitivity is 42/49 (85.7143%), while apparent-play rows excluding recognized retirements give 43/50 (86%). The latter retains Ferro–Tomljanovic `2021-806:253`, whose `2-6 6-2` has no completion or RET evidence. `RET+H64` remains unresolved; the only local suffix analog is WTA Miami 2023 `RET+H61`. Nine machine-readable dispositions distinguish seven missing bundles, the suffix and the unmarked incomplete score. Review specification 1.0.0 is not an adopted repair or eligibility policy. No network access, imputation, threshold/panel change or model admission occurred.
 
 - **VERIFIED DURING THIS TASK** in the original source review means a local reference or underlying source page was read. When a page reports coverage or provenance, verification establishes that the publisher makes that statement, not that its data independently passes the claim.
 - **DIRECTLY VERIFIED FROM DOWNLOADED BYTES** identifies the 2023 pilot evidence or explicitly labeled Phase 1E annual source observations. Neither validates the complete panel or establishes statistical accuracy.
@@ -325,7 +327,7 @@ If a gate fails, stop the affected modeling cohort and report counts/reasons. Do
 | --- | --- |
 | U1. Intended noncommercial use and source rights | User approved the pilot as noncommercial educational portfolio research. Source-specific conditions and future derived-publication review remain; user intent cannot override third-party rights. |
 | U2. Initial source and pin | User approved and acquired ATP/WTA 2023 pilot files and, separately in Phase 1E, the two 2021 annual files and metadata at revision `83733587353df8a41f2fd4f516147d5aa83f5a8d`. 2022/2024/2025, new official references and MCP/IBM/Live Tennis/OTD remain outside that approval. |
-| U3. Analytic population and statuses | Main-draw singles approved for the pilot; retirements retained and walkovers excluded from non-walkover denominators. Phase 1B adopted whole-bundle quarantine policy 1.0.0. Final retirement/default/unknown-status eligibility remains unsettled; no correction is authorized. |
+| U3. Analytic population and statuses | Main-draw singles approved for the pilot; retirements retained and walkovers excluded from non-walkover denominators. Phase 1B adopted whole-bundle quarantine policy 1.0.0. Phase 1F documents Montreal missingness, suffix and unmarked incomplete-score review dispositions only. Final retirement/default/unknown-status eligibility remains unsettled; no correction is authorized. |
 | U4. Coverage gates | 95% per tour-season and 90% event-cell floor approved provisionally. Pilot numerical event floors passed; tour-season admission was not tested. Do not silently lower gates. |
 | U5. Date evidence and within-day policy | Choose a permissible exact-date source and treatment of same-day/suspended matches before implementing forecasts. Do not approve arbitrary match-number ordering. |
 | U6. Historical rating context | Decide whether ratings may use pre-2021 or off-panel history while evaluation remains fixed. No warm-up period or full-tour acquisition is authorized here. |
@@ -340,7 +342,9 @@ The original contract milestone excluded acquisition and code. The later pilot e
 
 ## 16. Recommended next implementation step
 
-The acquisition pilot and Phases 1B–1E are complete. Phase 1E acquired the first additional development slice without admitting events. The smallest recommended next milestone is **Phase 1F: a focused local review of WTA 2021 Canada/Montreal's missing count bundles and unexplained score suffix**. Document affected rows and an admission-review plan using saved evidence first. Do not repair counts, assume eligibility, generalize ATP precedence or claim multi-event admission. Any new official-reference URL requires separate authorization.
+The acquisition pilot and Phases 1B–1F are complete. Phase 1F used only saved local evidence and left all Montreal admission choices unimplemented. The smallest recommended next milestone is **Phase 1G: a separately authorized reference-feasibility investigation** for the seven missing bundles, unresolved suffix and unmarked two-set score. First approve exact URLs and permissible local use; then assess available whole-match counts, inventory and status evidence without automatic replacement or admission. Option A investigation is preferred if rights and availability permit; recoverability is unknown.
+
+The [review's option comparison](wta-2021-montreal-admission-review.md#admission-choices--no-option-implemented) also considers result-only retention, exclusion from both models, threshold revision and prohibited imputation/reconstruction. Each has separate comparability, evaluation and licensing consequences. The user must choose; no panel change, unequal model populations, revised threshold, reconstruction or recovery policy is approved.
 
 The Indian Wells 2023 inventory prerequisite remains satisfied. No 2021 inventory or 95% tour-season gate was tested. Wider acquisition, including 2022, still needs separate authorization; 2022/2024/2025 remain closed. Settle actual-date and ordering policy before any rating or rolling-statistic implementation; result inventories do not solve chronology. Final retirement eligibility, factor-data admission and publication rights remain unresolved.
 
