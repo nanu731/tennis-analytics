@@ -74,6 +74,8 @@ Final checks passed: 19 preserved files retained hashes and modification times; 
 
 ## Recommended next milestone
 
+**Historical Phase 1D recommendation:** the Phase 1E acquisition/audit proposed below was subsequently authorized and [completed](2021-annual-source-audit.md). See [current status](status.md) for the focused Phase 1F recommendation. This policy's scope and resolutions are unchanged.
+
 **Recommendation, not authorization:** Phase 1E should separately authorize bounded ATP/WTA 2021 annual-file acquisition and schema/provenance auditing as the first additional development slice. Confirm exact pinned files, permissible local use and existing-path reuse before downloading. Indian Wells inventory no longer blocks that proposal, but this task grants no acquisition authority or multi-event admission. Keep 2024/2025 closed.
 
 Later decisions include event inventory sources, final retirement/default eligibility, exact-date/completion-order evidence, rating-history scope, statistical specifications, dependencies and derived-publication rights. No additional season, model, analytical plot, portfolio integration, push, publication or deployment occurred. The next task must end with a response-only ChatGPT Handoff of approximately 2,000 words, strictly no more than 2,000.

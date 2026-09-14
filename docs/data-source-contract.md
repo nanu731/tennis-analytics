@@ -1,6 +1,6 @@
 # Phase 1 tennis data-source contract
 
-Verification date: **2026-09-14**. Status: **Phase 1D implemented: ATP and WTA Indian Wells inventory gates pass; four ATP PDF conflicts remain preserved with approved operational resolutions. Broader panel admission and modeling remain unvalidated**.
+Verification date: **2026-09-14**. Status: **Phase 1E implemented: pinned ATP/WTA 2021 annual files acquired and audited; all 20 target cells have source candidates. WTA Canada count availability needs review. Existing Indian Wells 2023 gates and policies remain unchanged. Broader panel admission and modeling remain unvalidated**.
 
 ## 1. Research question
 
@@ -22,10 +22,12 @@ Phase 1B subsequently acquired four specifically authorized anomaly references, 
 
 ## 3. Evidence and verification method
 
+**PHASE 1E IMPLEMENTED / VERIFIED:** The separately authorized [2021 annual-source audit](2021-annual-source-audit.md) verifies two files and their pinned metadata at the existing archive revision. ATP has 2,733 rows; WTA has 2,597. All four 2021/2023 annual headers agree in order across 49 fields; all 36 required columns exist. Each tour has ten found, zero missing and zero ambiguous source candidate cells. These are not official event confirmations or inventory gates. WTA Canada/Montreal has all 18 counts in 47/54 apparent-play rows (87.0370%); seven late-round bundles are missing and an unexplained `RET+H64` score suffix remains flagged. The [development manifest](../data/manifests/development-source-files.csv) contains only the two new 2021 records. No 2022, 2024 or 2025 acquisition is authorized.
+
 ### Evidence labels
 
 - **VERIFIED DURING THIS TASK** in the original source review means a local reference or underlying source page was read. When a page reports coverage or provenance, verification establishes that the publisher makes that statement, not that its data independently passes the claim.
-- **DIRECTLY VERIFIED FROM DOWNLOADED BYTES** identifies the later 2023 pilot evidence, scoped to its annual headers and two selected events. This does not validate the complete panel.
+- **DIRECTLY VERIFIED FROM DOWNLOADED BYTES** identifies the 2023 pilot evidence or explicitly labeled Phase 1E annual source observations. Neither validates the complete panel or establishes statistical accuracy.
 - **PHASE 1B VERIFIED OBSERVATION** identifies saved official/supplementary reference evidence and the one-match comparison. Published agreement is not independent proof of statistical accuracy; policy implementation is separately labeled.
 - **REPORTED BY THE RESEARCH PDF** means a prior finding in [Tennis Analytics: Public Data, Prior Art, and Project Roadmap](../tennis-analytics-public-data-research.pdf), abbreviated **[R]** with page numbers. It has not been reproduced here.
 - **PROPOSED DESIGN** means a recommendation for future implementation. It is not a current table, test, model, or approved statistical choice.
@@ -49,7 +51,7 @@ The local license is MIT. It does not establish rights over externally sourced t
 
 ### External verification boundaries
 
-During the original source review, underlying documentation and license pages were opened; search snippets were not used as verification. Source links appear beside claims and in section 17. No dataset was downloaded in that earlier milestone. The later pilot acquired only `atp/atp_matches_2023.csv` and `wta/wta_matches_2023.csv`; their byte sizes, row counts, SHA-256 hashes and Git blob matches are recorded in the pilot evidence. No other season or point dataset was acquired.
+During the original source review, underlying documentation and license pages were opened; search snippets were not used as verification. Source links appear beside claims and in section 17. No dataset was downloaded in that earlier milestone. The later pilot acquired only `atp/atp_matches_2023.csv` and `wta/wta_matches_2023.csv`; their byte sizes, row counts, SHA-256 hashes and Git blob matches are recorded in the pilot evidence. Phase 1E subsequently accessed only its four authorized 2021 CSV/API URLs and reused existing licensing, dictionary and attribution evidence. No point dataset was acquired.
 
 **DIRECTLY VERIFIED FROM DOWNLOADED BYTES:** ATP Indian Wells is `2023-0404`, `Indian Wells Masters`; WTA is `2023-609`, `Indian Wells`. Each has 95 rows and 96 player IDs. Both use date label `20230306`, hard surface, and 49-column annual schemas with all 18 required count columns. Non-walkover completeness is 95/95 ATP and 94/94 WTA; after removing the quarantined WTA bundle from the valid numerator, WTA is 93/94 (98.9362%). Phase 1C verifies the results-inventory denominators record by record; Phase 1D resolves the four PDF identity conflicts operationally under the narrowly scoped approved policy and passes ATP inventory without erasing dissent. Each HTML bracket has 128 positions, 32 byes and 96 entrants; raw source draw sizes remain 128 ATP and 96 WTA. No actual match-date or dedicated status column exists in either annual header.
 
@@ -179,7 +181,7 @@ For every acquired edition, verify source ID, tour, draw type, city/country, act
 
 ## 8. Required raw fields
 
-**PROPOSED DESIGN:** A source must either provide a field or permit a documented, rights-cleared reconstruction. Keep raw values unchanged. Requirements are scoped: identity/context for all records; counts for factor-eligible records; optional biography/ranking values remain nullable. Retain a reason for missingness. The dictionary mappings [S3–S4] were subsequently confirmed against both acquired 2023 annual headers, including absence of an actual match-date or explicit completion-status field. Field population was audited for Indian Wells only.
+**PROPOSED DESIGN:** A source must either provide a field or permit a documented, rights-cleared reconstruction. Keep raw values unchanged. Requirements are scoped: identity/context for all records; counts for factor-eligible records; optional biography/ranking values remain nullable. Retain a reason for missingness. The dictionary mappings [S3–S4] were subsequently confirmed against both acquired 2023 annual headers, including absence of an actual match-date or explicit completion-status field. Phase 1E confirms matching 2021 headers and profiles full-file field missingness plus joint count presence in the 20 target cells. Structural count validation remains scoped to the earlier Indian Wells pilot; presence is not validity.
 
 | Required identity/context | Sackmann documentation mapping | Acceptance requirement / gap |
 | --- | --- | --- |
@@ -322,7 +324,7 @@ If a gate fails, stop the affected modeling cohort and report counts/reasons. Do
 | Decision | Recommended disposition; no approval inferred |
 | --- | --- |
 | U1. Intended noncommercial use and source rights | User approved the pilot as noncommercial educational portfolio research. Source-specific conditions and future derived-publication review remain; user intent cannot override third-party rights. |
-| U2. Initial source and pin | User approved and pilot acquired ATP/WTA 2023 annual files at archive revision `83733587353df8a41f2fd4f516147d5aa83f5a8d`. Broader acquisition and MCP/IBM/Live Tennis/OTD remain outside that approval. |
+| U2. Initial source and pin | User approved and acquired ATP/WTA 2023 pilot files and, separately in Phase 1E, the two 2021 annual files and metadata at revision `83733587353df8a41f2fd4f516147d5aa83f5a8d`. 2022/2024/2025, new official references and MCP/IBM/Live Tennis/OTD remain outside that approval. |
 | U3. Analytic population and statuses | Main-draw singles approved for the pilot; retirements retained and walkovers excluded from non-walkover denominators. Phase 1B adopted whole-bundle quarantine policy 1.0.0. Final retirement/default/unknown-status eligibility remains unsettled; no correction is authorized. |
 | U4. Coverage gates | 95% per tour-season and 90% event-cell floor approved provisionally. Pilot numerical event floors passed; tour-season admission was not tested. Do not silently lower gates. |
 | U5. Date evidence and within-day policy | Choose a permissible exact-date source and treatment of same-day/suspended matches before implementing forecasts. Do not approve arbitrary match-number ordering. |
@@ -334,13 +336,13 @@ The ten-family panel and split are fixed by existing instructions. Any change st
 
 ## 15. Explicit exclusions
 
-The original contract milestone excluded acquisition and code. The later pilot explicitly authorized two 2023 annual downloads, two base-R scripts, local subsets, provenance and audit summaries. Phase 1B authorized four 2023 anomaly references, an offline comparison and quarantine policy. Complete draw reconciliation and development-panel expansion remain excluded from Phase 1B. No canonical tables, packages, project-environment initialization, Elo, factors, regressions, ratings, forecasts or performance scoring; no other-season dataset acquisition; no portfolio changes; no publication/deployment; no Git fetch/pull/push/merge/rebase, branch switching or configuration change.
+The original contract milestone excluded acquisition and code. The later pilot explicitly authorized two 2023 annual downloads, two base-R scripts, local subsets, provenance and audit summaries. Phase 1B authorized four 2023 anomaly references, an offline comparison and quarantine policy; Phase 1C/1D then reconciled Indian Wells inventories. Phase 1E authorized only the two pinned 2021 annual files and metadata, bounded acquisition, offline source auditing and documentation. No canonical tables, packages, project-environment initialization, Elo, factors, regressions, ratings, forecasts or performance scoring; no 2022/2024/2025 acquisition; no portfolio changes; no publication/deployment; no Git fetch/pull/push/merge/rebase, branch switching or configuration change.
 
 ## 16. Recommended next implementation step
 
-The acquisition pilot, Phase 1B quarantine, Phase 1C reconciliation and Phase 1D scoped precedence implementation are complete. Phase 1B checked one WTA match; Phase 1C compared complete inventories; Phase 1D resolved four retained ATP PDF conflicts operationally. The smallest recommended next milestone is **Phase 1E: separately authorized ATP/WTA 2021 annual-file acquisition and schema/provenance audit**, the first additional development slice. Confirm exact pinned files, permissible local use and existing-path reuse before any download. Do not generalize the ATP precedence rule or claim multi-event admission.
+The acquisition pilot and Phases 1B–1E are complete. Phase 1E acquired the first additional development slice without admitting events. The smallest recommended next milestone is **Phase 1F: a focused local review of WTA 2021 Canada/Montreal's missing count bundles and unexplained score suffix**. Document affected rows and an admission-review plan using saved evidence first. Do not repair counts, assume eligibility, generalize ATP precedence or claim multi-event admission. Any new official-reference URL requires separate authorization.
 
-The Indian Wells inventory prerequisite is satisfied. Development-panel acquisition still requires separate authorization; none occurred in Phase 1D. Keep 2024/2025 closed during the proposed development step. Settle actual-date and ordering policy before any rating or rolling-statistic implementation; result inventories do not solve chronology. Final retirement eligibility and publication rights remain unresolved.
+The Indian Wells 2023 inventory prerequisite remains satisfied. No 2021 inventory or 95% tour-season gate was tested. Wider acquisition, including 2022, still needs separate authorization; 2022/2024/2025 remain closed. Settle actual-date and ordering policy before any rating or rolling-statistic implementation; result inventories do not solve chronology. Final retirement eligibility, factor-data admission and publication rights remain unresolved.
 
 Keep [status.md](status.md) current and require the next Codex task to finish with a written ChatGPT Handoff of approximately 2,000 words, strictly no more than 2,000. Do not send it, invoke a handoff tool, or create another task unless the user separately requests that action.
 

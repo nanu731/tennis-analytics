@@ -143,6 +143,8 @@ Policy tests reject changed comparison fields, missing controlling references, u
 
 ## Recommended next milestone
 
+**Historical Phase 1D recommendation:** Phase 1E below was subsequently authorized and [completed](2021-annual-source-audit.md). See [current status](status.md) for Phase 1F. The 2023 inventory evidence, gate results and quarantine remain unchanged.
+
 **Phase 1D is complete and the Indian Wells inventory prerequisite is satisfied.** The smallest recommended next milestone is **Phase 1E: separately authorized ATP/WTA 2021 annual-file acquisition and schema/provenance audit**, the first additional development slice. Confirm exact pinned files, permissible local use and existing-path reuse before downloading. This recommendation does not authorize acquisition or broader data admission. Keep 2024/2025 closed; no model or generalized precedence rule is approved.
 
 Broader acquisition later needs separately authorized files/paths. Chronology source/order, final retirement/default rules, rating-history scope, statistical choices/dependencies and public derived-data licensing remain user decisions. Portfolio was not modified; nothing was pushed, published or deployed.

@@ -312,6 +312,7 @@ pilot_write_report <- function(tables, manifest, subsets) {
     "## 19. Expansion recommendation", "",
     "**Current boundary:** Phase 1D closes the Indian Wells inventory prerequisite. Broader acquisition still requires separate authorization of exact files, paths and source-rights checks; no other-season acquisition is authorized by this milestone. Inventory passage and numerical coverage do not establish factor-data, rating or forecast admission.", "",
     "## 20. Exact next milestone", "",
+    "**Historical Phase 1D recommendation:** Phase 1E below was subsequently authorized and [completed](2021-annual-source-audit.md). See [current status](status.md) for Phase 1F. This 2023 pilot report retains its original scope and policy evidence.", "",
     "**Proposed next milestone:** Phase 1E: separately authorize a bounded ATP/WTA 2021 annual-file acquisition and schema/provenance audit as the first additional development slice. Confirm exact pinned files, permissible local use and existing-path reuse before downloading. Keep 2024/2025 closed. Broader event inventories, final retirement eligibility, chronology and tour-season coverage require later work; do not build models or generalize this ATP precedence policy.", "",
     "**Proposed:** Every next task must end with a written ChatGPT Handoff of approximately 2,000 words and strictly no more than 2,000; do not send it or create another task without a separate request.", ""
   )
