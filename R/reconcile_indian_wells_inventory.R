@@ -1,4 +1,4 @@
-# Offline Phase 1C inventory audit, deliberately scoped to the saved 2023 layouts.
+# Offline Phase 1C/1D inventory audit, deliberately scoped to saved 2023 layouts.
 source("R/download_inventory_references.R")
 source("R/audit_wta_anomaly.R")
 
@@ -423,17 +423,43 @@ inventory_atp_draw_check <- function(lines, results) {
       a <- get_sets(player_rows[1]+1L, player_rows[2]-1L)
       z <- get_sets(player_rows[2]+1L, nrow(b))
       if (length(a) != length(z)) stop("ATP draw score lengths conflict.")
-      if (!r$bye && length(inventory_resolve_name(names[1], r$winner)) != 1L) {tmp <- a; a <- z; z <- tmp}
+      # Determine advancement from the draw itself, never from the results winner.
+      if ("BYE" %in% names) advancing <- names[names != "BYE"] else if (stage < 7L) {
+        next_end <- if (stage < 6L) starts[stage+2L]-1L else which(lines$line == 2612L)
+        next_lines <- lines[starts[stage+1L]:next_end, ]
+        next_names <- next_lines$plain[grepl("†", next_lines$text, fixed = TRUE) &
+          !grepl("Image:|H2H|Stats", next_lines$plain)]
+        next_names <- trimws(sub(" \\([^)]*\\)$", "", next_names))
+        advances <- vapply(names, function(n) length(inventory_resolve_name(n, next_names)) == 1L, TRUE)
+        if (sum(advances) != 1L) stop("ATP draw advancement is ambiguous.")
+        advancing <- names[advances]
+      } else {
+        wins <- sum(vapply(seq_along(a), function(j) as.integer(a[[j]][1]) > as.integer(z[[j]][1]), TRUE))
+        losses <- sum(vapply(seq_along(a), function(j) as.integer(a[[j]][1]) < as.integer(z[[j]][1]), TRUE))
+        if ((wins == 2L) == (losses == 2L)) stop("ATP draw final winner is unresolved.")
+        advancing <- names[if (wins == 2L) 1L else 2L]
+      }
+      if (!r$bye && advancing != names[1]) {tmp <- a; a <- z; z <- tmp}
       score <- paste(vapply(seq_along(a), function(j) {
         tb <- if (as.integer(a[[j]][1]) < as.integer(z[[j]][1])) tail(a[[j]], -1) else tail(z[[j]], -1)
         paste0(a[[j]][1], "-", z[[j]][1], if (length(tb)) paste0("(", tb, ")") else "")
       }, ""), collapse = " ")
       expected <- if (r$bye) "" else sub(" RET$", "", r$normalized_score)
+      html_status <- inventory_status(inventory_score(score), "BYE" %in% names)
+      result_html_status <- inventory_status(inventory_score(expected), r$bye)
+      winner_agrees <- length(inventory_resolve_name(advancing, r$winner)) == 1L
+      status_agrees <- identical(html_status, result_html_status)
+      # These four incomplete HTML cards lack RET markers on both representations.
+      # Their PDF-supported retirement status remains separate from this comparison.
       checks[[length(checks)+1L]] <- data.frame(reference_id = "atp_draw_browser", official_id = r$official_id,
         round = round, locator = paste0("browser source lines ", b$line[1], "-", tail(b$line, 1)),
-        check = "unordered pair and winner-oriented set values versus results; retirement marker checked in PDF",
+        check = "unordered pair, round, draw advancement, score and HTML status versus results; incomplete HTML retirement markers remain PDF-supported",
         observed = paste(names, collapse = " / "), expected = paste(r$player_one, r$player_two, collapse = " / "),
-        score_observed = score, score_expected = expected, passed = identical(score, expected), stringsAsFactors = FALSE)
+        score_observed = score, score_expected = expected,
+        passed = identical(score, expected) && winner_agrees && status_agrees,
+        winner_observed = advancing, winner_expected = r$winner,
+        status_observed = html_status, status_expected = result_html_status,
+        raw_text = paste(b$text, collapse = "\n"), stringsAsFactors = FALSE)
     }
   }
   do.call(rbind, checks)
@@ -479,6 +505,110 @@ inventory_wta_roster_check <- function(pages, official) {
     score_observed = "", score_expected = "", passed = passed, stringsAsFactors = FALSE)
 }
 
+inventory_precedence_policy <- function() {
+  list(name = "Indian Wells ATP inventory reference-precedence policy", version = "1.0.0",
+    resolution = "resolved_by_event_scoped_reference_precedence",
+    dissent = "preserved_dissenting_official_observation")
+}
+
+inventory_apply_precedence <- function(references, atp, pdf) {
+  policy <- inventory_precedence_policy()
+  require <- function(ok, why) if (!isTRUE(ok)) stop("Precedence policy blocked: ", why)
+  scoped <- function(x) nrow(x) == 127L && !anyNA(x[c("tour", "event", "event_year", "draw", "official_tournament_id")]) &&
+    all(x$tour == "ATP" & x$event == "Indian Wells" & x$event_year == 2023 &
+      x$draw == "main-draw singles" & x$official_tournament_id == "404")
+  require(scoped(atp) && scoped(pdf), "unapproved tour, event, year, draw or inventory size")
+  require(all(atp$reference_id == "atp_results_browser") && all(pdf$reference_id == "atp_draw_pdf"),
+    "missing controlling results or dissenting PDF reference")
+  html <- references[references$reference_id == "atp_draw_browser", ]
+  require(nrow(html) == 127L && !anyDuplicated(html$official_id) && !anyDuplicated(atp$official_id) &&
+    setequal(html$official_id, atp$official_id) && all(html$passed), "missing/disagreeing HTML draw comparison")
+  # Recheck comparison fields rather than trusting a caller-supplied passed flag.
+  for (i in seq_len(nrow(html))) {
+    h <- html[i, ]; a <- atp[match(h$official_id, atp$official_id), ]
+    expected_score <- if (a$bye) "" else sub(" RET$", "", a$normalized_score)
+    names <- strsplit(h$observed, " / ", fixed = TRUE)[[1]]
+    require(length(names) == 2L && length(unique(inventory_name(names))) == 2L && all(vapply(names, function(n)
+      length(inventory_resolve_name(n, c(a$player_one, a$player_two))) == 1L, TRUE)) &&
+      h$round == a$round && length(inventory_resolve_name(h$winner_observed, a$winner)) == 1L &&
+      identical(h$score_observed, expected_score) &&
+      identical(h$status_observed, inventory_status(inventory_score(expected_score), a$bye)),
+      "HTML identities, round, advancement, score or status disagree")
+  }
+  approved <- data.frame(pdf_id = c("ATP-PDF:1:R128:8", "ATP-PDF:1:R128:30", "ATP-PDF:1:R64:4", "ATP-PDF:1:R64:15"),
+    official_id = c("ATP-RESULTS:L1763", "ATP-RESULTS:L2377", "ATP-RESULTS:L1379", "ATP-RESULTS:L1237"),
+    round = c("R128", "R128", "R64", "R64"),
+    winner = c("Radu Albot", "Stan Wawrinka", "Andy Murray", "Stan Wawrinka"),
+    loser = c("BYE", "Aleksandar Vukic", "Radu Albot", "Miomir Kecmanovic"),
+    score = c("", "6-4 1-6 6-1", "6-4 6-3", "7-6(8) 6-4"),
+    status = c("bye", rep("completed", 3)),
+    pdf_raw = c("BYE | CARRENO BUSTA, Pablo | P. CARRENO BUSTA [15]",
+      "KUDLA, Denis | VUKIC, Aleksandar | D. KUDLA | 64 16 61",
+      "MURRAY, Andy | CARRENO BUSTA, Pablo | A. MURRAY | 64 63",
+      "KECMANOVIC, Miomir | KUDLA, Denis | S. WAWRINKA | 76(8) 64"),
+    locator = c("page 1; result R128; block 8; x=193.73; y=227.46584",
+      "page 1; result R128; block 30; x=193.73; y=560.63584",
+      "page 1; result R64; block 4; x=298.27; y=220.14584",
+      "page 1; result R64; block 15; x=298.27; y=553.31584"), stringsAsFactors = FALSE)
+  conflict <- which(!references$passed)
+  require(!anyNA(references$passed) && length(conflict) == 4L &&
+    all(references$reference_id[conflict] == "atp_draw_pdf") &&
+    setequal(references$locator[conflict], approved$locator), "new, missing or unlisted official conflict")
+  fields <- c("policy_name", "policy_version", "resolution_state", "dissenting_observation_state",
+    "conflict_type", "selected_official_id", "selected_player_one", "selected_player_two",
+    "selected_winner", "selected_score", "selected_status", "controlling_reference_ids",
+    "controlling_results_locator", "controlling_draw_locator", "dissenting_official_id", "dissenting_raw_text")
+  for (field in fields) references[[field]] <- rep("", nrow(references))
+  references$source_conflict <- !references$passed
+  references$resolution_state <- ifelse(references$source_conflict, "unresolved", "not_required")
+  references$scope_guard_passed <- FALSE
+  for (i in seq_len(nrow(approved))) {
+    rule <- approved[i, ]; p <- pdf[pdf$official_id == rule$pdf_id, ]; a <- atp[atp$official_id == rule$official_id, ]
+    k <- which(references$locator == rule$locator & references$reference_id == "atp_draw_pdf")
+    h <- html[html$official_id == rule$official_id, ]
+    require(nrow(p) == 1L && nrow(a) == 1L && length(k) == 1L, "approved branch missing or duplicated")
+    a_score <- if (a$bye) "" else a$normalized_score
+    require(p$raw_text == rule$pdf_raw && p$reference_locator == rule$locator && p$round == rule$round &&
+      references$observed[k] == paste(p$player_one, p$player_two, p$winner, sep = " / ") &&
+      identical(references$score_observed[k], p$normalized_score) &&
+      identical(if (p$bye) "" else p$normalized_score, rule$score) &&
+      p$status == rule$status && a$round == rule$round && a$winner == rule$winner && a$loser == rule$loser &&
+      a_score == rule$score && a$status == rule$status && h$status_observed == rule$status,
+      "unapproved conflict type, changed dissent or changed selected identity/status")
+    references[k, fields] <- list(policy$name, policy$version, policy$resolution, policy$dissent,
+      "official_reference_identity_conflict", a$official_id, a$player_one, a$player_two, a$winner,
+      a_score, a$status, "atp_results_browser;atp_draw_browser", a$reference_locator, h$locator, p$official_id, p$raw_text)
+    references$scope_guard_passed[k] <- TRUE
+  }
+  references
+}
+
+inventory_gate_passes <- function(official, source, links, references) {
+  policy <- inventory_precedence_policy()
+  n <- official[!official$bye, ]
+  accepted <- c("matched_exact", "matched_normalized", "matched_with_conflict")
+  conflict <- references[!references$passed, ]
+  atp_guard <- TRUE
+  if (any(official$tour == "ATP")) {
+    html <- references[references$reference_id == "atp_draw_browser", ]
+    atp_guard <- nrow(official) == 127L && nrow(n) == 95L && nrow(source) == 95L &&
+      nrow(html) == 127L && !anyDuplicated(html$official_id) && all(html$passed) &&
+      nrow(conflict) == 4L && all(conflict$reference_id == "atp_draw_pdf") &&
+      setequal(conflict$dissenting_official_id, c("ATP-PDF:1:R128:8", "ATP-PDF:1:R128:30", "ATP-PDF:1:R64:4", "ATP-PDF:1:R64:15"))
+  }
+  isTRUE(atp_guard && nrow(links) == nrow(n) && nrow(links) == nrow(source) &&
+    setequal(links$official_id, n$official_id) && setequal(links$source_id, source$source_id) &&
+    !any(n$identity_unresolved) &&
+    !anyDuplicated(links$official_id) && !anyDuplicated(links$source_id) &&
+    all(n$disposition %in% accepted) && all(source$disposition %in% accepted) &&
+    all(n$status != "unresolved") && all(source$status != "unresolved") &&
+    all(links$disposition != "matched_with_conflict" |
+      (links$resolution_state == policy$resolution & links$reference_precedence_version == policy$version &
+       links$conflicts == "official_reference_identity_conflict")) &&
+    all(conflict$resolution_state == policy$resolution & conflict$scope_guard_passed &
+      conflict$policy_version == policy$version))
+}
+
 reconcile_indian_wells_inventory <- function() {
   refs <- inventory_reference_manifest()
   get <- function(id) refs$local_path[match(id, refs$reference_id)]
@@ -497,30 +627,48 @@ reconcile_indian_wells_inventory <- function() {
     observed = ls033$score, expected = target$normalized_score,
     score_observed = ls033$score, score_expected = target$normalized_score,
     passed = ls033$score == target$normalized_score && ls033$winner_side == 2L)
-  references <- rbind(atp_draw, pdf_checks, wta_checks, ls_check)
+  # Add draw-only comparison evidence without changing the original PDF fields.
+  other <- rbind(pdf_checks, wta_checks, ls_check)
+  for (field in setdiff(names(atp_draw), names(other))) other[[field]] <- rep("", nrow(other))
+  references <- rbind(atp_draw, other)
   if (!all(atp_draw$passed) || !all(wta_checks$passed) || !ls_check$passed) stop("Official reference check changed; review before export.")
+  references <- inventory_apply_precedence(references, atp, atp_pdf)
   source <- inventory_sources()
   identities <- inventory_link_identities(rbind(atp, wta), source)
   matched <- inventory_match(identities$official, source)
-  # Four observed PDF contradictions are retained; no PDF/source identity repair
-  # or approved exception is inferred from agreement of the other two pages.
+  policy <- inventory_precedence_policy()
+  for (name in c("links", "official", "source")) {
+    matched[[name]]$resolution_state <- rep("not_required", nrow(matched[[name]]))
+    matched[[name]]$reference_precedence_version <- rep("", nrow(matched[[name]]))
+  }
+  # Official resolution is already made above, before any Sackmann cross-check.
   conflicts <- references[!references$passed, ]
   if (nrow(conflicts)) {
-    expected_locators <- c("page 1; result R128; block 8", "page 1; result R128; block 30",
-      "page 1; result R64; block 4", "page 1; result R64; block 15")
-    if (nrow(conflicts) != 4L || !all(vapply(expected_locators, function(x) any(startsWith(conflicts$locator, x)), TRUE)))
-      stop("New official PDF conflicts require explicit review.")
-    affected <- matched$links$tour == "ATP" & (
-      matched$links$round == "R128" & matched$links$official_winner == "Stan Wawrinka" |
-      matched$links$round == "R64" & matched$links$official_winner %in% c("Andy Murray", "Stan Wawrinka"))
-    if (sum(affected) != 3L) stop("ATP affected branch locators changed.")
+    affected <- matched$links$tour == "ATP" & matched$links$official_id %in% conflicts$selected_official_id
+    clean_crosscheck <- affected & matched$links$disposition %in% c("matched_exact", "matched_normalized")
+    matched$links$aggregate_source_disposition <- matched$links$disposition
     matched$links$conflicts[affected] <- ifelse(nzchar(matched$links$conflicts[affected]),
       paste0(matched$links$conflicts[affected], ";official_reference_identity_conflict"), "official_reference_identity_conflict")
     matched$links$disposition[affected] <- "matched_with_conflict"
     matched$official$disposition[matched$official$official_id %in% matched$links$official_id[affected]] <- "matched_with_conflict"
     matched$source$disposition[matched$source$source_id %in% matched$links$source_id[affected]] <- "matched_with_conflict"
+    matched$links$resolution_state[affected] <- "unresolved_aggregate_source_conflict"
+    matched$links$resolution_state[clean_crosscheck] <- policy$resolution
+    matched$links$reference_precedence_version[clean_crosscheck] <- policy$version
+    for (name in c("official", "source")) {
+      key <- if (name == "official") "official_id" else "source_id"
+      j <- match(matched[[name]][[key]], matched$links[[key]])
+      present <- !is.na(j)
+      matched[[name]]$resolution_state[present] <- matched$links$resolution_state[j[present]]
+      matched[[name]]$reference_precedence_version[present] <- matched$links$reference_precedence_version[j[present]]
+    }
   }
   all_official <- identities$official
+  all_official$resolution_state <- "not_required"
+  all_official$reference_precedence_version <- ""
+  resolved <- all_official$official_id %in% conflicts$selected_official_id
+  all_official$resolution_state[resolved] <- policy$resolution
+  all_official$reference_precedence_version[resolved] <- policy$version
   all_official$disposition <- "bye_not_a_match"
   all_official$disposition[!all_official$bye] <- matched$official$disposition[match(
     all_official$official_id[!all_official$bye], matched$official$official_id)]
@@ -533,9 +681,8 @@ reconcile_indian_wells_inventory <- function() {
     ambiguous <- sum(n$disposition == "identity_ambiguous") + sum(s$disposition == "identity_ambiguous")
     missing <- sum(n$disposition == "official_only") + sum(s$disposition == "source_only")
     duplicates <- sum(duplicated(links$official_id)) + sum(duplicated(links$source_id))
-    gate <- nrow(links) == nrow(n) && nrow(links) == nrow(s) &&
-      unresolved == 0L && ambiguous == 0L && missing == 0L && duplicates == 0L &&
-      !any(links$disposition == "matched_with_conflict") && ref_conflicts == 0L
+    tour_refs <- references[if (tour == "ATP") startsWith(references$reference_id, "atp_") else startsWith(references$reference_id, "wta_"), ]
+    gate <- inventory_gate_passes(o, s, links, tour_refs)
     denom <- sum(n$played, na.rm = TRUE)
     valid <- sum(s$included_in_valid_numerator)
     summary[[tour]] <- data.frame(tour = tour, draw_positions = 2L*sum(o$round == "R128"),
@@ -545,9 +692,13 @@ reconcile_indian_wells_inventory <- function() {
       matched_conflicts = sum(links$disposition == "matched_with_conflict"), official_only = sum(n$disposition == "official_only"),
       source_only = sum(s$disposition == "source_only"), ambiguous_identities = ambiguous, unresolved_statuses = unresolved,
       duplicate_links = duplicates, official_reference_conflicts = ref_conflicts,
+      resolved_reference_conflicts = sum(!tour_refs$passed & tour_refs$resolution_state == policy$resolution),
+      unresolved_reference_conflicts = sum(!tour_refs$passed & tour_refs$resolution_state != policy$resolution),
+      reference_precedence_policy = if (tour == "ATP") policy$name else "not_applicable",
+      reference_precedence_version = if (tour == "ATP") policy$version else "not_applicable",
       linked_matches = nrow(links), recall_denominator = nrow(n), recall_pct = 100*nrow(links)/nrow(n),
       precision_denominator = nrow(s), precision_pct = 100*nrow(links)/nrow(s),
-      inventory_gate = if (gate) "PASS" else if (ref_conflicts) "BLOCKED_OFFICIAL_REFERENCE_CONFLICT" else "BLOCKED_RECONCILIATION",
+      inventory_gate = if (gate) "PASS" else "BLOCKED_RECONCILIATION",
       aggregate_source_coverage = if (nrow(links) == nrow(n) && !missing) "COMPLETE_AGAINST_RESULT_INVENTORY" else "INCOMPLETE",
       jointly_present_played = sum(s$required_fields_present & s$included_in_played_denominator),
       joint_complete_pct = 100*sum(s$required_fields_present & s$included_in_played_denominator)/denom,
@@ -580,12 +731,12 @@ reconcile_indian_wells_inventory <- function() {
       "PDF both halves: first rounds, four Ret'd cells, QF/SF and champion boxes"),
     raw_value = c("Carreño Busta versus Albot", "Kudla versus Wawrinka", "61 RET", "30 RET", "WO; no HTML match ID",
       "PDF released 17 Mar 2023 7:49 PM; blank final result", "Selected page images visually inspected"),
-    normalized_value = c("no identity substitution approved", "no identity substitution approved", "6-1 RET", "3-0 RET",
+    normalized_value = c("selected HTML Albot; PDF Carreño Busta retained", "selected HTML Wawrinka; PDF Kudla retained", "6-1 RET", "3-0 RET",
       "walkover; unplayed; retain as inventory match", "final obtained from saved HTML, not inferred from blank PDF", "parser geometry and scores checked"),
-    rule = c(rep("Preserve contradictory official records; defer source precedence to user", 2),
+    rule = c(rep(paste(policy$name, policy$version, policy$resolution), 2),
       rep("PDF explicit status supplies HTML's absent marker", 2), "scoped round/player card plus PDF corroboration",
       "document version controls evidence scope", "visual spot checks; not independent measurement"),
-    review_state = c(rep("reviewed; user decision required", 2), rep("reviewed", 5)))
+    review_state = c(rep("user-approved operational resolution; dissent preserved", 2), rep("reviewed", 5)))
   normalization <- rbind(normalization, manual)
   outputs <- list(`official-matches` = all_official, `source-matches` = matched$source,
     `match-reconciliation` = matched$links,
@@ -598,6 +749,7 @@ reconcile_indian_wells_inventory <- function() {
     `reference-conflicts` = conflicts, `atp-pdf-observations` = atp_pdf)
   outputs$`inventory-summary`$reference_manifest_sha256 <- pilot_sha256("data/manifests/inventory-reference-files.csv")
   outputs$`inventory-summary`$pilot_manifest_sha256 <- pilot_sha256("data/manifests/pilot-source-files.csv")
+  outputs$`inventory-summary`$reconciliation_script_sha256 <- pilot_sha256("R/reconcile_indian_wells_inventory.R")
   if (anyNA(all_official$disposition) || anyNA(matched$source$disposition) ||
       anyDuplicated(all_official$official_id) || anyDuplicated(matched$source$source_id)) stop("Disposition/identifier contract failed.")
   q <- matched$source[matched$source$source_id == "WTA:2023-609:268", ]
@@ -655,7 +807,67 @@ inventory_self_test <- function(outputs) {
   stopifnot(inventory_match(unknown, b)$links$disposition == "status_unresolved")
   bye <- a; bye$bye <- TRUE
   stopifnot(!nrow(inventory_match(bye, b[FALSE, ])$official))
+  inventory_precedence_self_test(outputs)
   message("Inventory in-memory tests passed: pair symmetry, orientation, names, rounds, scores, statuses, conflicts, unmatched and duplicate/ambiguous identities.")
+  invisible(TRUE)
+}
+
+inventory_precedence_self_test <- function(outputs) {
+  policy <- inventory_precedence_policy()
+  refs <- outputs$`reference-comparison`; conflicts <- outputs$`reference-conflicts`
+  pdf <- outputs$`atp-pdf-observations`
+  atp <- outputs$`official-matches`[outputs$`official-matches`$tour == "ATP", ]
+  s <- outputs$`source-matches`[outputs$`source-matches`$tour == "ATP", ]
+  links <- outputs$`match-reconciliation`[outputs$`match-reconciliation`$tour == "ATP", ]
+  stopifnot(nrow(conflicts) == 4L, all(!conflicts$passed), all(conflicts$source_conflict),
+    all(conflicts$resolution_state == policy$resolution), all(conflicts$policy_version == policy$version),
+    all(conflicts$policy_name == policy$name), all(conflicts$dissenting_observation_state == policy$dissent),
+    all(conflicts$scope_guard_passed), sum(links$disposition == "matched_with_conflict") == 3L,
+    all(links$resolution_state[links$disposition == "matched_with_conflict"] == policy$resolution),
+    identical(sort(conflicts$selected_winner), sort(c("Radu Albot", "Stan Wawrinka", "Andy Murray", "Stan Wawrinka"))))
+  original <- refs[c("reference_id", "official_id", "round", "locator", "check", "observed", "expected",
+    "score_observed", "score_expected", "passed")]
+  again <- inventory_apply_precedence(refs, atp, pdf)
+  stopifnot(identical(original, again[names(original)]),
+    identical(conflicts$dissenting_raw_text, pdf$raw_text[match(conflicts$dissenting_official_id, pdf$official_id)]))
+  blocked <- function(expr) stopifnot(inherits(tryCatch(force(expr), error = identity), "error"))
+  for (field in c("tour", "event", "event_year", "draw", "official_tournament_id")) {
+    x <- atp; x[[field]][1] <- if (field == "event_year") 2022 else "unapproved"
+    blocked(inventory_apply_precedence(refs, x, pdf))
+    x <- pdf; x[[field]][1] <- if (field == "event_year") 2022 else "unapproved"
+    blocked(inventory_apply_precedence(refs, atp, x))
+  }
+  x <- refs; k <- which(x$reference_id == "atp_draw_pdf" & x$passed)[1]; x$passed[k] <- FALSE
+  blocked(inventory_apply_precedence(x, atp, pdf))
+  x <- refs; x$locator[which(!x$passed)[1]] <- "unlisted branch"
+  blocked(inventory_apply_precedence(x, atp, pdf))
+  blocked(inventory_apply_precedence(refs[refs$reference_id != "atp_draw_browser", ], atp, pdf))
+  x <- atp; x$reference_id <- "missing_results"
+  blocked(inventory_apply_precedence(refs, x, pdf))
+  for (field in c("observed", "round", "winner_observed", "score_observed", "status_observed")) {
+    x <- refs; k <- which(x$reference_id == "atp_draw_browser" & x$official_id == "ATP-RESULTS:L1379")
+    x[[field]][k] <- "disagreement"
+    blocked(inventory_apply_precedence(x, atp, pdf))
+  }
+  x <- pdf; x$raw_text[x$official_id == "ATP-PDF:1:R128:8"] <- "changed dissent"
+  blocked(inventory_apply_precedence(refs, atp, x))
+  x <- atp; x$winner[x$official_id == "ATP-RESULTS:L1379"] <- "changed winner"
+  blocked(inventory_apply_precedence(refs, x, pdf))
+  r <- refs[startsWith(refs$reference_id, "atp_"), ]
+  stopifnot(inventory_gate_passes(atp, s, links, r),
+    !inventory_gate_passes(atp, rbind(s, s[1, ]), links, r),
+    !inventory_gate_passes(atp, s, rbind(links, links[1, ]), r),
+    !inventory_gate_passes(atp, s[-1, ], links, r),
+    !inventory_gate_passes(atp[-which(!atp$bye)[1], ], s, links, r))
+  x <- atp; x$disposition[which(!x$bye)[1]] <- "identity_ambiguous"
+  stopifnot(!inventory_gate_passes(x, s, links, r))
+  x <- links; x$conflicts[x$disposition == "matched_with_conflict"] <- "score;official_reference_identity_conflict"
+  stopifnot(!inventory_gate_passes(atp, s, x, r))
+  x <- r; x$resolution_state[!x$passed] <- "unresolved"
+  stopifnot(!inventory_gate_passes(atp, s, links, x))
+  stopifnot(!inventory_gate_passes(atp, s, links, r[r$passed, ]),
+    !inventory_gate_passes(atp, s, links, r[r$reference_id != "atp_draw_browser", ]))
+  message("Precedence tests passed: retained dissent, selected identities, policy/version, field disagreement, missing evidence, scope and gate failure cases.")
   invisible(TRUE)
 }
 

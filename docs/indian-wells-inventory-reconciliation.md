@@ -1,6 +1,6 @@
-# Phase 1C: 2023 Indian Wells official match inventories
+# Phase 1C/1D: 2023 Indian Wells official match inventories
 
-Verified **2026-09-14**. **Implementation complete; WTA inventory passes, ATP inventory remains blocked by conflicting official identities.** No development-panel expansion or modeling occurred.
+Verified **2026-09-14**. **Phase 1D complete; ATP and WTA inventory gates pass. Four contradictory ATP PDF observations remain preserved and operationally resolved.** No development-panel expansion or modeling occurred.
 
 ## Purpose and evidence labels
 
@@ -42,7 +42,7 @@ Every non-bye main-draw singles encounter is expected, including walkovers. Byes
 
 **ATP:** The parser reads saved, overlapping browser-service views, checks agreement of repeated source lines and requires consecutive line coverage within the main-draw sections. Qualifying and navigation are excluded. Both results and draw representations supply 127 entries including byes; all 127 unordered pairs and winner-oriented set values agree.
 
-Existing `pdftotext` supplies PDF coordinates. A layout-specific parser traverses both halves through all rounds, checks both champion boxes and preserves 127 PDF observations. Of 127 comparisons with HTML, 123 agree and four contradict identities. The first strict traversal stopped where Wawrinka advances from a pair that does not contain him. Visual review confirmed the source contradiction. The parser now preserves that inconsistency without repairing it. The HTML inventory is a candidate denominator; ATP gate approval remains withheld.
+Existing `pdftotext` supplies PDF coordinates. A layout-specific parser traverses both halves through all rounds, checks both champion boxes and preserves 127 PDF observations. Of 127 comparisons with HTML, 123 agree and four contradict identities. The first strict traversal stopped where Wawrinka advances from a pair that does not contain him. Visual review confirmed the source contradiction. The parser now preserves that inconsistency without repairing it. Phase 1C withheld ATP gate approval. Phase 1D implements the user-approved [reference-precedence policy 1.0.0](atp-inventory-reference-precedence-policy.md), selecting agreeing HTML identities only in the two documented branches. All four PDF contradictions remain false agreement checks with explicit operational resolution states.
 
 **WTA:** The first seven singles round containers contain 64/32/16/8/4/2/1 entries. Player links supply full-name slugs, while displayed names and both sides' set/tie-break cells remain in raw text. All 128 PDF entrant/bye positions agree with HTML.
 
@@ -76,9 +76,9 @@ Every official non-bye entry and source row receives one disposition: exact, nor
 | Results-inventory recall | 95/95 = 100% | 95/95 = 100% |
 | Source precision against results inventory | 95/95 = 100% | 95/95 = 100% |
 | Contradictory secondary official observations | 4: three matches, one bye | 0 identified |
-| Inventory gate | **BLOCKED** | **PASS** |
+| Inventory gate after Phase 1D | **PASS: scoped precedence** | **PASS** |
 
-Zero ambiguous ATP result-to-source mappings does not erase PDF-versus-HTML identity conflicts. Recall/precision describe correspondence to the candidate results inventory, not acceptance of all official evidence.
+Zero ambiguous ATP result-to-source mappings does not erase PDF-versus-HTML identity conflicts. Recall/precision describe correspondence to the selected results inventory, not a claim that dissenting official evidence agrees.
 
 | Round | ATP official / source | WTA official / source |
 | --- | --- | --- |
@@ -92,30 +92,30 @@ Zero ambiguous ATP result-to-source mappings does not erase PDF-versus-HTML iden
 
 The 32 additional byes per tour occur in R128. ATP retirements occur in R128 (one), R64 (two), R16 (one). WTA has two R64 retirements and one R32 walkover. These statuses agree with source markers. Round totals supplement record-level matching.
 
-## Every unresolved official conflict
+## Every preserved official conflict, operationally resolved in Phase 1D
 
 1. **PDF page 1 positions 15–16, R128 block 8:** Carreño Busta has a bye; HTML identifies Albot. This is a bye observation, not an additional non-bye match.
 2. **PDF page 1 R64 block 4:** Murray faces Carreño Busta in the feeder pair, versus Albot in HTML and source `2023-0404:266`. Score agrees: `6-4 6-3`.
 3. **PDF page 1 positions 59–60, R128 block 30:** Kudla defeats Vukic, versus Wawrinka in HTML and source `2023-0404:208`. Score agrees: `6-4 1-6 6-1`.
 4. **PDF page 1 R64 block 15:** Kecmanovic/Kudla advances `S. WAWRINKA`, absent from that pair. HTML and source `2023-0404:255` identify Wawrinka–Kecmanovic, `7-6(8) 6-4`.
 
-All four remain in `reference-conflicts.csv`; the three non-bye matches are `matched_with_conflict` on both reconciliation sides. No identities were merged or corrected. Cause and reference precedence remain unresolved. No exception was approved. No primary-results-only or source-only rows remain.
+All four remain in `reference-conflicts.csv`; the three non-bye matches are `matched_with_conflict` on both reconciliation sides. Raw identities were not merged or corrected. The cause remains unknown. Phase 1D applies user-approved operational precedence to these four observations: HTML controls, PDF dissent remains, and Sackmann is a separate aggregate cross-check. HTML agreement does not establish independent sources or general PDF inferiority. No primary-results-only or source-only rows remain.
 
 ## Separate coverage and admission gates
 
 | Gate | ATP | WTA |
 | --- | --- | --- |
-| Inventory | Blocked by PDF conflicts | Pass |
+| Inventory | Pass under scoped precedence | Pass |
 | Aggregate-source presence | 95/95 against results inventory | 95/95 |
 | Numerical joint presence, played denominator | 95/95 | 94/94 |
 | Structural checks, played bundles | 95 valid, 0 flagged | 93 valid, 1 invalid |
 | Valid-count coverage / 90% event floor | 100%; numerical pass | 98.9362%; numerical pass |
-| Event factor-data admission | Blocked: inventory and retirement policy | Not admitted: retirement policy |
+| Event factor-data admission | Not admitted: retirement policy | Not admitted: retirement policy |
 | 95% tour-season factor-data gate | Not tested | Not tested |
 | Rating readiness | Blocked: chronology/status policy | Blocked: chronology/status policy |
 | Forecast readiness | Blocked: chronology/status policy | Blocked: chronology/status policy |
 
-ATP numerical coverage remains conditional on the candidate results inventory. WTA all-row joint presence is 94/95; the walkover lacks counts and is outside the 94-match played denominator. Retirements remain in the reported sensitivity; final eligibility is unapproved.
+ATP numerical coverage uses the operationally selected inventory; it does not establish statistical accuracy. WTA all-row joint presence is 94/95; the walkover lacks counts and is outside the 94-match played denominator. Retirements remain in the reported sensitivity; final eligibility is unapproved.
 
 **Phase 1B preserved:** `2023-609:268` / LS033 is present, played, numerically populated, structurally invalid and wholly quarantined. It leaves the valid numerator and remains ineligible for factors, ratings and forecasts. All four reasons remain: structural count conflict, cross-source conflict, unresolved status metadata and chronology. Completed result evidence resolves inventory denominator status without erasing scheduled JSON-LD metadata. The 22-versus-29 service-game inconsistency is not corrected. Statistical agreement does not prove independent accuracy.
 
@@ -133,9 +133,17 @@ Verification covers downloader reruns preserving bytes/hashes/timestamps/mtimes;
 
 Failed approaches: direct ATP HTML 403; PDF traversal exposed a genuine contradiction; initial browser parsing mishandled source-line boundaries and bye records; a whitespace rule joined sets after parenthesized tie-breaks; empty-table testing exposed a zero-row assignment bug; one report edit briefly had an extra parenthesis. These were corrected before final verification. Initial rendering emitted font/cache errors and was interrupted; existing font configuration plus a temporary writable cache produced inspected pages. A process-list diagnostic was unavailable. Raw reference bytes were never edited to fix a parser.
 
+## Phase 1D verification update
+
+Phase 1D started clean at `7ea17df0d8ac82b256af58ecc0315ff9c188cbfc`. The user approved the two-branch operational precedence rule; no new reference was acquired or external URL accessed. The [policy document](atp-inventory-reference-precedence-policy.md) defines exact machine-readable states and scope guards. Four reference conflicts remain preserved with four resolutions; the three corresponding match links remain conflicts. PDF observation fields remain unchanged.
+
+The HTML draw comparison now derives advancement from subsequent draw rounds, and the final winner from its scores, before comparing against results. All 127 pairs/rounds/advancing players/scores and HTML status observations agree. Four unrelated retirement cards remain partial/unresolved in both HTML representations, with existing PDF retirement support. The three policy-affected matches are completed and the fourth record is a bye; their required status evidence is present in both HTML representations.
+
+Policy tests reject changed comparison fields, missing controlling references, unlisted conflicts and unapproved tour/year/event/draw scopes. Gate tests reject duplicate, unmatched or ambiguous mappings and unresolved aggregate conflicts. Source/reference/Phase 1B hashes and cellwise subset equality are checked, both earlier audits rerun, and repeated reconciliation outputs checked for byte/mtime identity. The pilot report now also checks the reconciliation-script hash and current policy evidence. Original Phase 1C visual checks and access failures above remain historical; they were not repeated through new acquisition.
+
 ## Recommended next milestone
 
-**Do not proceed to bounded 2021–2023 acquisition yet.** Phase 1D should review and explicitly approve an event-scoped reference-precedence decision for the two ATP branches, implement that decision, preserve dissenting PDF observations, rerun reconciliation and update gate documentation. The agreeing HTML records are the recommended candidate authority; that recommendation is **not implemented as gate approval**. Acquire no additional season during that step.
+**Phase 1D is complete and the Indian Wells inventory prerequisite is satisfied.** The smallest recommended next milestone is **Phase 1E: separately authorized ATP/WTA 2021 annual-file acquisition and schema/provenance audit**, the first additional development slice. Confirm exact pinned files, permissible local use and existing-path reuse before downloading. This recommendation does not authorize acquisition or broader data admission. Keep 2024/2025 closed; no model or generalized precedence rule is approved.
 
 Broader acquisition later needs separately authorized files/paths. Chronology source/order, final retirement/default rules, rating-history scope, statistical choices/dependencies and public derived-data licensing remain user decisions. Portfolio was not modified; nothing was pushed, published or deployed.
 
