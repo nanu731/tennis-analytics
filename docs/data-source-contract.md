@@ -1,6 +1,6 @@
 # Phase 1 tennis data-source contract
 
-Verification date: **2026-09-14**. Status: **source contract with a completed 2023 Indian Wells acquisition pilot; broader panel admission and modeling remain unvalidated**.
+Verification date: **2026-09-14**. Status: **2023 Indian Wells acquisition pilot and Phase 1B anomaly quarantine complete; official inventory reconciliation, broader panel admission and modeling remain unvalidated**.
 
 ## 1. Research question
 
@@ -16,12 +16,15 @@ The primary research workspace is this `tennis-analytics` repository. The separa
 
 The original documentation milestone created only this document and [status.md](status.md). The subsequent user-approved acquisition pilot retained two pinned 2023 annual files locally and audited Indian Wells on both tours. See [pilot-acquisition-audit.md](pilot-acquisition-audit.md) and the [manifest](../data/manifests/pilot-source-files.csv). No canonical tables or models were created.
 
+Phase 1B subsequently acquired four specifically authorized anomaly references, compared WTA match `2023-609:268`, and implemented quarantine policy 1.0.0. See [the evidence and policy](wta-anomaly-and-quarantine-policy.md) and [reference manifest](../data/manifests/anomaly-reference-files.csv). The original pilot did not inspect the official match page. Quarantine is now adopted; correct values, full match inventory, chronology and final retirement eligibility remain unresolved.
+
 ## 3. Evidence and verification method
 
 ### Evidence labels
 
 - **VERIFIED DURING THIS TASK** in the original source review means a local reference or underlying source page was read. When a page reports coverage or provenance, verification establishes that the publisher makes that statement, not that its data independently passes the claim.
 - **DIRECTLY VERIFIED FROM DOWNLOADED BYTES** identifies the later 2023 pilot evidence, scoped to its annual headers and two selected events. This does not validate the complete panel.
+- **PHASE 1B VERIFIED OBSERVATION** identifies saved official/supplementary reference evidence and the one-match comparison. Published agreement is not independent proof of statistical accuracy; policy implementation is separately labeled.
 - **REPORTED BY THE RESEARCH PDF** means a prior finding in [Tennis Analytics: Public Data, Prior Art, and Project Roadmap](../tennis-analytics-public-data-research.pdf), abbreviated **[R]** with page numbers. It has not been reproduced here.
 - **PROPOSED DESIGN** means a recommendation for future implementation. It is not a current table, test, model, or approved statistical choice.
 - **UNRESOLVED** identifies missing evidence, access limitations, conflicting statements, or a user decision.
@@ -80,7 +83,9 @@ All classifications below are **provisional project decisions**, checked 2026-09
 
 **Rights:** Preserved ATP/WTA readmes and archive license identify CC BY-NC-SA 4.0 [S2, S4–S5]. Noncommercial research appears permitted subject to its conditions. Sharing/adaptation rights are conditional, not MIT: credit Jeff Sackmann/Tennis Abstract and original repositories, identify changes, link the license, and apply required share-alike conditions [S30]. The user has declared noncommercial educational intent for the pilot; compatibility of a specific portfolio release and the treatment of its derived outputs remain review questions. Mirror claims cannot cure missing third-party rights.
 
-**UNRESOLVED:** original ATP, WTA, and Slam GitHub URLs returned 404 in the original source review [S31–S33]. The reason for unavailability remains unknown. Exact upstream June commit IDs and complete original provenance remain unresolved. The pilot verified two annual-file hashes and their Git blob identities against pinned directory metadata; other file bytes were not checked. `tourney_date` is usually an event-week date; `match_num` can be arbitrary. Neither supplies reliable match order [S3], confirmed as an unresolved limitation by the pilot headers. Archived data are plausible aggregate inputs, not yet a defensible chronological forecast dataset.
+**UNRESOLVED:** original ATP, WTA, and Slam GitHub URLs returned 404 in the original source review [S31–S33]. The reason for unavailability remains unknown. Exact upstream June commit IDs and complete original provenance remain unresolved. The pilot verified two annual-file hashes and their Git blob identities against pinned directory metadata; other archive file bytes were not checked. `tourney_date` is usually an event-week date; `match_num` can be arbitrary. Neither supplies reliable match order [S3], confirmed as an unresolved limitation by the pilot headers. Archived data are plausible aggregate inputs, not yet a defensible chronological forecast dataset.
+
+**PHASE 1B VERIFIED OBSERVATION / IMPLEMENTED POLICY:** The official LS033 page agrees on all 18 counts for Andreescu-Stearns, including 11 service games each. The completed score contains 29 games without a tie-break. Agreement preserves a structurally invalid value and may reflect shared upstream records; provenance dependence is not resolved. Supplementary charted break-point counts disagree. Policy 1.0.0 quarantines the entire bundle, preserves inventory/result facts and leaves correct counts unknown. WTA's match-associated 2023-03-12 date differs from the supplementary URL's 20230311; no canonical date or chronology is selected. Official result/card status also differs from scheduled structured metadata. Evidence, hashes, controlled reasons and extraction limits are in the [Phase 1B policy](wta-anomaly-and-quarantine-policy.md).
 
 ### 5.2 Slam point-by-point archive
 
@@ -260,6 +265,8 @@ These are algebraic requirements using the count meanings in [S3], not evidence 
 
 These remain specifications for the full dataset. The [pilot audit](pilot-acquisition-audit.md) reports the subset of checks actually executed on Indian Wells, including one WTA service-game/score flag. Official inventory and chronology gates were not satisfied. **Block** means stop the affected admission/build stage; **quarantine** means preserve evidence but exclude an invalid observation; **review** means report and resolve before admitting the affected cohort. Never repair invalid values by silently converting them to zero.
 
+**IMPLEMENTED POLICY 1.0.0:** A structural failure quarantines the entire statistical bundle. Keep played matches in the denominator but remove their bundles from valid numerators, Four Factors, factor weights and strength summaries. Preserve all observations and conflicting evidence; never choose a correction to raise coverage. Rating/forecast use remains unauthorized until chronology/status policy is settled. Reason codes are `missing_required_counts`, `structural_count_conflict`, `cross_source_conflict`, `status_unresolved`, `chronology_unresolved`, `identity_ambiguous`, and `reference_unavailable`. The [policy record specification](wta-anomaly-and-quarantine-policy.md#adopted-quarantine-policy-version-100) requires provenance, values, tests, uses, review state and version. No complete canonical schema is implemented.
+
 | Gate | Proposed test and response |
 | --- | --- |
 | Required columns | Compare each file's actual schema with its documented tour/file-family contract. Missing mandatory context/count fields block that file's relevant use; optional fields are reported, not invented. |
@@ -314,7 +321,7 @@ If a gate fails, stop the affected modeling cohort and report counts/reasons. Do
 | --- | --- |
 | U1. Intended noncommercial use and source rights | User approved the pilot as noncommercial educational portfolio research. Source-specific conditions and future derived-publication review remain; user intent cannot override third-party rights. |
 | U2. Initial source and pin | User approved and pilot acquired ATP/WTA 2023 annual files at archive revision `83733587353df8a41f2fd4f516147d5aa83f5a8d`. Broader acquisition and MCP/IBM/Live Tennis/OTD remain outside that approval. |
-| U3. Analytic population and statuses | Main-draw singles approved for the pilot; retirements retained and walkovers excluded from non-walkover denominators. Final retirement/default/unknown-status and anomaly-quarantine rules remain unsettled. |
+| U3. Analytic population and statuses | Main-draw singles approved for the pilot; retirements retained and walkovers excluded from non-walkover denominators. Phase 1B adopted whole-bundle quarantine policy 1.0.0. Final retirement/default/unknown-status eligibility remains unsettled; no correction is authorized. |
 | U4. Coverage gates | 95% per tour-season and 90% event-cell floor approved provisionally. Pilot numerical event floors passed; tour-season admission was not tested. Do not silently lower gates. |
 | U5. Date evidence and within-day policy | Choose a permissible exact-date source and treatment of same-day/suspended matches before implementing forecasts. Do not approve arbitrary match-number ordering. |
 | U6. Historical rating context | Decide whether ratings may use pre-2021 or off-panel history while evaluation remains fixed. No warm-up period or full-tour acquisition is authorized here. |
@@ -325,13 +332,13 @@ The ten-family panel and split are fixed by existing instructions. Any change st
 
 ## 15. Explicit exclusions
 
-The original contract milestone excluded acquisition and code. The later pilot explicitly authorized two 2023 annual downloads, two base-R scripts, local subsets, provenance and audit summaries. All other acquisition remains excluded. No canonical tables, packages, project-environment initialization, Elo, factors, regressions, ratings, forecasts or performance scoring; no 2025 dataset access; no portfolio changes; no publication/deployment; no Git fetch/pull/push/merge/rebase, branch switching or configuration change.
+The original contract milestone excluded acquisition and code. The later pilot explicitly authorized two 2023 annual downloads, two base-R scripts, local subsets, provenance and audit summaries. Phase 1B authorized four 2023 anomaly references, an offline comparison and quarantine policy. Complete draw reconciliation and development-panel expansion remain excluded from Phase 1B. No canonical tables, packages, project-environment initialization, Elo, factors, regressions, ratings, forecasts or performance scoring; no other-season dataset acquisition; no portfolio changes; no publication/deployment; no Git fetch/pull/push/merge/rebase, branch switching or configuration change.
 
 ## 16. Recommended next implementation step
 
-The 2023 Indian Wells pilot is complete as an acquisition/audit milestone, with an unresolved WTA count flag and no chronological match dates. Review match 268 and authorize a resolution or quarantine policy while preserving raw bytes. Define independent final-draw reconciliation and retain unknown chronology.
+The acquisition pilot and Phase 1B quarantine policy are complete. The smallest next milestone is complete official match-inventory reconciliation for the **2023 Indian Wells ATP and WTA draws**. Preserve the quarantined bundle and every source row; distinguish inventory coverage from statistical validity. Phase 1B checked only one match's official draw presence and did not start complete reconciliation.
 
-The pilot supports bounded expansion in principle, not automatic approval. A next prompt may explicitly authorize acquisition/auditing of the fixed ten-event 2021–2023 ATP/WTA development sample with named source files, paths and tools. Keep 2024/2025 closed. Settle actual-date and ordering policy before any rating or rolling-statistic implementation; no chronology solution is selected here.
+Development-panel expansion still requires separate authorization after inventory review. Keep other seasons closed during the next bounded step. Settle actual-date and ordering policy before any rating or rolling-statistic implementation; one match's reference dates do not solve chronology. Final retirement eligibility and publication rights remain unresolved.
 
 Keep [status.md](status.md) current and require the next Codex task to finish with a written ChatGPT Handoff of approximately 2,000 words, strictly no more than 2,000. Do not send it, invoke a handoff tool, or create another task unless the user separately requests that action.
 
