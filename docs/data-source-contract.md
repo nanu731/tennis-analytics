@@ -1,6 +1,6 @@
 # Phase 1 tennis data-source contract
 
-Verification date: **2026-09-14**. Status: **documentation milestone; provisional source decisions and proposed design, not acquisition approval or a validated dataset**.
+Verification date: **2026-09-14**. Status: **source contract with a completed 2023 Indian Wells acquisition pilot; broader panel admission and modeling remain unvalidated**.
 
 ## 1. Research question
 
@@ -12,26 +12,27 @@ The flagship covers ATP and WTA separately. A later project asks which Challenge
 
 This contract records source suitability, published reuse conditions, the fixed initial sample, input requirements, proposed tables, validation gates, and decisions needed before acquisition. A candidate classification does not establish rights, actual row coverage, or readiness for modeling.
 
-The primary research workspace is `/Users/narayanlekhi/Documents/GitHub/tennis-analytics`. `/Users/narayanlekhi/Documents/GitHub/portfolio` is reserved for later, explicitly requested publication of completed and reviewed research. No portfolio work belongs in this milestone.
+The primary research workspace is this `tennis-analytics` repository. The separate `portfolio` repository is reserved for later, explicitly requested publication of completed and reviewed research. No portfolio work belongs in this milestone.
 
-Only this document and [status.md](status.md) are created. No tennis datasets are acquired; no analysis infrastructure is initialized.
+The original documentation milestone created only this document and [status.md](status.md). The subsequent user-approved acquisition pilot retained two pinned 2023 annual files locally and audited Indian Wells on both tours. See [pilot-acquisition-audit.md](pilot-acquisition-audit.md) and the [manifest](../data/manifests/pilot-source-files.csv). No canonical tables or models were created.
 
 ## 3. Evidence and verification method
 
 ### Evidence labels
 
-- **VERIFIED DURING THIS TASK** means a local file or underlying source page was read. When a page reports coverage or provenance, verification establishes that the publisher makes that statement, not that its data independently passes the claim.
+- **VERIFIED DURING THIS TASK** in the original source review means a local reference or underlying source page was read. When a page reports coverage or provenance, verification establishes that the publisher makes that statement, not that its data independently passes the claim.
+- **DIRECTLY VERIFIED FROM DOWNLOADED BYTES** identifies the later 2023 pilot evidence, scoped to its annual headers and two selected events. This does not validate the complete panel.
 - **REPORTED BY THE RESEARCH PDF** means a prior finding in [Tennis Analytics: Public Data, Prior Art, and Project Roadmap](../tennis-analytics-public-data-research.pdf), abbreviated **[R]** with page numbers. It has not been reproduced here.
 - **PROPOSED DESIGN** means a recommendation for future implementation. It is not a current table, test, model, or approved statistical choice.
 - **UNRESOLVED** identifies missing evidence, access limitations, conflicting statements, or a user decision.
 
 ### Local foundation
 
-**VERIFIED DURING THIS TASK:** All 20 pages of [R], including its references and verification notes, were read using in-memory text extraction with the existing bundled PDF reader. No extraction file or R/Python script was created. PDF metadata reports 129,496 bytes and the title above. SHA-256: `1c18296ff08f22a0284100788104640267275f8ff33fa7840014fb29c96224ad`.
+**VERIFIED DURING THE ORIGINAL SOURCE REVIEW:** All 20 pages of [R], including its references and verification notes, were read using in-memory text extraction with the existing bundled PDF reader. No extraction file or analysis script was created in that documentation milestone. PDF metadata reports 129,496 bytes and the title above. SHA-256: `1c18296ff08f22a0284100788104640267275f8ff33fa7840014fb29c96224ad`.
 
-The starting repository was clean on `main` at `f4d5ecad8f1e96ab3076fbef2b1d9eda673e1e92`. Five recent commits were requested; only three existed. The configured origin was `https://github.com/nanu731/tennis-analytics.git`. The branch was ahead of its existing `origin/main` reference by two commits; no live-remote comparison occurred. Existing tracked files were `.gitignore`, `AGENTS.md`, `LICENSE`, `README.md`, and [R]. The ancestor `/Users/narayanlekhi/AGENTS.md` also applies. No nested instruction files or existing `docs` directory were found.
+The original source-review milestone started clean on `main` at `f4d5ecad8f1e96ab3076fbef2b1d9eda673e1e92`. Five recent commits were requested; only three existed. The configured origin was `https://github.com/nanu731/tennis-analytics.git`. The branch was ahead of its existing `origin/main` reference by two commits; no live-remote comparison occurred. Existing tracked files were `.gitignore`, `AGENTS.md`, `LICENSE`, `README.md`, and [R]. The applicable ancestor `AGENTS.md` was also read. No nested instruction files or existing `docs` directory were found at that original starting point.
 
-The local license is MIT. It does not establish rights over externally sourced tennis data. `.gitignore` ignores `docs/`; only the two expressly authorized documents will be force-added, without changing that existing rule.
+The local license is MIT. It does not establish rights over externally sourced tennis data. `.gitignore` still ignores `docs/`; new authorized documents require explicit staging. The pilot adds exclusions for local raw and pilot data. See [DATA_LICENSE.md](../DATA_LICENSE.md).
 
 ### Research-report findings and limitations
 
@@ -43,7 +44,9 @@ The local license is MIT. It does not establish rights over externally sourced t
 
 ### External verification boundaries
 
-Underlying documentation and license pages were opened; search snippets were not used as verification. Source links appear beside claims and in section 17. No CSV, Parquet, ZIP, point tape, or tennis-data API payload was downloaded. Repository listings and dictionaries are documentation evidence only. No future acquisition file has a locally verified checksum.
+During the original source review, underlying documentation and license pages were opened; search snippets were not used as verification. Source links appear beside claims and in section 17. No dataset was downloaded in that earlier milestone. The later pilot acquired only `atp/atp_matches_2023.csv` and `wta/wta_matches_2023.csv`; their byte sizes, row counts, SHA-256 hashes and Git blob matches are recorded in the pilot evidence. No other season or point dataset was acquired.
+
+**DIRECTLY VERIFIED FROM DOWNLOADED BYTES:** ATP Indian Wells is `2023-0404`, `Indian Wells Masters`; WTA is `2023-609`, `Indian Wells`. Each has 95 rows and 96 player IDs. Both use date label `20230306`, hard surface, and 49-column annual schemas with all 18 required count columns. Non-walkover completeness is 95/95 ATP and 94/94 WTA; after removing one WTA count-review row from the valid numerator, WTA is 93/94 (98.9362%). These are observed-file denominators, not independently reconciled official inventories. The ATP source draw size is 128; WTA is 96. WTA match 268 needs service-game/score review. No actual match-date or dedicated status column exists in either annual header.
 
 Availability findings describe retrieval during this task, not guaranteed availability for other clients. Some pages came through the browsing service's retrieved representation; this is not an independent uptime test. No account was created, permission requested from a provider, or licensing agreement accepted.
 
@@ -53,7 +56,7 @@ All classifications below are **provisional project decisions**, checked 2026-09
 
 | Candidate / intended role | Provisional status | Evidence and outstanding condition |
 | --- | --- | --- |
-| Aneeshers archive: Sackmann ATP/WTA aggregate matches | `PRIMARY_CANDIDATE` | Preserved dictionaries describe relevant counts and upstream licenses. Noncommercial use, provenance, actual coverage, and precise chronology remain gates. [S1–S5] |
+| Aneeshers archive: Sackmann ATP/WTA aggregate matches | `PRIMARY_CANDIDATE` | User approved the pinned noncommercial pilot. Indian Wells bytes support schema/availability, with one WTA count anomaly; full coverage, provenance limits and precise chronology remain gates. [S1–S5; pilot audit] |
 | Same archive: Slam point-by-point | `SUPPLEMENTARY_CANDIDATE` | Point/shot detail is uneven and historical; not necessary for first aggregate acquisition. [S1, S6] |
 | hi-im-elson Match Charting Project fork | `SUPPLEMENTARY_CANDIDATE` | Preserves a separate crowdsourced shot-data corpus and license. Selection bias and snapshot coverage require audit. [S7] |
 | IBM Datapalooza Wimbledon datasets | `SUPPLEMENTARY_CANDIDATE` | Public historical release with Apache-2.0 repository license; file-level notices and suitability still need review. Does not supply the 2021–2025 panel. [S8–S9; R, p. 8] |
@@ -75,9 +78,9 @@ All classifications below are **provisional project decisions**, checked 2026-09
 
 **REPORTED BY THE RESEARCH PDF:** ATP result years 1968–2026 and WTA 1977–2026 [R, p. 3]. These lower bounds and annual file completeness were not audited here. Current documentation says through 2026, which is a partial current year, not full-season coverage.
 
-**Rights:** Preserved ATP/WTA readmes and archive license identify CC BY-NC-SA 4.0 [S2, S4–S5]. Noncommercial research appears permitted subject to its conditions. Sharing/adaptation rights are conditional, not MIT: credit Jeff Sackmann/Tennis Abstract and original repositories, identify changes, link the license, and apply required share-alike conditions [S30]. Whether intended portfolio presentation is noncommercial and how particular derived outputs are licensed remain user/provider-review questions. Mirror claims cannot cure missing third-party rights.
+**Rights:** Preserved ATP/WTA readmes and archive license identify CC BY-NC-SA 4.0 [S2, S4–S5]. Noncommercial research appears permitted subject to its conditions. Sharing/adaptation rights are conditional, not MIT: credit Jeff Sackmann/Tennis Abstract and original repositories, identify changes, link the license, and apply required share-alike conditions [S30]. The user has declared noncommercial educational intent for the pilot; compatibility of a specific portfolio release and the treatment of its derived outputs remain review questions. Mirror claims cannot cure missing third-party rights.
 
-**UNRESOLVED:** original ATP, WTA, and Slam GitHub URLs returned 404 [S31–S33]. This does not explain their removal. The exact upstream June commit IDs, complete file inventory, file hashes, and original provenance remain acquisition-stage checks. `tourney_date` is usually an event-week date; `match_num` can be arbitrary. Neither supplies reliable match order [S3]. Archived data are plausible aggregate inputs, not yet a defensible chronological forecast dataset.
+**UNRESOLVED:** original ATP, WTA, and Slam GitHub URLs returned 404 in the original source review [S31–S33]. The reason for unavailability remains unknown. Exact upstream June commit IDs and complete original provenance remain unresolved. The pilot verified two annual-file hashes and their Git blob identities against pinned directory metadata; other file bytes were not checked. `tourney_date` is usually an event-week date; `match_num` can be arbitrary. Neither supplies reliable match order [S3], confirmed as an unresolved limitation by the pilot headers. Archived data are plausible aggregate inputs, not yet a defensible chronological forecast dataset.
 
 ### 5.2 Slam point-by-point archive
 
@@ -135,10 +138,10 @@ The software's MIT license explicitly does not cover the tennis data [S16]. Sour
 
 **PROPOSED DESIGN:** Store a separate rights decision for local research, raw redistribution, and each type of derived output. An accessible endpoint, a provider's coverage claim, or a code license is not a data license. This is a report of published provisions and uncertainty, not legal advice.
 
-1. Confirm whether the intended research and eventual portfolio use meet the noncommercial condition before adopting Sackmann-derived material [S5, S30]. Do not automatically mark charts, ratings, or JSON as exempt derivatives.
+1. The user approved noncommercial educational research for this pinned pilot. Eventual portfolio use and specific derivative-publication obligations still require review [S5, S30]. Do not automatically mark charts, ratings, or JSON as exempt derivatives.
 2. Keep third-party notices separate from the repository MIT license. Do not relabel restricted datasets as MIT. No license file is changed by this milestone.
-3. Before later acquisition, record URL, retrieval time, immutable source revision, file name/size/SHA-256, original creator, mirror chain, terms URL/version, permitted uses, required attribution, and unresolved restrictions. No data-file hash is supplied in this document because none was acquired.
-4. Keep raw files outside Git. This milestone authorizes no new raw-data location or ignore rule. A later prompt must authorize that structure and any necessary `.gitignore` edit.
+3. Record URL, retrieval time, immutable source revision, file name/size/SHA-256, original creator, mirror chain, terms URL/version, permitted uses, required attribution, and unresolved restrictions. The pilot's [tracked manifest](../data/manifests/pilot-source-files.csv) now supplies these records for two 2023 files only.
+4. Keep raw files outside Git. The user approved `data/raw/sackmann/83733587353df8a41f2fd4f516147d5aa83f5a8d/` and `data/pilot/`, with ignore rules, for this pilot. Further structural changes require authorization.
 5. IBM's covered files may offer broader reuse than CC BY-NC-SA, but file-specific rights must still be established [S9]. Live Tennis raw redistribution is prohibited by its academic conditions [S10]. TennisData.app and tennis-data.co.uk remain blocked as described above.
 6. Official metadata references support verification; they do not authorize automated acquisition or copied calendar publication [S25, S29]. Resolve the intended use before producing a public registry derived from restricted material.
 
@@ -146,7 +149,7 @@ The software's MIT license explicitly does not cover the tennis data [S16]. Sour
 
 **FIXED USER SCOPE:** Ten event families, each on ATP and WTA, for required seasons **2021, 2022, 2023, 2024, 2025**. This creates **100 expected tour-season-family cells**, an arithmetic design target, not 100 verified acquired editions. Development = 2021–2023; validation = 2024; locked final test = 2025. No panel or split change is authorized.
 
-**PROPOSED DESIGN:** Interpret the initial analytic cohort as main-draw singles, subject to explicit confirmation before acquisition. Keep qualifiers, doubles, juniors, wheelchair, team events, and Challenger/ITF out of that cohort. Preserve walkovers and incomplete outcomes in the audit universe even when not eligible for factor calculations. A player's qualifying entry into a main draw does not make that main-draw match a qualifying-round match.
+**PROPOSED DESIGN, APPROVED FOR THE PILOT:** Main-draw singles on both tours at 2023 Indian Wells. Keep qualifying rounds, doubles, juniors, wheelchair, team events, and Challenger/ITF out of that cohort. Preserve walkovers and incomplete outcomes in the audit universe even when not eligible for factor calculations. The pilot retains retirement rows and excludes walkovers from its non-walkover denominator; final retirement policy is unsettled. A player's qualifying entry into a main draw does not make that main-draw match a qualifying-round match.
 
 Both tours are required in every row below. Surfaces/cities are expected metadata, supported by selected official references where available; they are not an exhaustive audit of all 100 editions. Alias entries are **candidate match labels to recognize**, not claims that every spelling occurs in the raw files.
 
@@ -169,7 +172,7 @@ For every acquired edition, verify source ID, tour, draw type, city/country, act
 
 ## 8. Required raw fields
 
-**PROPOSED DESIGN:** A source must either provide a field or permit a documented, rights-cleared reconstruction. Keep raw values unchanged. Requirements are scoped: identity/context for all records; counts for factor-eligible records; optional biography/ranking values remain nullable. Retain a reason for missingness. The mappings below are verified dictionary descriptions, not inspected CSV headers [S3–S4].
+**PROPOSED DESIGN:** A source must either provide a field or permit a documented, rights-cleared reconstruction. Keep raw values unchanged. Requirements are scoped: identity/context for all records; counts for factor-eligible records; optional biography/ranking values remain nullable. Retain a reason for missingness. The dictionary mappings [S3–S4] were subsequently confirmed against both acquired 2023 annual headers, including absence of an actual match-date or explicit completion-status field. Field population was audited for Indian Wells only.
 
 | Required identity/context | Sackmann documentation mapping | Acceptance requirement / gap |
 | --- | --- | --- |
@@ -181,7 +184,7 @@ For every acquired edition, verify source ID, tour, draw type, city/country, act
 | Surface / level | `surface`, `tourney_level` | Canonical mapping with official season evidence; preserve raw code. |
 | Round / best-of | `round`, `best_of` | Validate format and round ordering by draw type; numeric label 3/5 describes sets, not actual sets played. |
 | Score | `score` | Preserve string exactly; do not derive point totals from game/set score. |
-| Completion status / retirement / walkover | No explicit fields established in reviewed dictionary | Future score-token parser plus source evidence; unknown must not become completed/false automatically. |
+| Completion status / retirement / walkover | Dedicated fields absent from both acquired 2023 annual headers | Pilot records explicit score markers and completion-consistent syntax separately from official status; unknown must not become completed/false automatically. |
 | Source player ID and name, both sides | `winner_id/name`, `loser_id/name` | Link identity before orientation; every admitted match has two distinct canonical players. |
 | Hand / country, when available | `winner_hand/ioc`, `loser_hand/ioc` | Preserve unknowns and original country codes; avoid invented nationality corrections. |
 | Pre-match rank / points, when available | `winner_rank/rank_points`, `loser_rank/rank_points` | Dictionary dates rankings to event date or prior ranking date; record as-of evidence and missingness. No final-season rank backfill. |
@@ -255,7 +258,7 @@ These are algebraic requirements using the count meanings in [S3], not evidence 
 
 ## 11. Proposed data-quality gates
 
-These are specifications, not executed tests. **Block** means stop the affected admission/build stage; **quarantine** means preserve evidence but exclude an invalid observation; **review** means report and resolve before admitting the affected cohort. Never repair invalid values by silently converting them to zero.
+These remain specifications for the full dataset. The [pilot audit](pilot-acquisition-audit.md) reports the subset of checks actually executed on Indian Wells, including one WTA service-game/score flag. Official inventory and chronology gates were not satisfied. **Block** means stop the affected admission/build stage; **quarantine** means preserve evidence but exclude an invalid observation; **review** means report and resolve before admitting the affected cohort. Never repair invalid values by silently converting them to zero.
 
 | Gate | Proposed test and response |
 | --- | --- |
@@ -285,11 +288,11 @@ These are specifications, not executed tests. **Block** means stop the affected 
 
 ## 12. Recommended provisional coverage threshold
 
-**PROPOSED; USER APPROVAL REQUIRED:** At least **95% of eligible matches in each ATP-season and WTA-season** must have all nine counts for both players present, valid, and reconcilable before admitting that tour-season to factor modeling. This follows the flagship criterion in [R, p. 17], but defines a stricter joint bundle than its reported service-point-only audit. The denominator and threshold are not implemented or accepted by the user yet.
+**USER-APPROVED PROVISIONAL THRESHOLD:** At least **95% of eligible matches in each ATP-season and WTA-season** must have all nine counts for both players present, valid, and reconcilable before admitting that tour-season to factor modeling. This follows the flagship criterion in [R, p. 17], but defines a stricter joint bundle than its reported service-point-only audit. Final eligibility policy is not settled; one-event pilot percentages do not test tour-season admission.
 
 Define an independently reconciled official final-draw match universe, excluding byes. Keep every expected match and status in the coverage report. Proposed eligible denominator `N` = completed main-draw singles matches after explicitly approved status rules; use official records to account for missing source rows. Missing/unknown status cannot be excluded without reconciliation. Numerator `C` = matches in `N` satisfying the whole two-player count contract. Admission requires `C/N >= 0.95`, `N > 0`, and no unresolved inventory or identity discrepancies. A file containing only its easiest matches cannot pass by shrinking `N`.
 
-Report the same joint coverage for every event-tour-season and field. **Additional proposed safeguard, requiring approval:** every event cell must reach at least 90% joint completeness, and a wholly absent cell is a hard stop. A tour-season mean must not mask a lost grass tournament. This event safeguard is a new recommendation, not a claim that the PDF prescribed it.
+Report the same joint coverage for every event-tour-season and field. **Additional safeguard, approved provisionally for the pilot:** every event cell must reach at least 90% joint completeness, and a wholly absent cell is a hard stop. A tour-season mean must not mask a lost grass tournament. This event safeguard was a new contract recommendation, not a PDF prescription. Both pilot tours clear the numerical floor even after count-review rows leave the numerator; the unresolved WTA anomaly and official inventory prevent claiming full contract admission.
 
 For forecasting, require valid identity, result/status and an approved chronology policy for every admitted match, separately from count coverage. Ranking availability is a distinct baseline gate. Break-point denominators may legitimately be zero even in otherwise complete rows; resulting missing rates do not mean a missing raw count.
 
@@ -309,26 +312,26 @@ If a gate fails, stop the affected modeling cohort and report counts/reasons. Do
 
 | Decision | Recommended disposition; no approval inferred |
 | --- | --- |
-| U1. Intended noncommercial use and source rights | Confirm research/portfolio intent and review applicable permissions before using CC BY-NC-SA data or publishing derivatives. Seek clarification where necessary; a user preference cannot override third-party rights. |
-| U2. Initial source and pin | Provisionally prefer ATP/WTA documentation at archive revision `83733587353df8a41f2fd4f516147d5aa83f5a8d`; authorize acquisition only after rights/provenance review. MCP/IBM/Live Tennis/OTD are not bundled into that choice. |
-| U3. Analytic population and statuses | Confirm main-draw singles and denominator treatment of retirements, defaults and unknown statuses. Preserve the full audit universe regardless. |
-| U4. Coverage gates | Approve or revise 95% per tour-season and the proposed 90% event-cell floor; do so before using acquisition results to change admission criteria. |
+| U1. Intended noncommercial use and source rights | User approved the pilot as noncommercial educational portfolio research. Source-specific conditions and future derived-publication review remain; user intent cannot override third-party rights. |
+| U2. Initial source and pin | User approved and pilot acquired ATP/WTA 2023 annual files at archive revision `83733587353df8a41f2fd4f516147d5aa83f5a8d`. Broader acquisition and MCP/IBM/Live Tennis/OTD remain outside that approval. |
+| U3. Analytic population and statuses | Main-draw singles approved for the pilot; retirements retained and walkovers excluded from non-walkover denominators. Final retirement/default/unknown-status and anomaly-quarantine rules remain unsettled. |
+| U4. Coverage gates | 95% per tour-season and 90% event-cell floor approved provisionally. Pilot numerical event floors passed; tour-season admission was not tested. Do not silently lower gates. |
 | U5. Date evidence and within-day policy | Choose a permissible exact-date source and treatment of same-day/suspended matches before implementing forecasts. Do not approve arbitrary match-number ordering. |
 | U6. Historical rating context | Decide whether ratings may use pre-2021 or off-panel history while evaluation remains fixed. No warm-up period or full-tour acquisition is authorized here. |
-| U7. Future acquisition structure/dependencies | Authorize exact raw/provenance paths, ignore rules, and any packages in the next implementation prompt. Existing R availability/package versions were not tested. |
+| U7. Future acquisition structure/dependencies | Pilot paths and base R approved and implemented; R/Rscript 4.6.0 available and used, no packages installed. Further structures/dependencies need authorization. |
 | U8. Later statistical decisions | Rolling windows, minimum points, missing-rate handling, factor formulas, opponent adjustment, Elo parameters, retirement updates and resampling remain later review items; no final formulas or methodological replacements here. |
 
 The ten-family panel and split are fixed by existing instructions. Any change still requires explicit user approval. No scheduled acquisition, provider application, website integration, deletion, publishing, deployment or push is authorized.
 
 ## 15. Explicit exclusions
 
-No bulk or sample tennis data acquisition; no cleaning; no canonical table creation; no R/Python code; no package installation or environment initialization; no R project layout; no statistics, Elo, factors, regressions, forecasts or performance scoring; no 2025 model-performance inspection; no portfolio changes; no publication/deployment; no Git fetch/pull/push/merge/rebase, branch switching or configuration change. Existing repository files remain unchanged.
+The original contract milestone excluded acquisition and code. The later pilot explicitly authorized two 2023 annual downloads, two base-R scripts, local subsets, provenance and audit summaries. All other acquisition remains excluded. No canonical tables, packages, project-environment initialization, Elo, factors, regressions, ratings, forecasts or performance scoring; no 2025 dataset access; no portfolio changes; no publication/deployment; no Git fetch/pull/push/merge/rebase, branch switching or configuration change.
 
 ## 16. Recommended next implementation step
 
-First resolve U1–U5 sufficiently to approve a bounded acquisition plan. If rights or date evidence remain blocked, the smallest next step is a focused clarification/provenance document update, not a model.
+The 2023 Indian Wells pilot is complete as an acquisition/audit milestone, with an unresolved WTA count flag and no chronological match dates. Review match 268 and authorize a resolution or quarantine policy while preserving raw bytes. Define independent final-draw reconciliation and retain unknown chronology.
 
-After explicit authorization, acquire a small pinned ATP/WTA development-season pilot into approved local-only storage, record complete manifests and terms evidence, and test actual headers, statuses, source-match keys, and match-date feasibility. Prefer one shared development event on both tours to expose integration problems before acquiring the full panel. This is a pilot, not a change to the five-year panel. The next prompt must name the event/year, permitted files, dependencies and exact storage paths; this task chooses none of them. Do not create ratings or inspect final-test performance during that acquisition milestone.
+The pilot supports bounded expansion in principle, not automatic approval. A next prompt may explicitly authorize acquisition/auditing of the fixed ten-event 2021–2023 ATP/WTA development sample with named source files, paths and tools. Keep 2024/2025 closed. Settle actual-date and ordering policy before any rating or rolling-statistic implementation; no chronology solution is selected here.
 
 Keep [status.md](status.md) current and require the next Codex task to finish with a written ChatGPT Handoff of approximately 2,000 words, strictly no more than 2,000. Do not send it, invoke a handoff tool, or create another task unless the user separately requests that action.
 
