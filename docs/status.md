@@ -1,36 +1,46 @@
 # Tennis analytics status
 
-Date: **2026-09-14**. Milestone: **Phase 1B WTA anomaly verification and quarantine policy complete. Correct statistics, full inventory and model readiness remain unresolved.**
+Date: **2026-09-14**. **Phase 1C reconciliation is implemented. WTA passes inventory; ATP remains blocked by conflicting official identities. Do not expand the development panel or begin modeling yet.**
 
-## Completed and directly verified
+## Completed and verified
 
-- Began Phase 1B clean on `main` at `dec1b67c9d3713ea03835ebb22671d3b56d0ae75`, four ahead of the existing local `origin/main`. Confirmed instructions, five commits, existing documents/scripts and both annual-file hashes. No remote synchronization occurred.
-- Acquired only the four authorized 2023 anomaly references: official WTA match page, official draw PDF, official draws HTML, and the supplementary Tennis Abstract charted match. Exact URLs, timestamps, hashes and rights notes are in the [reference manifest](../data/manifests/anomaly-reference-files.csv).
-- Official WTA counts agree with Sackmann on all 18 required fields, including service games 11/11. The score has 29 completed games without a tie-break, so published agreement still fails the structural rule. The official draw confirms this match's presence/result only. Supplementary break-point counts disagree; no corrected value was adopted.
-- Implemented offline comparison and shared quarantine policy 1.0.0. WTA match 268 retains inventory/result facts and its played denominator membership, but its entire statistical bundle leaves the valid numerator and factor-statistics candidate population. Reasons are `structural_count_conflict`, `cross_source_conflict`, `status_unresolved`, and `chronology_unresolved`. See [full evidence and policy](wta-anomaly-and-quarantine-policy.md).
-- Recalculated WTA valid coverage: 93/94 = 98.9362%; its walkover remains separate, within the 95-row inventory and outside the played denominator. ATP remains 95/95 = 100%. Both exceed the provisional 90% numerical event floor. The 95% tour-season gate was not tested; retirement eligibility is not settled.
-- Regenerated the [pilot report](pilot-acquisition-audit.md) through its generator and updated the [contract](data-source-contract.md), preserving the distinction between the original pilot and this official-reference follow-up. Annual files and both source subsets remain unchanged.
+The flagship compares interpretable Four Factors with surface-adjusted Elo, separately for ATP and WTA. Challenger promotion readiness remains a later project. Phase 1C audited only 2023 Indian Wells main-draw singles.
 
-## Verification and warnings
+Every HTML results-inventory match has one corresponding source row: **95/95 per tour**, with no missing rows or duplicate accepted links. Each bracket has 128 positions, 32 byes and 96 entrants. ATP has 91 completed matches and four retirements. WTA has 92 completed matches, two retirements and one walkover; that walkover remains in inventory but outside the 94-match played denominator.
 
-Reference downloader reruns preserved bytes, hashes, retrieval timestamps and modification times. An in-memory mismatch test stopped before network/write activity. Anomaly audit reruns produced byte-identical outputs. Tests covered the real flagged row, a valid completed match, missing service games, cross-source count conflict and the separate walkover. The pilot audit was rerun, and both subsets were compared cell-by-cell with the unchanged annual source rows. No synthetic records were persisted.
+WTA has 95 normalized agreements and passes inventory. ATP has 77 exact agreements, 15 normalized agreements and three conflicting matches. Both ATP HTML pages agree on all 127 entries including byes, but the PDF disagrees in two branches:
 
-All four reference acquisitions succeeded with base R. Existing bundled `pdftotext` handled the PDF; no dependency was installed. Browser-readable Tennis Abstract content omitted script-embedded tables, so the offline parser read the saved whole-match overview. Official HTML contains conflicting scheduled JSON-LD and completed match-card status; both are retained. The WTA date and charted URL date differ, with no timezone resolution. Earlier pilot network/font warnings remain historical findings in its report, not failures of Phase 1B acquisition.
+- Carreño Busta versus Albot: a bye entry and Murray's second-round opponent.
+- Kudla versus Wawrinka: the first-round winner against Vukic and the next-round feeder identity against Kecmanovic. The PDF itself advances Wawrinka from a pair that does not contain him.
 
-## Unresolved issues and approval boundaries
+These are four conflicting PDF observations, covering three non-bye matches and one bye. Cause and source precedence remain unknown/unapproved. No identities were merged or corrected; ATP's gate stays blocked. See the [complete evidence and reconciliation](indian-wells-inventory-reconciliation.md).
 
-- Quarantine is adopted; correct counts and any reconstruction policy remain unresolved. Shared upstream dependence may explain repeated published values, but feed lineage is not established.
-- WTA's match-associated date is 2023-03-12; the supplementary URL says 20230311. No canonical actual date, same-day order or completion-time policy is selected. One match's reference evidence does not solve event-wide chronology.
-- Complete official ATP/WTA inventory reconciliation, final retirement/default/unknown-status eligibility, historical rating scope and publication rights remain unresolved. Factor analysis, Elo updates and forecasting remain unauthorized.
+## Statistics and modeling remain separate
 
-## Recommended next milestone
+Required counts are present for every played source row: ATP 95/95, WTA 94/94. Structural checks invalidate one WTA bundle, leaving **93/94 = 98.9362%** valid; ATP remains 95/95 numerically against its candidate inventory. Both clear the 90% numerical event floor. The **95% tour-season gate is not tested**.
 
-Complete official match-inventory reconciliation for the **2023 Indian Wells ATP and WTA draws**. This was not started in Phase 1B beyond confirming the target match. Do not acquire the full development panel yet. Keep other seasons closed; preserve quarantine and the unresolved chronology/retirement boundaries.
+[Phase 1B quarantine policy](wta-anomaly-and-quarantine-policy.md) remains active. Andreescu–Stearns (`2023-609:268`, LS033) stays in inventory and the played denominator but its entire statistical bundle remains excluded from the valid numerator. Published service games total 22 versus 29 score games. No correction occurred. Cross-source disagreement, completed-card/scheduled-metadata conflict and unresolved chronology remain recorded.
 
-No packages, canonical tables, Elo, Four Factors, player ratings, forecasts, analytical plots, or performance evaluations were created. No other-season dataset was acquired or analyzed. The authorized 2023 HTML contains unrelated navigation/news, which was excluded from the analysis. Raw annual files, raw references and generated pilot/anomaly outputs remain outside Git. The portfolio repository was not modified. Nothing was pushed, published, or deployed.
+Final retirement/default eligibility is unsettled. Tournament-week dates and source match numbers do not establish actual chronology. Four Factors, Elo updates, rolling features and forecasts remain unauthorized, including WTA despite inventory passage.
 
-## Commit and handoff
+## Reproduction and limitations
 
-Phase 1B uses commit message `Document WTA anomaly quarantine policy`; the final response records its exact hash and final Git status. The earlier acquisition commit remains in history. Future new documents still require explicit staging because the existing `docs/` ignore rule is preserved.
+New acquisition/reconciliation scripts, an [inventory manifest](../data/manifests/inventory-reference-files.csv), 14 ignored CSVs and four ignored PDF images document the work. The [pilot report](pilot-acquisition-audit.md) is regenerated through its updated generator after reconciliation. Annual files, both pilot subsets and Phase 1B references remain unchanged; subsets were checked cell by cell.
 
-Every next task must end with a written ChatGPT Handoff of approximately 2,000 words, strictly no more than 2,000. Do not send it, invoke a handoff tool, or create another task without a separate request.
+Direct ATP HTML returned 403. Saved browsing-service representations supplied results/draw evidence, with explicit hashes and access times; these are not original HTTP bytes. Fresh reproduction requires restoring these exact captures or separately approving replacement evidence. WTA files were reused without redownloading. Its saved PDF predates the final, so saved HTML supplies that result. PDF evidence supplies missing retirement markers, and the walkover's missing HTML match ID receives a locator-based audit ID.
+
+Downloader reruns preserve bytes/mtimes; reconciliation reruns are byte-identical. Tests cover identities, unordered pairs, orientation, scores/statuses, duplicate/unmatched/ambiguous rows and quarantine. Both earlier audits were rerun. Parsing/rendering failures were fixed and documented; no dependency was added.
+
+## Smallest next task and user decisions
+
+**Phase 1D: approve and implement an event-scoped official-reference precedence rule for the two ATP branches, then close or explicitly retain the ATP inventory block.** Start with existing evidence. The recommendation is to consider the two agreeing HTML pages authoritative while preserving the dissenting PDF. That recommendation is not approved or implemented as gate passage.
+
+Do not acquire another season in that step. Broader development acquisition requires separate authorization after inventory review. Later choices include actual-date/completion-order evidence, retirement/default treatment, rating history, statistical methods/dependencies and derived-output publication rights.
+
+No canonical production tables, ratings, factors, models, forecasts, analytical plots or website outputs were created. No other-season data was acquired. Unrelated navigation and qualifying sections in reference pages were excluded from analysis. Portfolio was not modified. Nothing was pushed, published or deployed.
+
+## Git and handoff
+
+Phase 1C started clean on `main` at `ff701d0d0c2d6e57ca6765aeddee4c26b7fd7915`. Commit message: `Reconcile Indian Wells official match inventories`. The final response records the exact new commit and final status; no remote refresh occurred.
+
+Every next task must finish with a written ChatGPT Handoff of approximately 2,000 words, strictly no more than 2,000, in the response only. Do not invoke a handoff tool or create another task without a separate request.
