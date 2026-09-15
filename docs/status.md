@@ -1,67 +1,64 @@
 # Tennis analytics status
 
-Date: **2026-09-14**. **Phase 1F is complete: offline WTA 2021 Montreal admission review. Seven statistical bundles remain missing; score suffix and completion evidence remain unresolved. No repair, imputation, acquisition or admission occurred.**
+Date: **2026-09-14** (acquisition timestamps are September 15 UTC). **Phase 1G is complete: bounded WTA Montreal reference-feasibility audit. Seven official candidate bundles contain all 18 exact counts and pass structural checks. Source bundles remain missing. Recovery and admission are not authorized.**
 
 ## Completed and verified
 
-The flagship asks whether interpretable Four Factors improve match-forecast calibration over surface-adjusted Elo, separately for ATP and WTA. Challenger promotion readiness remains deferred. This repository owns research; portfolio publication requires completed, reviewed outputs and a separate request.
+The flagship asks whether interpretable Four Factors improve match-forecast calibration over surface-adjusted Elo, separately for ATP and WTA. Challenger promotion readiness remains deferred until shared infrastructure is validated. This repository owns the research; portfolio publication needs completed, reviewed outputs and a separate request.
 
-The [Montreal review](wta-2021-montreal-admission-review.md) selects exact WTA source ID 2021-806 and verifies it against Phase 1E candidates. Source observations remain Montreal, 20210809, Hard, P, draw size 64, 55 rows, 54 apparent-play rows, one walkover and four recognizable retirement markers. These are source observations, not verified official inventory or chronology.
+The user selected Phase 1F Option A investigation and allowed exactly twelve WTA URLs: overview, HTML draw, main-draw PDF, LS001–LS007 Montreal pages and LS042/LS049 Toronto-slug pages. All twelve returned HTTP 200 on the first direct attempt. Original bytes, sizes, SHA-256 and retrieval times are recorded in the [reference manifest](../data/manifests/montreal-reference-files.csv). No browsing-service fallback, search, hidden endpoint or computer control was used. Raw references and extracted match tables remain ignored; no WTA redistribution permission is inferred.
 
-All seven gaps are whole bundles affecting both players: four QFs (298, 297, 296, 295), two SFs (300, 299) and the final (238). Six have recorded minutes; the final does not. All eight affected players have complete bundles in earlier apparent-play rounds. Internal round progression is coherent, without asserting official coverage. Other nine WTA target events have no whole-bundle gaps in QF/SF/F rows. The cause of Montreal's round-concentrated pattern remains unknown.
+The [Phase 1G report](wta-2021-montreal-reference-feasibility.md) verifies these source/page mappings: 238→LS001, 300→LS002, 299→LS003, 298→LS004, 297→LS005, 296→LS006, 295→LS007, 260→LS042 and 253→LS049. All match pages show event 806, 2021 and Montreal; Toronto URL slugs do not override displayed identity. Round, player pair, advancing player and numeric score agree across the nine targeted match pages, HTML draw and PDF branches. This is not complete official inventory reconciliation.
 
-## Score and count warnings
+LS001–LS007 each have 18/18 exact whole-match counts. All nine targets pass 51 applicable structural checks each: 459 passed, none flagged or unevaluable. Tests cover count bounds, displayed denominators, score/service games, tie-breaks and cross-player service/return games. Retirement checks allow an unfinished service game. The 162 required-field comparisons comprise 126 source-missing/official-present and 36 exact source/official agreements; no count conflict was observed. A separate table preserves 180 official observations, including 18 supporting return-game counts.
 
-Anisimova–Martincova (260) retains raw score 6-1 4-3 RET+H64. RET remains recognizable and +H64 remains unresolved. The four local annual files contain only one analogous row: WTA Miami 2023-902:289, 7-6(0) 0-2 RET+H61. Similar syntax does not establish meaning.
+## Conflicts and status evidence
 
-An additional source observation explains different denominator sensitivities: Ferro–Tomljanovic (253) has 2-6 6-2 with no retirement marker. It remains apparent play, but not completion-consistent best-of-three syntax. No deciding set, retirement or corrected outcome is inferred.
+LS042 and the PDF confirm Tereza Martincova retired; LS049 and the PDF confirm Ajla Tomljanovic retired. Both HTML draw cards omit RET despite agreeing on score and advancement. Source scores remain `6-1 4-3 RET+H64` and `2-6 6-2`. States are `official_retirement_confirmed_suffix_meaning_unresolved` and `official_retirement_confirmed_source_marker_missing`. H64/H61 are not interpreted. These findings do not settle retirement eligibility.
 
-The Gauff–Konta R16 walkover (289) has 18 populated zero counts. Existing checks flag zero service points; populated is not equivalent to valid played-match statistics. All other 47 complete bundles have no applicable count flags. Game/score reconciliation is not evaluable for the unresolved suffix, unmarked two-set score, missing bundles or walkover; no independent accuracy claim follows.
+All nine match-specific metadata blocks say EventScheduled despite finished/completed cards. These conflicts remain explicit. Official match dates are published metadata, not verified actual-play chronology; LS007 is dated August 14 while other quarterfinal metadata is August 13. Overview dates August 9–15 differ from the PDF's August 7–15 window. Eight source durations agree at integer-minute precision; the final's source duration is missing while WTA records 01:40:31.
 
-## Denominator sensitivities, not eligibility rules
+Saved statistics name-bars are empty. Orientation uses the checked match cards and ordered a/b statistics columns/bar classes. The bounded Coco Gauff / Cori Gauff linkage is documented without changing source spelling or creating a global identity crosswalk.
 
-| Scenario | Populated / denominator | Without applicable flags / denominator | Minimum additional acceptable bundles for 90% |
-| --- | --- | --- | --- |
-| All source rows | 48/55 (87.2727%) | 47/55 (85.4545%) | 3 |
-| Non-walkover / Phase 1E apparent play | 47/54 (87.0370%) | 47/54 (87.0370%) | 2 |
-| Numeric completed-score syntax | 42/49 (85.7143%) | 42/49 (85.7143%) | 3 |
-| All rows excluding RET; retains walkover | 44/51 (86.2745%) | 43/51 (84.3137%) | 3 |
-| Apparent play excluding RET | 43/50 (86%) | 43/50 (86%) | 2 |
-| All rows excluding suffix; retains walkover | 47/54 (87.0370%) | 46/54 (85.1852%) | 3 |
-| Apparent play excluding suffix | 46/53 (86.7925%) | 46/53 (86.7925%) | 2 |
+## Coverage and review state
 
-The baseline needs 49 acceptable bundles; the completed-score cohort needs 45. These shortfalls are conditional lower bounds: unevaluable checks or later invalidations may increase them. Arithmetic is not evidence that recovery is possible. Complete-bundle-only diagnostics yield 48/48 populated (47/48 without flags) or 47/47 after filtering flags, but are circular and cannot establish coverage. All ten generated scenarios retain explicit inclusion/exclusion IDs. No 90% eligibility gate is approved; the 95% tour-season gate is untested.
+The [historical Phase 1F source review](wta-2021-montreal-admission-review.md) remains reproducible. It observes 55 source rows, 54 apparent-play rows, one walkover, four literal retirement markers and seven whole-bundle gaps. The additional officially corroborated retirement does not rewrite historical source cohorts. The zero-count walkover remains outside the apparent-play denominator.
 
-## Review dispositions and choices
+| Scenario | Source bundles | Included official candidates | Coverage | Adopted policy |
+| --- | --- | --- | --- | --- |
+| Source only | 47 | 0 | 47/54 = 87.0370% | No |
+| Separate candidate availability | 47 | 7 | Potential 54/54 = 100% | No |
+| Hypothetical passing-bundle recovery | 47 | 7 | Hypothetical 54/54 = 100% | No |
+| Strict exclusion of any conflicted candidate | 47 | 0 | 47/54 = 87.0370% | No |
 
-**WTA Montreal admission review 1.0.0** is a review specification, not an adopted repair/quarantine/eligibility policy. Nine dispositions distinguish seven missing bundles, one unresolved suffix and one numeric score lacking completion evidence. They permit source identity/result/score preservation, event annotations, descriptive inventory candidacy and local review. They prohibit Four Factors, weights, player factor summaries, missing-count-dependent uses, Elo, forecasting and modeling admission.
+Two later acceptable recoveries could reach the arithmetic 49/54 required for 90%. All seven count bundles are structurally acceptable, supporting **SUPPORTED_PENDING_RECOVERY_POLICY**. The strict conservative scenario excludes all seven because EventScheduled conflicts are unresolved. Source cells remain missing in every scenario; no recovered/canonical record is emitted. Denominators are source apparent-play observations, not approved inventory or eligibility rules. No 95% tour-season gate was tested.
 
-The report compares five unimplemented options: A investigate reference-based recovery; B retain result-only work while excluding Montreal from factors; C exclude the event from both models; D revise the 90% floor; E impute/reconstruct (prohibited without later evidence and separate policy approval). Different model populations would require an explicit evaluation design; excluding Canada or revising thresholds requires user approval. No license assumption was added.
+**WTA Montreal reference-feasibility review 1.0.0** is an implemented review specification, not a recovery, precedence or admission policy. Its nine dispositions permit local auditing and feasibility review only; they prohibit source substitution, canonical recovery, Four Factors, Elo, forecasting, admission and publication.
 
-## Existing evidence and policies preserved
+## Existing evidence preserved
 
-All four ATP/WTA 2021/2023 annual files were verified against their manifests for size, SHA-256, Git blob and row count. Existing raw bytes, metadata, retrieval records and earlier generated evidence remain unchanged. Phase 1E still reports 20 found candidate cells and identical ordered 49-column schemas; no 2021 inventory gate passes.
+All four ATP/WTA 2021/2023 annual files were revalidated against pinned manifests. The archive revision remains 83733587353df8a41f2fd4f516147d5aa83f5a8d. Phase 1E still has twenty found source candidate cells, not official inventory confirmations. All 73 pre-acquisition snapshot files retain sizes, SHA-256 and modification times: prior raw evidence, manifests, policy specifications, applicable check code and generated outputs. Only authorized historical report follow-up notes changed through their generators.
 
-ATP/WTA 2023 Indian Wells inventory gates remain PASS. ATP precedence policy 1.0.0 retains four resolved PDF conflicts in its two approved branches and three conflicting match links. WTA quarantine policy 1.0.0 still excludes Andreescu–Stearns' full bundle while retaining inventory/played-denominator membership and all four reasons. WTA remains 93/94 valid-count rows, ATP 95/95. The policies and Indian Wells outputs were not altered.
+Indian Wells 2023 ATP/WTA inventory gates remain PASS. ATP reference-precedence policy 1.0.0 retains four resolved PDF conflicts under its two approved branches and three conflicting match links. WTA quarantine policy 1.0.0 still quarantines Andreescu–Stearns' whole count bundle with all four reasons while retaining inventory/played-denominator membership. Existing valid-count coverage stays 93/94 WTA and 95/95 ATP. These policies do not admit Montreal.
 
 ## Reproduction and verification
 
-Run Rscript R/review_wta_2021_montreal.R --self-test from the repository root. Eight deterministic CSVs are written under ignored data/pilot/development-2021/montreal-review/, plus the generated Markdown report. The script makes no network requests and calls no acquisition function. Missing or invalid evidence stops before output.
+Run `Rscript R/download_montreal_references.R`, then `Rscript R/audit_montreal_reference_feasibility.R --self-test`. The audit makes no network requests. Matching cached downloads and deterministic outputs preserve bytes and modification times. Fresh-machine reproduction requires the earlier pinned annual inputs and authorized copies matching the manifest; future page content may change. Existing base R and system tools suffice; no dependency was added.
 
-Verification covers source identities, all 18 missing fields, QF/SF/F distribution, raw score/match-number preservation, partial/malformed/zero bundle cases, count bounds, suffix edge cases, selection failures, labeled denominators, threshold arithmetic, source progression, player history, prohibited admission and identical reruns. Phase 1E remains reproducible; its rerun test now hashes its own CSVs rather than the new review directory. Final checks cover 65 preserved files, no new raw files, ignore rules, documentation links/anchors, placeholders, paths, full diff and whitespace.
+Tests cover exact URL rejection; event/year/code/pair/round verification; reversed player orientation; Match-tab isolation; repeated set panels; integer/fraction extraction; missing/hidden values and percentage-only rejection; field locators and comparison states; invalid bundles; tie-break/retirement rules; raw score preservation; draw conflicts; 47/54 baseline; and nonadoption. Phase 1E/1F reproducibility, manifest validation, ignore rules, documentation links/anchors, machine paths, placeholders, whitespace and the complete diff are checked before commit.
 
-Development checks caught CSV type inference in a candidate comparison and missing-score vector names in a synthetic test. Both were corrected without changing raw data. Strict completed-score checking also exposed the previously unmarked two-set source score; it is documented, not repaired. No unresolved execution failure remains.
+Local development checks caught decorative hidden bars being mistaken for hidden values, an empty statistics name-bar, differing section/date labels and an overly broad footer locator. These were corrected without changing raw evidence. One synthetic round-mutation test initially failed to alter whitespace-containing HTML; the test was fixed to exercise actual rejection. A reference-only validation adapter initially lacked required event context; that interface was corrected without copying or filling source match rows. The report switched to REVIEW_REQUIRED during failure and was regenerated after correction. No retrieval failed and no unresolved execution failure remains.
 
 ## Smallest recommended next task
 
-**Proposed Phase 1G:** a separately authorized reference-feasibility investigation for the seven missing bundles, suffix row and unmarked two-set score. First obtain an exact URL allowance and permissible local-use scope. Then establish whether complete counts and inventory/status evidence exist, preserving provenance and conflicts without automatic substitution or admission. Option A investigation is preferred; the user must choose and source availability/rights remain unverified.
+**Proposed Phase 1H:** prepare a bounded Montreal recovery and status-evidence policy specification for user review, using saved evidence only. Address candidate provenance and orientation, metadata/draw conflicts, source preservation, retirement treatment and explicit approval gates. Do not implement recovery or admission automatically. Complete inventory reconciliation, actual chronology and model-population rules remain prerequisites for later use.
 
-2022, 2024 and 2025 stay closed. New references, recovery/reconstruction rules, chronology, status eligibility, factor-data admission, evaluation populations, rating history, statistical specifications, dependencies/structures and public derived-output rights remain decisions. The fixed panel, 90%/95% thresholds and development/validation/test boundaries are unchanged.
+Any new URL access, recovery/reconstruction method, eligibility change, dependency, substantial structural change or publication-rights assumption requires appropriate authorization. The ten-family panel, 90%/95% thresholds, 2021–2023 development, 2024 validation and locked 2025 test periods remain unchanged. 2022/2024/2025 acquisition stays closed.
 
-No acquisition, repair, imputation, canonical table, model, factor, forecast, predictive evaluation or portfolio work occurred. Nothing was pushed, published or deployed. DATA_LICENSE.md remains unchanged.
+No source repair, imputation, canonical recovery, admission, model, factor, forecast, predictive evaluation or portfolio change occurred. Nothing was pushed, published or deployed. DATA_LICENSE.md is unchanged.
 
 ## Git and handoff
 
-Phase 1F began clean on main at d1da82252fd6b9516ca4c6281ed7514f17959190 (Acquire and audit 2021 annual tennis data), eight ahead of the existing local origin/main. No later Phase 1F commit existed. Commit message: Review WTA 2021 Montreal data gaps. The final response records the completed commit and final Git state; no remote refresh occurred.
+Phase 1G began clean on main at 26fcecb7fad5ae5e3de1ea0de3e225062d64b7f5, `Review WTA 2021 Montreal data gaps`, nine ahead and zero behind the existing local origin/main. No later Phase 1G commit existed. Completion commit message: `Audit Montreal reference recovery feasibility`. The final response records the completed commit and final Git state; no remote refresh occurred.
 
 Every next task must finish with a written ChatGPT Handoff of approximately 2,000 words, strictly no more than 2,000, in the response only. Do not invoke a handoff tool or create another task without a separate request.
