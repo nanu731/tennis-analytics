@@ -1,6 +1,14 @@
 # Tennis analytics status
 
-Date: **2026-09-14** (acquisition timestamps are September 15 UTC). **Phase 1G is complete: bounded WTA Montreal reference-feasibility audit. Seven official candidate bundles contain all 18 exact counts and pass structural checks. Source bundles remain missing. Recovery and admission are not authorized.**
+Date: **2026-09-14**. **Phase 1H is complete: WTA Montreal recovery and status-evidence policy 0.1.0 has been drafted for review. policy_status = PROPOSED_NOT_APPROVED. All ten decisions remain PENDING_USER_APPROVAL. Recovery and status precedence are not implemented; event_admission = NOT_EVALUATED; modeling_authorized = FALSE.**
+
+## Draft awaiting user decisions
+
+The [Phase 1H draft](draft-wta-2021-montreal-recovery-policy.md) defines four separate layers: immutable Sackmann observations, immutable official observations, a future derived recovery overlay, and a future canonical analytical record. Only the proposal exists. No overlay records, canonical table, policy application or new data file was created. Version 0.1.0 is not adopted or controlling.
+
+Its recommendations are: D1 preserve sources through a separate overlay; D2 recover all seven eligible bundles together; D3 require all 18 fields and structural checks; D4 apply scoped completion evidence while preserving EventScheduled; D5 confirm the two retirements as status observations; D6 leave H64/H61 unexplained; D7 defer retirement eligibility; D8 retain 90%/95% thresholds; D9 keep admission, chronology and modeling blocked; D10 keep publication blocked pending rights review. Every item requires explicit user approval. Existing restrictions stay in force while decisions are pending.
+
+Phase 1H used only saved local evidence. Twelve Montreal reference fingerprints and four annual manifests passed; the nine match mappings, 180 official observations, 126 missing-source comparisons, 36 exact comparisons and 459 structural checks were rechecked without calling a downloader or rewriting observations. All 112 protected pre-existing files retain hashes, sizes and modification times; the four other pre-existing changes are this status, the contract, the Phase 1G generator and its follow-up report.
 
 ## Completed and verified
 
@@ -43,15 +51,17 @@ Indian Wells 2023 ATP/WTA inventory gates remain PASS. ATP reference-precedence 
 
 ## Reproduction and verification
 
-Run `Rscript R/download_montreal_references.R`, then `Rscript R/audit_montreal_reference_feasibility.R --self-test`. The audit makes no network requests. Matching cached downloads and deterministic outputs preserve bytes and modification times. Fresh-machine reproduction requires the earlier pinned annual inputs and authorized copies matching the manifest; future page content may change. Existing base R and system tools suffice; no dependency was added.
+The following reproduction commands describe the completed Phase 1G workflow, not authority to download in Phase 1H: `Rscript R/download_montreal_references.R` and `Rscript R/audit_montreal_reference_feasibility.R --self-test`. Phase 1H instead used read-only manifest validators and extraction/check functions, then regenerated only the Phase 1G Markdown report from unchanged saved outputs. Its report-only rerun is byte- and modification-time stable. No dependency or network access was used.
 
-Tests cover exact URL rejection; event/year/code/pair/round verification; reversed player orientation; Match-tab isolation; repeated set panels; integer/fraction extraction; missing/hidden values and percentage-only rejection; field locators and comparison states; invalid bundles; tie-break/retirement rules; raw score preservation; draw conflicts; 47/54 baseline; and nonadoption. Phase 1E/1F reproducibility, manifest validation, ignore rules, documentation links/anchors, machine paths, placeholders, whitespace and the complete diff are checked before commit.
+The existing Phase 1G test suite covers exact URL rejection; event/year/code/pair/round verification; reversed player orientation; Match-tab isolation; repeated set panels; integer/fraction extraction; missing/hidden values and percentage-only rejection; field locators and comparison states; invalid bundles; tie-break/retirement rules; raw score preservation; draw conflicts; 47/54 baseline; and nonadoption. Phase 1E/1F reproducibility, manifest validation, ignore rules, documentation links/anchors, machine paths, placeholders, whitespace and the complete diff are checked before commit.
 
-Local development checks caught decorative hidden bars being mistaken for hidden values, an empty statistics name-bar, differing section/date labels and an overly broad footer locator. These were corrected without changing raw evidence. One synthetic round-mutation test initially failed to alter whitespace-containing HTML; the test was fixed to exercise actual rejection. A reference-only validation adapter initially lacked required event context; that interface was corrected without copying or filling source match rows. The report switched to REVIEW_REQUIRED during failure and was regenerated after correction. No retrieval failed and no unresolved execution failure remains.
+Historical Phase 1G execution notes: Local development checks caught decorative hidden bars being mistaken for hidden values, an empty statistics name-bar, differing section/date labels and an overly broad footer locator. These were corrected without changing raw evidence. One synthetic round-mutation test initially failed to alter whitespace-containing HTML; the test was fixed to exercise actual rejection. A reference-only validation adapter initially lacked required event context; that interface was corrected without copying or filling source match rows. The report switched to REVIEW_REQUIRED during failure and was regenerated after correction. No retrieval failed and no unresolved execution failure remains.
+
+Phase 1H verification covers all ten pending decisions, the five nonadopted state fields, unchanged evidence and manifests, draft/recovery/admission distinctions, coverage labels, local links/anchors, paths, placeholders, whitespace and the complete diff. A temporary comparison initially treated blank PDF non-retirement names differently from CSV NA; the read-only comparison was corrected, with no change to saved evidence. Report-only CSV type inference also briefly changed the display of an unavailable duration; restoring the original character type kept all calculated report lines unchanged.
 
 ## Smallest recommended next task
 
-**Proposed Phase 1H:** prepare a bounded Montreal recovery and status-evidence policy specification for user review, using saved evidence only. Address candidate provenance and orientation, metadata/draw conflicts, source preservation, retirement treatment and explicit approval gates. Do not implement recovery or admission automatically. Complete inventory reconciliation, actual chronology and model-population rules remain prerequisites for later use.
+**User review is the next action:** approve, reject or revise each of the ten decisions in the [draft approval checklist](draft-wta-2021-montreal-recovery-policy.md#user-approval-checklist). The drafting prompt and commit do not constitute approval. Only after explicit approval should ChatGPT prepare a bounded implementation prompt identifying an adopted version and exact recovery/status scope. Do not populate an overlay, apply precedence or admit Montreal automatically.
 
 Any new URL access, recovery/reconstruction method, eligibility change, dependency, substantial structural change or publication-rights assumption requires appropriate authorization. The ten-family panel, 90%/95% thresholds, 2021–2023 development, 2024 validation and locked 2025 test periods remain unchanged. 2022/2024/2025 acquisition stays closed.
 
@@ -59,6 +69,6 @@ No source repair, imputation, canonical recovery, admission, model, factor, fore
 
 ## Git and handoff
 
-Phase 1G began clean on main at 26fcecb7fad5ae5e3de1ea0de3e225062d64b7f5, `Review WTA 2021 Montreal data gaps`, nine ahead and zero behind the existing local origin/main. No later Phase 1G commit existed. Completion commit message: `Audit Montreal reference recovery feasibility`. The final response records the completed commit and final Git state; no remote refresh occurred.
+Phase 1H began clean on main at 97f655bcac881a190a83396b45b1860358926df1, `Audit Montreal reference recovery feasibility`, ten ahead and zero behind the existing local origin/main. No later Phase 1H commit existed. Completion commit message: `Draft Montreal recovery policy for review`. The final response records the completed commit and final Git state; no remote refresh occurred.
 
 Every next task must finish with a written ChatGPT Handoff of approximately 2,000 words, strictly no more than 2,000, in the response only. Do not invoke a handoff tool or create another task without a separate request.
