@@ -1,6 +1,6 @@
 # Tennis analytics status
 
-Date: **2026-09-20**. **Phase 1J audit complete. Montreal inventory reconciliation is REVIEW_REQUIRED.** Full independent HTML/PDF bracket extraction and all 55 source links are established. Three retirement-detail differences require a separately approved policy decision. Event admission and analytical coverage remain NOT_EVALUATED; modeling_authorized remains FALSE.
+Date: **2026-09-20**. **Phase 1K policy draft complete; proposal 0.1.0 is PROPOSED_NOT_APPROVED and policy_implemented is FALSE. Montreal inventory reconciliation remains REVIEW_REQUIRED.** The same three retirement-detail conflicts await user review of D1-D8. Event admission and analytical coverage remain NOT_EVALUATED; modeling_authorized remains FALSE. Committing the draft is not approval.
 
 ## Completed and verified
 
@@ -78,14 +78,22 @@ New tests cover independent parsing, singles isolation, bracket progression, bye
 
 PDF development checks exposed bye-text attributes, tie-break token syntax and a final-score coordinate that also occurred within semifinal scores. These were corrected with explicit parsing and bounded geometry, not inferred source rows. Word-level coordinates separate an adjacent-column extraction collision. Initial identity review exposed the Riske name difference and ñ transliteration; both now retain bounded auditable decisions. All substantive uncertainty is reported as the three remaining status-detail conflicts.
 
+## Phase 1K draft verification
+
+The [inventory status-detail proposal 0.1.0](draft-wta-2021-montreal-inventory-status-policy.md) is limited to LS036/266, LS054/248 and LS026/276. It recommends pdf_retirement_corroborated_html_omission_preserved only when pinned source/PDF RET, the PDF-named retiring player and source/HTML/PDF identity, round, winner and numeric score all agree. HTML omissions and raw metadata remain preserved. The proposal fails closed on missing or conflicting evidence. All eight approval decisions remain PENDING_USER_APPROVAL; no policy application or new status record occurred.
+
+Phase 1K revalidated all twelve references, four annual files, three manifest pins and the unchanged Phase 1I reconstruction. Direct source/HTML/PDF review and full-page PDF inspection confirmed the three RET markers, HTML omissions and legend names (Marie Bouzkova, Shuai Zhang, Anastasia Potapova). No affirmative contrary status was found in the scoped HTML blocks; F/Finished does not explicitly assert normal completion. The read-only baseline and final audit retain the same three blockers, 12/14 passing criteria and unchanged gates.
+
+All 18 Phase 1J tests and 38 Phase 1I checks passed. Evidence hashes, sizes and modification times, existing data-file membership, overlay bytes/timestamp, restricted-data Git boundaries, pending decisions, links/anchors, placeholders, whitespace and the complete diff were checked. Only the report generator's follow-up prose changed; its generated report was reproduced without changing findings. No new data file, implementation script, overlay, dependency or network request was created.
+
 ## Smallest recommended next task
 
-Draft an **inventory-only status-detail policy for user review**, limited to LS036, LS054 and LS026, using saved HTML/PDF and source observations. Preserve raw omissions and corroborating scores/results. Do not adopt or implement new precedence without explicit approval, and do not decide retirement eligibility, chronology, analytical coverage, admission or modeling.
+Review D1-D8 in the [draft policy](draft-wta-2021-montreal-inventory-status-policy.md#user-approval-checklist). After explicit approval, separately implement only the approved inventory-status decisions with fail-closed tests and all existing completion criteria. If the user requests revisions, revise the draft first. Do not infer approval from this commit or proceed to retirement eligibility, chronology, analytical coverage, admission or modeling.
 
 Wider acquisition, new dependencies, structural changes, methodological choices and publication require appropriate authorization. No portfolio, source, manifest, Phase 1I overlay or historical calculated output was modified. No push, publication or deployment occurred.
 
 ## Git and handoff
 
-Phase 1J began clean on main at `13be0fd3f8d2d222e51c972319a540f8db798429`, `Implement Montreal recovery overlay policy`, twelve ahead / zero behind the existing local origin/main. No remote refresh occurred. Completion message: `Reconcile Montreal inventory offline`. The final response records the exact resulting hash and Git state.
+Phase 1K began clean on main at `1243886891941f30263f56eb4feb4b1ab2fa45dd`, `Reconcile Montreal inventory offline`, thirteen ahead / zero behind the existing local origin/main. No remote refresh occurred. Completion message: `Draft Montreal inventory status policy`. The final response records the exact resulting hash and Git state. The Phase 1J report retains its historical start/commit description.
 
 Every next task must finish with a response-only ChatGPT Handoff of approximately 2,000 words and strictly no more than 2,000 words. Do not invoke a handoff tool or create another task without a separate request.
