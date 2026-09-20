@@ -161,6 +161,6 @@ Rscript R/implement_montreal_recovery.R
 Rscript R/test_montreal_recovery.R
 ```
 
-No network or package installation occurs. Missing/changed evidence stops execution. See [verification](wta-2021-montreal-recovery-verification.md) for regression checks and protected-file results. The smallest recommended next task is a separately authorized, offline complete Montreal inventory reconciliation against saved HTML/PDF evidence, reporting gaps and proposed gates without admitting the event or constructing chronology. If saved evidence is insufficient, report the exact gap before any acquisition.
+No network or package installation occurs. Missing/changed evidence stops execution. See [verification](wta-2021-montreal-recovery-verification.md) for recovery checks. **Phase 1J follow-up:** the [full inventory audit](wta-2021-montreal-inventory-reconciliation.md) now links all 55 source rows but remains REVIEW_REQUIRED because LS036, LS054 and LS026 have unresolved retirement-detail differences outside this policy. Its smallest recommended follow-up is a separate inventory-only policy draft for those three matches; no scope extension or admission is adopted here.
 
 Every later task must end with a response-only ChatGPT Handoff of approximately 2,000 words and no more than 2,000 words.
