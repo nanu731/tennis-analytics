@@ -1,6 +1,6 @@
 # WTA 2021 Montreal reference feasibility
 
-Review specification: **WTA Montreal reference-feasibility review 1.0.0**. **SUPPORTED_PENDING_RECOVERY_POLICY**. This is a local reference investigation, not an adopted recovery, precedence, eligibility or admission policy.
+Historical Phase 1G review specification: **WTA Montreal reference-feasibility review 1.0.0**. **SUPPORTED_PENDING_RECOVERY_POLICY**. This is a local reference investigation, not an adopted recovery, precedence, eligibility or admission policy.
 
 ## Scope and authorization
 
@@ -130,9 +130,9 @@ The strict conservative scenario excludes candidates with any retained conflict,
 
 ## Review dispositions and next decision
 
-The nine feasibility dispositions preserve IDs, reference links, identity/score/status outcomes, field availability, structural result, comparison state, rights, permitted/prohibited uses and review version. Seven are official_counts_present_pending_recovery_policy; two retain their specific retirement finding. Every row prohibits source substitution, canonical recovery, model admission and publication. Review specification 1.0.0 is implemented; a recovery policy is not.
+The nine feasibility dispositions preserve IDs, reference links, identity/score/status outcomes, field availability, structural result, comparison state, rights, permitted/prohibited uses and review version. Seven are official_counts_present_pending_recovery_policy; two retain their specific retirement finding. Every row prohibits source substitution, canonical recovery, model admission and publication. At Phase 1G completion, review specification 1.0.0 was implemented and no recovery policy was implemented. The following separate milestone changes that implementation state without rewriting these observations.
 
-**Completed drafting follow-up:** [Phase 1H policy 0.1.0](draft-wta-2021-montreal-recovery-policy.md) now proposes a separate overlay, scoped completion/status evidence rules and ten pending user decisions. The draft is PROPOSED_NOT_APPROVED; recovery and status precedence remain unimplemented. This Phase 1G report retains its original evidence, conflicts and coverage scenarios. Next, the user should review and explicitly approve, reject or revise the proposal before any implementation prompt. Inventory, chronology, retirement eligibility, admission and publication rights remain separate gates.
+**Completed follow-up:** Phase 1H proposed recovery policy 0.1.0 without adopting it. The user subsequently approved D1–D10 in Phase 1I; [recovery and status-evidence policy 1.0.0](wta-2021-montreal-recovery-policy.md) is ADOPTED and separately implemented as seven atomic overlay bundles / 126 field decisions plus nine scoped status resolutions. Source coverage remains 47/54; implemented source-plus-overlay presence is 54/54. The historical Phase 1G observations and scenarios in this report remain unchanged. Analytical coverage and event admission are NOT_EVALUATED, modeling is unauthorized, and publication remains blocked pending rights review. See the [Phase 1I verification](wta-2021-montreal-recovery-verification.md).
 
 No source repair, substitution, admission, factor computation, Elo, forecast, predictive evaluation, wider data acquisition, dependency, portfolio edit, push, publication or deployment occurred. 2022/2024/2025 remain closed. Four Factors versus surface-adjusted Elo remains the flagship; Challenger promotion readiness remains deferred until shared infrastructure is validated.
 

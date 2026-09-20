@@ -219,7 +219,7 @@ mrf_coverage <- function(source_complete=47L,denominator=54L,present,valid,conse
     source_bundles_filled=0L,model_admission="not_authorized")
 }
 
-audit_montreal_reference_feasibility <- function() {
+audit_montreal_reference_feasibility <- function(write_outputs=TRUE) {
   refs<-mr_manifest();targets<-mrf_targets();e<-montreal_load();source<-e$selected$raw
   get<-function(id){r<-refs[refs$reference_id==id,];if(nrow(r)!=1||r$retrieval_class!="original_response_bytes")stop("Original reference unavailable: ",id);anomaly_html(r$local_path)}
   draw<-get("draw_html");pdf_lines<-mrf_pdf_lines(refs$local_path[refs$reference_id=="draw_pdf"])
@@ -305,9 +305,11 @@ audit_montreal_reference_feasibility <- function() {
   o<-list(`reference-match-inventory`=bind(inventories),`official-stat-observations`=bind(observations),`field-comparisons`=bind(comparisons),
     `structural-checks`=bind(structural),`status-evidence`=bind(statuses),`feasibility-dispositions`=d,`coverage-scenarios`=coverage,`reference-checks`=refchecks,`pdf-target-evidence`=pdf)
   dir<-"data/pilot/development-2021/montreal-reference-feasibility"
-  dir.create(dir,recursive=TRUE,showWarnings=FALSE)
-  for(name in names(o))pilot_write_csv(o[[name]],file.path(dir,paste0(name,".csv")))
-  mrf_report(o,refs)
+  if(write_outputs) {
+    dir.create(dir,recursive=TRUE,showWarnings=FALSE)
+    for(name in names(o))pilot_write_csv(o[[name]],file.path(dir,paste0(name,".csv")))
+    mrf_report(o,refs)
+  }
   invisible(o)
 }
 
@@ -331,7 +333,7 @@ mrf_report <- function(o,refs) {
   supported<-sum(d$structural_check_result[1:7]=="passed_all_applicable_checks" & d$required_fields_exactly_parsed[1:7]==18)>=2
   conclusion<-if(supported)"SUPPORTED_PENDING_RECOVERY_POLICY" else "BLOCKED_INSUFFICIENT_ACCEPTABLE_CANDIDATES"
   lines<-c("# WTA 2021 Montreal reference feasibility", "",
-    paste0("Review specification: **",mrf_version(),"**. **",conclusion,"**. This is a local reference investigation, not an adopted recovery, precedence, eligibility or admission policy."),"",
+    paste0("Historical Phase 1G review specification: **",mrf_version(),"**. **",conclusion,"**. This is a local reference investigation, not an adopted recovery, precedence, eligibility or admission policy."),"",
     "## Scope and authorization", "",
     "The user selected Phase 1F Option A investigation and authorized these exact twelve URLs for local noncommercial educational research and source auditing. No other URLs, searches, hidden APIs, player pages or events were accessed. Toronto in two allowed URL slugs does not identify the edition city: both pages display National Bank Open - Montreal, Canada, match IDs 0806-2021 and Montreal match metadata.","",
     pilot_markdown_table(refs[c("reference_id","url","retrieval_class","http_result","byte_size","retrieved_at_utc")]),
@@ -362,8 +364,8 @@ mrf_report <- function(o,refs) {
     "The declared denominator is the unchanged 54 source apparent-play rows, not a reconciled official population. Source-only coverage remains 47/54 = 87.0370%, leaving seven missing bundles. Forty-nine bundles would reach 90%, so two acceptable later recoveries could close the arithmetic shortfall. All seven count candidates are complete and structurally acceptable, giving 54/54 potential availability and hypothetical recovery coverage. Neither scenario represents filled source cells or adopted coverage.","",
     "The strict conservative scenario excludes candidates with any retained conflict, including EventScheduled metadata: all seven are excluded, leaving 47/54. This intentionally differs from count-only hypothetical arithmetic. Resolving or approving treatment of these status metadata conflicts is a prerequisite for later use. The 95% tour-season gate was not tested; thresholds and panel remain unchanged.","",
     "## Review dispositions and next decision", "",
-    "The nine feasibility dispositions preserve IDs, reference links, identity/score/status outcomes, field availability, structural result, comparison state, rights, permitted/prohibited uses and review version. Seven are official_counts_present_pending_recovery_policy; two retain their specific retirement finding. Every row prohibits source substitution, canonical recovery, model admission and publication. Review specification 1.0.0 is implemented; a recovery policy is not.","",
-    "**Completed drafting follow-up:** [Phase 1H policy 0.1.0](draft-wta-2021-montreal-recovery-policy.md) now proposes a separate overlay, scoped completion/status evidence rules and ten pending user decisions. The draft is PROPOSED_NOT_APPROVED; recovery and status precedence remain unimplemented. This Phase 1G report retains its original evidence, conflicts and coverage scenarios. Next, the user should review and explicitly approve, reject or revise the proposal before any implementation prompt. Inventory, chronology, retirement eligibility, admission and publication rights remain separate gates.","",
+    "The nine feasibility dispositions preserve IDs, reference links, identity/score/status outcomes, field availability, structural result, comparison state, rights, permitted/prohibited uses and review version. Seven are official_counts_present_pending_recovery_policy; two retain their specific retirement finding. Every row prohibits source substitution, canonical recovery, model admission and publication. At Phase 1G completion, review specification 1.0.0 was implemented and no recovery policy was implemented. The following separate milestone changes that implementation state without rewriting these observations.","",
+    "**Completed follow-up:** Phase 1H proposed recovery policy 0.1.0 without adopting it. The user subsequently approved D1–D10 in Phase 1I; [recovery and status-evidence policy 1.0.0](wta-2021-montreal-recovery-policy.md) is ADOPTED and separately implemented as seven atomic overlay bundles / 126 field decisions plus nine scoped status resolutions. Source coverage remains 47/54; implemented source-plus-overlay presence is 54/54. The historical Phase 1G observations and scenarios in this report remain unchanged. Analytical coverage and event admission are NOT_EVALUATED, modeling is unauthorized, and publication remains blocked pending rights review. See the [Phase 1I verification](wta-2021-montreal-recovery-verification.md).","",
     "No source repair, substitution, admission, factor computation, Elo, forecast, predictive evaluation, wider data acquisition, dependency, portfolio edit, push, publication or deployment occurred. 2022/2024/2025 remain closed. Four Factors versus surface-adjusted Elo remains the flagship; Challenger promotion readiness remains deferred until shared infrastructure is validated.","",
     "## Reproduction and verification", "",
     "From the repository root, run `Rscript R/download_montreal_references.R`, then `Rscript R/audit_montreal_reference_feasibility.R --self-test`. The audit uses saved files only and never calls a network function. It requires base R, existing SHA-256 tooling and existing pdftotext (optionally selected with ANOMALY_PDFTOTEXT); no dependency was added. Missing or mismatched bytes stop before overwrite; affected identity/parse failures are retained without source orientation/substitution.","",
