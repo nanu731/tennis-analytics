@@ -8,9 +8,19 @@ The flagship project asks:
 
 > Can an interpretable Four Factors model capture tennis player strengths and produce better-calibrated match forecasts than surface-adjusted Elo?
 
-The goal is a model that generalizes to future matches and explains player strengths. The project does not need Four Factors to beat Elo on every metric to succeed. A stable, well-calibrated model that adds useful interpretation can still produce a meaningful result. If the evidence does not support four distinct and stable factors, report that finding instead of forcing the framework.
+The goal is to identify four interpretable tennis metrics that capture distinct ways a player creates an advantage, estimate how much each contributes to success, and test whether those metrics improve future match forecasts. The project follows the essence of Dean Oliver's basketball Four Factors: define a net-performance outcome, identify a small set of meaningful components, estimate their relative importance together, and validate the result outside the data used to create it.
+
+The project does not need Four Factors to beat Elo on every metric to succeed. A stable, well-calibrated model that adds useful interpretation can still produce a meaningful result. If the evidence does not support four distinct and stable factors, report that finding instead of forcing the framework.
 
 The Challenger promotion-readiness project remains secondary. Begin it only after the flagship data, identity, rating, and evaluation infrastructure has passed validation.
+
+## Research approach
+
+Codex should do more than complete assigned implementation steps. During model development, it should examine whether each statistical choice answers the research question, expose weak assumptions, test plausible alternatives, and revise mistakes.
+
+Being wrong during development is acceptable. Concealing a failed idea, keeping a weak specification for convenience, or selecting only favorable results is not. Record each material revision, why the earlier version failed, what changed, and whether the change improved chronological validation or interpretation.
+
+Iteration must stay inside the evaluation design. Develop candidate measures and models with 2021–2023, compare prespecified choices with 2024, and freeze the full pipeline before viewing 2025 outcomes. A coding defect discovered after freezing should be fixed and disclosed. Do not use the locked test results to redesign the model and then present the same test as untouched evidence.
 
 ## Fixed research scope
 
@@ -43,7 +53,7 @@ Design every method for future use rather than for reproducing the observed seas
 
 Required protections include chronological processing, lagged features, pre-match ratings, outcome-neutral player orientation, and tests that fail when future information enters a feature. Choose among reasonable specifications with development data and 2024 validation. Do not keep changing the method after seeing 2025 results.
 
-Assess stability across seasons, surfaces, events, ATP, and WTA. Report uncertainty, negative results, and unstable coefficients. Prefer a simpler stable specification when added complexity does not produce a repeatable validation improvement.
+Assess stability across seasons, surfaces, events, ATP, and WTA. Report uncertainty, negative results, and unstable coefficients. Prefer a simpler stable specification when added complexity does not produce a repeatable validation improvement. Revisit an assumption when diagnostics or validation reveal a weakness, but do not search indefinitely for a specification that flatters one validation slice.
 
 ## Match eligibility
 
@@ -74,13 +84,23 @@ The four current candidate families are:
 3. Return Pressure
 4. Conversion and Recovery
 
-These names describe hypotheses, not guaranteed final factors. Build candidate measures from auditable tennis counts, use missing values when a denominator is unavailable, and account for opponent strength, surface, sample size, and correlated predictors.
+These names describe hypotheses, not guaranteed final factors. Begin with a broader candidate pool of auditable tennis metrics. Select the final four by their tennis meaning, relationship with Net Point Rating and winning, incremental information when modeled together, stability across chronological samples, and usefulness for describing players. Do not select the four largest univariate correlations if they measure the same underlying skill.
 
-Begin factor weighting with interpretable multiple linear regression. Do not publish raw coefficients as importance weights when predictors use different scales or share variance. Estimate relative importance with uncertainty and test whether weights remain stable across tours and surfaces.
+The selected factors should cover distinct mechanisms in the same way that effective field-goal percentage, turnover percentage, offensive-rebound percentage, and free-throw rate describe different parts of basketball performance. Tennis factors need not copy those categories. They should play the same analytical role.
+
+Use missing values when a denominator is unavailable. Account for opponent strength, surface, sample size, and correlated predictors. Test whether a proposed factor remains informative after the other candidates enter the model. Remove, redefine, or replace a factor when development diagnostics and chronological validation show that it is redundant, unstable, poorly measured, or disconnected from future success.
+
+Begin factor weighting with interpretable multiple linear regression, using Net Point Rating as the tennis analogue of net performance. Standardize predictors before comparing their contributions. Do not publish raw coefficients as importance weights when predictors use different scales or share variance. Estimate each factor's share of explained variation with uncertainty, then test whether the weights remain stable across ATP, WTA, surfaces, seasons, and reasonable model specifications.
+
+Use match winning as a separate external check and forecasting outcome. A factor can correlate with same-match Net Point Rating yet fail to improve future forecasts. The final four and their weights must satisfy both interpretation and out-of-time validation rather than maximize in-sample fit.
 
 ## Elo benchmark
 
 Build Elo in chronological order. Start with overall Elo, surface-specific Elo, and a documented blend that shrinks surface ratings toward overall ratings.
+
+Treat the first Elo implementation as a benchmark, not an untouchable final model. Check rating initialization, update size, surface blending, inactivity, match format, calibration, and cold-start behavior. Correct implementation errors when found. Compare justified alternatives with development and 2024 validation, record unsuccessful changes, and keep an added rule only when it produces a stable improvement or fixes a documented conceptual problem.
+
+Do not improve Elo by repeatedly fitting small details to the same matches. Prefer a transparent model whose gains hold across time, tours, surfaces, and events. Freeze the selected Elo specification before evaluating 2025.
 
 ### Proposed for confirmation in this draft
 

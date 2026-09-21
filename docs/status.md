@@ -1,6 +1,6 @@
 # Tennis analytics status
 
-Date: **2026-09-20**. **Phase 1K policy draft complete; proposal 0.1.0 is PROPOSED_NOT_APPROVED and policy_implemented is FALSE. Montreal inventory reconciliation remains REVIEW_REQUIRED.** The same three retirement-detail conflicts await user review of D1-D8. Event admission and analytical coverage remain NOT_EVALUATED; modeling_authorized remains FALSE. Committing the draft is not approval. A separate root `PROJECT_CONTEXT.md` draft awaits user review; its proposed retirement and Elo rules are not adopted project policy.
+Date: **2026-09-21**. **Phase 1K policy draft complete; proposal 0.1.0 is PROPOSED_NOT_APPROVED and policy_implemented is FALSE. Montreal inventory reconciliation remains REVIEW_REQUIRED.** The same three retirement-detail conflicts await user review of D1-D8. Event admission and analytical coverage remain NOT_EVALUATED; modeling_authorized remains FALSE. Committing the draft is not approval. A separate root `PROJECT_CONTEXT.md` draft awaits user review; it now records the Dean Oliver-inspired factor-selection goal, evidence-driven model revision, and anti-overfitting boundary. Its proposed retirement and Elo rules are not adopted project policy.
 
 ## Completed and verified
 
