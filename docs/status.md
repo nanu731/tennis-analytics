@@ -1,6 +1,6 @@
 # Tennis analytics status
 
-Date: **2026-09-21**. **Phase 1M complete: the bounded offline WTA Montreal completed-match eligibility/count audit derives 49 normally completed matches, five excluded retirements and one excluded walkover. Valid count coverage is 42/49 source-only and 49/49 with seven separate approved overlay bundles; the numerical 90% event threshold passes (45 required).** Inventory remains COMPLETE, 14/14 criteria. Event admission remains NOT_EVALUATED; canonical analytical population NOT_IMPLEMENTED; chronology unresolved; modeling_authorized FALSE; publication blocked.
+Date: **2026-09-21**. **Phase 1N audit complete: the bounded offline Montreal chronology audit preserves all 55 results and the Phase 1M 49/5/1 eligibility split. Nine records have saved match-page published dates; 46 have only event-level dates. Zero verified actual start or completion dates/times were established. Both brackets support 54 player-relative advancement edges, including 45 between completed records.** Chronology proposal 0.1.0 is PROPOSED_NOT_APPROVED; D1–D13 await the user. Chronology/model readiness is BLOCKED. Inventory remains COMPLETE, 14/14 criteria; completed count coverage remains 49/49 with separate recovery bundles. Event admission NOT_EVALUATED; canonical population NOT_IMPLEMENTED; modeling_authorized FALSE; publication blocked.
 
 ## Completed and verified
 
@@ -54,11 +54,16 @@ LS001–LS007 retain the scoped completed-evidence rule and preserved EventSched
 | Canonical analytical population | NOT_IMPLEMENTED |
 | 95% tour-season coverage gate | NOT_TESTED |
 | Actual chronology / same-day order | UNRESOLVED |
+| Chronology policy | NOT_ADOPTED; proposal 0.1.0 awaits D1–D13 review |
+| Chronology/model readiness | BLOCKED |
+| Published match-page date evidence | 9/55 results; 7/49 completed matches |
+| Verified actual start / completion dates and times | 0/55 each |
+| Bracket precedence evidence | 54 player-relative edges; 45 completed-to-completed |
 | Primary population design | Completed matches only; implemented for this event audit only |
 | Modeling | Unauthorized |
 | Publication | Blocked pending rights review |
 
-Thresholds remain 90% event / 95% tour-season. Published match dates and match numbers are not chronology substitutes. The LS007 date discrepancy and differing overview/PDF tournament windows remain unresolved. Indian Wells policies, calculations and inventory states remain unchanged; they do not authorize Montreal admission.
+Thresholds remain 90% event / 95% tour-season. Published match dates and match numbers are not chronology substitutes. Phase 1N revalidates the LS007 date discrepancy and differing overview/PDF tournament windows without resolving them. Its narrower player-relative bracket finding does not establish actual dates or a global order. Indian Wells policies, calculations and inventory states remain unchanged; they do not authorize Montreal admission.
 
 ## Standing future-model requirement
 
@@ -71,6 +76,8 @@ Specify the complete tuning/evaluation protocol before modeling begins. Favor st
 From the repository root:
 
 ```sh
+Rscript R/audit_montreal_chronology_evidence.R
+Rscript R/test_montreal_chronology_evidence.R
 Rscript R/audit_montreal_completed_match_coverage.R
 Rscript R/test_montreal_completed_match_coverage.R
 Rscript R/reconcile_montreal_inventory.R
@@ -118,9 +125,33 @@ All **137 protected pre-existing files**, including **104 data files**, retain t
 
 The first new test run exposed a mutation fixture that assigned F to a record already in round F, so it had not actually changed the evidence. The fixture now assigns an invalid round and the complete suite passes. This was a test-input correction, not a relaxed rule or evidence discrepancy. A preliminary output-directory listing occurred before the first validated write and found no directory; the later run created exactly the four authorized outputs. No unresolved execution error remains. No dependency, download, Net Point Rating, factor, Elo update, canonical population, event admission or publication was introduced.
 
+## Phase 1N evidence and proposed decisions
+
+The [chronology-evidence audit and proposal](wta-2021-montreal-chronology-policy-proposal.md) implements evidence extraction only. Proposal 0.1.0 remains PROPOSED_NOT_APPROVED with all thirteen decisions PENDING_USER_APPROVAL and implemented FALSE. No operational ordering method or model is selected.
+
+Revalidated literals are the source event-week label 20210809, overview Aug 9–15 and PDF header August 7–15, 2021. Their differing windows remain unexplained. Exactly LS001–LS007, LS042 and LS049 supply date-only published startDate/endDate observations: August 9, 13, 14 and 15. Every targeted SportsEvent says EventScheduled despite a finished card. The extractor isolates the exact match block rather than unrelated current metadata. Published dates remain separate from verified scheduling, actual start, completion, result availability, timezone, suspension and resumption; those concepts remain missing with reasons. Retrieval timestamps remain acquisition provenance.
+
+There are 46/55 records with only event-level dates and 9/55 with match-page published dates. Among the 49 completed matches, those counts are 42 and seven. No verified actual start date/time or completion date/time was established for any record. LS007 publishes August 14 while the other three saved QFs publish August 13; its advancement to LS003 creates one same-published-day player edge, not proof of actual same-day play. Duration cannot supply a clock-time anchor.
+
+Matching feeder positions in independently parsed HTML/PDF yield 54 direct advancement edges across 56 fully accounted player chains; 45 edges have completed records at both ends. All 49 completed matches have their within-event player progressions represented. Edges involving retired or walkover records preserve advancement evidence without adding their partial statistics to histories. No edge orders unrelated matches, and no global processing sequence is constructed. Zero published-date reversals were observed among edges with two saved pages; sparse, semantically unverified dates do not prove actual chronological consistency.
+
+The four compared options have zero fully sufficient completed-match inputs under the proposed full forecasting gate: exact timestamps, verified-date batching, raw published dates used operationally and bracket-only ordering. Their narrower evidence coverage differs: zero verified timing bundles, seven published-date candidates and all 49 completed matches with within-event progression evidence. Partial ordering could support a separately approved ordinal-only experiment, but calendar windows, inactivity, prediction cutoffs and cross-event boundaries remain unresolved. A missing global timestamp is not itself proof that player-local Elo requires arbitrary global ordering.
+
+Proposed D1–D13 cover use-specific Elo precedence/cutoffs; lagged-history requirements; corroboration before operational use of published dates; prohibition of event-week substitution; scoped bracket edges; same-player same-day handling; conditional conservative batching; suspension/completion/availability; preserved date conflicts; fail-closed missingness; an event-level dependency gate; cross-event extension; and a separate acquisition plan. Each decision records options, recommendation, leakage rationale, drawbacks, outstanding evidence and pending approval.
+
+### Phase 1N verification and preservation
+
+All **38 new chronology checks**, **41 inventory checks**, **38 recovery checks** and **45 completed-match coverage checks** passed. Phase 1E annual-source, Phase 1F source-review, Phase 1G feasibility, relevant Phase 1H evidence and Phase 1K historical baseline/legend regressions also passed. No old assertion changed. New tests cover exact page scope, missing-value semantics, unchanged eligibility, source-row permutations, arbitrary identifier renumbering in a synthetic graph fixture, valid player progression, LS007, date reversals/duplicates, altered fingerprints/identities/rounds/winners/scores/locators, invented timing, proposal nonadoption and deterministic public reruns. No network request or 2025 data access occurred.
+
+The ten new ignored tables contain 55 dispositions, 990 field observations, 54 edges, 56 player-chain checks, three event observations, nine page observations, six unresolved-issue categories, four option comparisons, one summary and thirteen pending decision records. Full local outputs were inspected through aggregate/contract checks; official match-level material remains outside Git. The four proposed approaches remain BLOCKED under the full forecasting gate even though their narrower evidence prerequisites differ.
+
+All **144 protected pre-existing files**, including **108 data files**, retain their SHA-256, size and modification time. Only status and the data contract change among pre-existing files. The only new data artifacts are the ten authorized ignored chronology tables. The Phase 1I overlay remains 760695 bytes with SHA-256 2b2d146bc22b947fc3dd5ee6e67cc6116c56245810569c6cce580af0c7a512b5 and unchanged timestamp. All 131 local links/anchors across 19 Markdown files, pending decision labels, placeholders, whitespace, restricted-data boundaries and the complete diff were checked. AGENTS.md, PROJECT_CONTEXT.md, policies, earlier reports/outputs and portfolio remain unchanged.
+
+An initial direct PDF-extraction command could not find pdftotext on the shell PATH. The existing bundled executable already used by repository functions was then used successfully; no dependency was added. Inspection also exposed unrelated 2026 structured event metadata in the saved draw page, reinforcing exact event/match scoping. No audit discrepancy required an invented date, policy adoption or methodological workaround. The final suites report no unresolved execution error.
+
 ## Smallest recommended next task
 
-Conduct a bounded offline Montreal chronology-evidence inventory and policy proposal using existing local references. Distinguish observed dates from actual play/completion dates, identify same-day/suspended-match and LS007/date-window gaps, and present decisions for review. Do not implement ordering, acquire more evidence, admit Montreal, construct canonical model inputs or model. This is a recommendation, not an implemented or approved chronology policy.
+Review chronology proposal D1–D13 first. After the user resolves the intended cutoff, partial-order, calendar-history and batching requirements, the smallest recommended next task is to draft a bounded chronology-acquisition plan addressing the remaining evidence gaps. That plan should specify candidate resources, rights constraints, exact scope, semantic questions and stopping conditions; it must not assume further pages exist or resolve timing. Planning does not authorize acquisition, policy implementation, event admission or models.
 
 Wider acquisition, new dependencies, structural changes, methodological choices and publication require appropriate authorization. No portfolio, source, manifest, Phase 1I overlay or historical calculated output was modified. No push, publication or deployment occurred.
 
@@ -133,3 +164,5 @@ Every next task must finish with a response-only ChatGPT Handoff of approximatel
 Phase 1L began at bded8069163d41c886cf1576ea0fdd4cc1054b7b, Clarify model development principles, clean main, sixteen ahead / zero behind existing origin/main. Step 1: Adopt project research context. Step 2: Implement Montreal inventory status policy. No remote refresh or push. The final response records both exact hashes and final Git state.
 
 Phase 1M began at 62cb0ba9c7224d27e01e1642cfb07c06a1313e65, Implement Montreal inventory status policy, clean main, eighteen ahead / zero behind existing origin/main. Completion message: Audit Montreal completed-match coverage. The final response records the resulting hash and final Git state. No remote refresh or push occurred.
+
+Phase 1N began at 7ef2d68664ac671c3806b192d046c564d157dc3d, Audit Montreal completed-match coverage, clean main, nineteen ahead / zero behind existing origin/main. Completion message: Draft Montreal chronology policy. The final response records the resulting hash and final clean state. No remote refresh or push occurred; the commit does not adopt the proposal.
