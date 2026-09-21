@@ -43,6 +43,10 @@ Do not modify the portfolio repository until:
 
 Before modifying the portfolio repository, read its root `AGENTS.md` completely and follow it. Instructions in the portfolio repository govern all website work.
 
+## Required project reading
+
+Before substantive work, read PROJECT_CONTEXT.md for stable research purpose and methodology and docs/status.md for current progress, blockers and the next decision. Before data acquisition, transformation, eligibility or publication work, also read docs/data-source-contract.md. Distinguish approved research design from implemented behavior.
+
 ## Research foundation
 
 The main research reference is:

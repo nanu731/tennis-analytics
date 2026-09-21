@@ -1,6 +1,6 @@
 # Tennis Analytics Project Context
 
-**Draft for user review.** This file records the stable purpose and research design of the project. It does not replace `AGENTS.md`, the current status report, or the data-source contract. Decisions labeled for confirmation remain proposals until the user approves them.
+**Adopted standing research guidance, 2026-09-21.** The Phase 1L prompt explicitly approved the context at commit `bded8069163d41c886cf1576ea0fdd4cc1054b7b`. This file records stable purpose and approved research-design decisions; it does not replace AGENTS.md, current status or the data-source contract. Approval of a design is separate from its later implementation. No canonical analytical population or model is created by this adoption.
 
 ## Central question
 
@@ -57,7 +57,7 @@ Assess stability across seasons, surfaces, events, ATP, and WTA. Report uncertai
 
 ## Match eligibility
 
-### Proposed for confirmation in this draft
+### Approved primary analytical population design
 
 The primary models estimate performance conditional on a match reaching normal completion.
 
@@ -102,7 +102,7 @@ Treat the first Elo implementation as a benchmark, not an untouchable final mode
 
 Do not improve Elo by repeatedly fitting small details to the same matches. Prefer a transparent model whose gains hold across time, tours, surfaces, and events. Freeze the selected Elo specification before evaluating 2025.
 
-### Proposed for confirmation in this draft
+### Approved primary Elo design
 
 Do not award extra Elo credit for reaching a later tournament round or for playing in a more prestigious tournament. Elo should update from the opponent's pre-match strength and the match result. A player who reaches a final already accumulates updates from the matches won along the way. Round or prestige bonuses would mix achievement ranking with predictive strength and could count the same tournament run twice.
 
@@ -138,4 +138,4 @@ The `tennis-analytics` repository owns the research and reproducible outputs. Th
 - `docs/data-source-contract.md` defines data provenance, validation, rights, and eligibility boundaries.
 - Adopted policy documents govern only their stated versions and scopes.
 
-Read `docs/status.md` before starting a new phase. When a decision in this draft receives approval, remove the draft label, update every affected source-of-truth document, and keep the distinction between approval and implementation explicit.
+Read docs/status.md before starting a new phase. Keep every affected source-of-truth document current and distinguish approved design, implemented behavior and remaining decisions. The completed-match-only population and primary Elo rules are approved; their analytical implementation remains future work.
