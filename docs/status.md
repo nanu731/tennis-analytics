@@ -1,6 +1,6 @@
 # Tennis analytics status
 
-Date: **2026-09-21**. **Phase 1L step 1: PROJECT_CONTEXT.md adopted as standing research guidance.** The primary completed-match-only population excludes retirements and walkovers from Four Factors, Elo updates and primary evaluation; this design is approved but not implemented. Primary Elo has no round or prestige bonus. D1-D8 of the inventory status proposal are explicitly approved for step 2, but that implementation has not yet occurred. Inventory remains REVIEW_REQUIRED; admission and analytical coverage remain NOT_EVALUATED; modeling_authorized remains FALSE.
+Date: **2026-09-21**. **Phase 1L complete: PROJECT_CONTEXT.md adopted; WTA Montreal inventory status-detail policy 1.0.0 adopted and implemented. Montreal inventory reconciliation is COMPLETE, with 14/14 criteria passing.** All 55 source rows link uniquely to both official representations; the three new scoped resolutions preserve every raw observation. Event admission and analytical coverage remain NOT_EVALUATED; chronology unresolved; modeling_authorized FALSE; publication blocked.
 
 ## Completed and verified
 
@@ -24,7 +24,7 @@ HTML has 62 unique supplied LS identifiers. The absent LS013 label corresponds t
 
 Event-scoped identities use deterministic exact roster resolution, preserving IDs and spellings. Explicit ñ-to-n normalization handles Muguruza's PDF spelling. Cori Gauff/Coco Gauff extends the existing LS006 linkage only within this event after all four opponent/round pairings agree. Alison Riske/Riske Amritraj is a bounded exact event-candidate decision corroborated by the R64 Sorana Cirstea pairing. No fuzzy matching or global alias was introduced.
 
-## Exact remaining blockers
+## Inventory conflicts resolved in Phase 1L
 
 | Official code | Full source audit ID | Evidence difference |
 | --- | --- | --- |
@@ -32,9 +32,9 @@ Event-scoped identities use deterministic exact roster resolution, preserving ID
 | LS054 | sackmann:WTA:2021-806:248 | Konta–Zhang: source/PDF RET, HTML marker omitted |
 | LS026 | sackmann:WTA:2021-806:276 | Gauff–Potapova: source/PDF RET, HTML marker omitted |
 
-The advancing players and numeric scores agree. These remain three unresolved status-detail and HTML/PDF reference conflicts. Policy 1.0.0 covers only LS042 and LS049 retirement observations, so it was not extended. All five HTML omissions remain visible; two have existing scoped resolutions and three do not. The full reconciliation contract therefore does not permit COMPLETE.
+The advancing players and numeric scores agree. All five raw HTML retirement omissions remain preserved. The two LS042/LS049 resolutions remain under Phase 1I. The three entries above are now resolved only for inventory detail by [the separately adopted policy 1.0.0](wta-2021-montreal-inventory-status-policy.md); source RET, PDF RET/legend and HTML omissions/F metadata remain distinct. No unresolved identity, round, winner, numeric-score, duplicate, unmatched or retirement-detail conflict remains.
 
-Saved evidence was sufficient for full extraction and linkage. A further user decision is needed to resolve the three status-detail differences for inventory purposes. No additional URL is currently required to draft that decision. The approved primary design excludes retirements and walkovers; canonical population implementation remains a separate task.
+Saved evidence supports full extraction, linkage and the three approved derived resolutions. No new URL was needed. Approval and implementation are distinct: all policy evidence checks and all fourteen criteria now pass. The primary completed-match-only design excludes retirements and walkovers, but no canonical analytical population is implemented.
 
 ## Existing recovery layer preserved
 
@@ -46,7 +46,7 @@ LS001–LS007 retain the scoped completed-evidence rule and preserved EventSched
 | --- | --- |
 | Source-only statistical presence | 47/54 = 87.0370% |
 | Separate implemented source-plus-overlay presence | 54/54 = 100% |
-| Inventory reconciliation | REVIEW_REQUIRED: three status-detail differences |
+| Inventory reconciliation | COMPLETE, 14/14 criteria |
 | Event admission | NOT_EVALUATED |
 | Valid analytical coverage | NOT_EVALUATED |
 | 95% tour-season coverage gate | NOT_TESTED |
@@ -76,20 +76,30 @@ The scripts use saved local evidence and existing R, SHA-256 and pdftotext tools
 
 New tests cover independent parsing, singles isolation, bracket progression, byes/codes, statuses/scores, bounded identities, one-to-one keys, conflicts and policy scope. A positive synthetic COMPLETE fixture confirms that deletion, duplication, changed score or wrong round prevents false completion. Row reversal and source-row permutations preserve links; changing match numbers cannot alter player-pair linkage or create chronology. Immutability, deterministic output and restricted-data Git boundaries are checked. Relevant Phase 1E–1I checks run without weakening historical policies.
 
-PDF development checks exposed bye-text attributes, tie-break token syntax and a final-score coordinate that also occurred within semifinal scores. These were corrected with explicit parsing and bounded geometry, not inferred source rows. Word-level coordinates separate an adjacent-column extraction collision. Initial identity review exposed the Riske name difference and ñ transliteration; both now retain bounded auditable decisions. All substantive uncertainty is reported as the three remaining status-detail conflicts.
+PDF development checks exposed bye-text attributes, tie-break token syntax and a final-score coordinate that also occurred within semifinal scores. These were corrected with explicit parsing and bounded geometry, not inferred source rows. Word-level coordinates separate an adjacent-column extraction collision. Initial identity review exposed the Riske name difference and ñ transliteration; both now retain bounded auditable decisions. Those three status-detail conflicts were unresolved in Phase 1J/1K; Phase 1L resolves their inventory detail under the separately approved rule.
 
 ## Phase 1K draft verification
 
-Historical Phase 1K record: these pending states describe the drafting milestone; Phase 1L explicitly approves D1-D8, with implementation still separate.
-The [inventory status-detail proposal 0.1.0](draft-wta-2021-montreal-inventory-status-policy.md) is limited to LS036/266, LS054/248 and LS026/276. It recommends pdf_retirement_corroborated_html_omission_preserved only when pinned source/PDF RET, the PDF-named retiring player and source/HTML/PDF identity, round, winner and numeric score all agree. HTML omissions and raw metadata remain preserved. The proposal fails closed on missing or conflicting evidence. All eight approval decisions remain PENDING_USER_APPROVAL; no policy application or new status record occurred.
+Historical Phase 1K record: the following pending states describe the drafting milestone. Phase 1L subsequently approves and implements D1-D8, as recorded below.
+The [inventory status-detail proposal 0.1.0](wta-2021-montreal-inventory-status-policy.md) is limited to LS036/266, LS054/248 and LS026/276. It recommends pdf_retirement_corroborated_html_omission_preserved only when pinned source/PDF RET, the PDF-named retiring player and source/HTML/PDF identity, round, winner and numeric score all agree. HTML omissions and raw metadata remain preserved. The proposal fails closed on missing or conflicting evidence. All eight approval decisions remain PENDING_USER_APPROVAL; no policy application or new status record occurred.
 
 Phase 1K revalidated all twelve references, four annual files, three manifest pins and the unchanged Phase 1I reconstruction. Direct source/HTML/PDF review and full-page PDF inspection confirmed the three RET markers, HTML omissions and legend names (Marie Bouzkova, Shuai Zhang, Anastasia Potapova). No affirmative contrary status was found in the scoped HTML blocks; F/Finished does not explicitly assert normal completion. The read-only baseline and final audit retain the same three blockers, 12/14 passing criteria and unchanged gates.
 
 All 18 Phase 1J tests and 38 Phase 1I checks passed. Evidence hashes, sizes and modification times, existing data-file membership, overlay bytes/timestamp, restricted-data Git boundaries, pending decisions, links/anchors, placeholders, whitespace and the complete diff were checked. Only the report generator's follow-up prose changed; its generated report was reproduced without changing findings. No new data file, implementation script, overlay, dependency or network request was created.
 
+## Phase 1L implementation verification
+
+The user approved PROJECT_CONTEXT.md at bded8069163d41c886cf1576ea0fdd4cc1054b7b. Dean Oliver-inspired distinct-factor development, evidence-driven revisions, chronological splits and anti-overfitting constraints are standing guidance. Retirements/partial histories and walkovers are excluded by the approved primary Four Factors/Elo/evaluation design; primary Elo has no round/prestige bonus. These analytical designs are not implemented as populations or models. AGENTS.md now requires the context, status and relevant data contract before substantive work.
+
+The three new inventory decisions use pdf_retirement_corroborated_html_omission_preserved. Freshly parsed pinned source/HTML/PDF evidence, named PDF legend entries, exact scope, unique linkage and matching raw fields are required. A failure in any target withholds all three decisions. A separate ignored inventory-status-resolutions.csv retains policy/version, original scores/statuses/legend, fingerprints, locators and conflict history. No Phase 1I record or raw extraction is rewritten.
+
+All 41 Phase 1J/1L checks and all 38 Phase 1I checks passed. Relevant Phase 1E/1F/1G suites, Phase 1H evidence checks and Phase 1K baseline/legend checks passed without weakened gates. All 123 protected pre-existing files, including 99 data files, retain hashes, sizes and timestamps; only four approved derived inventory tables changed and one separate resolution CSV was added. Raw extractions, source/manifest files and the Phase 1I overlay are unchanged. All 114 local links/anchors across 17 Markdown files, placeholders, whitespace, full diff and restricted-data Git boundaries passed. Active evidence paths are limited to saved 2021 references and 2021/2023 annuals; no 2025 input was accessed or evaluated.
+
+The first development run withheld all three decisions because PDF roster attributes differed from record-only columns. Comparing every recorded field, with separate complete-bracket and fingerprint checks, fixed this. A heading edit temporarily broke a historical documentation anchor; the original anchor was retained. A synthetic PDF-mutation test initially included the uncoded card's NA identifier; exact which-based selection fixed the test, and the full suite passed. A final report guard and in-memory failure-report test prevent successful-run narrative from appearing after an insufficient or failed audit. A documentation-check expectation was updated from historical REVIEW_REQUIRED to current COMPLETE. A read-only scan noted README's pre-existing missing final newline, and a quoting error prevented one documentation-edit command from running; the edit was applied directly instead. No raw evidence changed and no partial policy was applied.
+
 ## Smallest recommended next task
 
-Implement the explicitly approved D1-D8 inventory policy in step 2 of Phase 1L. Preserve source/reference observations and the Phase 1I overlay; all three resolutions require complete corroboration and passing tests. Do not construct the approved analytical population or start modeling.
+Conduct a bounded offline Montreal completed-match eligibility and count-coverage audit under the approved context. Preserve all excluded records and separate recovery provenance; report remaining count/status blockers without admitting Montreal, resolving chronology, constructing canonical model inputs or modeling. Broader acquisition, chronological policy and publication rights remain separate decisions.
 
 Wider acquisition, new dependencies, structural changes, methodological choices and publication require appropriate authorization. No portfolio, source, manifest, Phase 1I overlay or historical calculated output was modified. No push, publication or deployment occurred.
 
@@ -99,4 +109,4 @@ Historical Phase 1K began clean on main at `1243886891941f30263f56eb4feb4b1ab2fa
 
 Every next task must finish with a response-only ChatGPT Handoff of approximately 2,000 words and strictly no more than 2,000 words. Do not invoke a handoff tool or create another task without a separate request.
 
-Phase 1L begins at bded8069163d41c886cf1576ea0fdd4cc1054b7b, Clarify model development principles, clean main, sixteen ahead / zero behind existing origin/main. Step 1 commit: Adopt project research context. No remote refresh. The approved context retains Dean Oliver-inspired distinct-factor development, evidence-driven revisions, chronological 2021-2023 development, 2024 selection, locked 2025 testing and a complete pre-modeling evaluation protocol.
+Phase 1L began at bded8069163d41c886cf1576ea0fdd4cc1054b7b, Clarify model development principles, clean main, sixteen ahead / zero behind existing origin/main. Step 1: Adopt project research context. Step 2: Implement Montreal inventory status policy. No remote refresh or push. The final response records both exact hashes and final Git state.

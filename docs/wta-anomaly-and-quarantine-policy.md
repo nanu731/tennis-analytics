@@ -127,7 +127,7 @@ WTA match 270 is the separate walkover: retained in inventory, all 18 counts mis
 
 The percentages equal the earlier count-flag sensitivity calculation; Phase 1B formalizes its quarantine meaning. Both tours pass the provisional **90% numerical event floor**. **The 95% tour-season gate is not tested.** This remains an observed-source denominator until complete official inventory reconciliation.
 
-Retirement rows remain present, including their partial statistics; this played-match sensitivity retains them. Final retirement eligibility and updates remain unresolved. No current factor/rating/forecast admission follows from these percentages.
+Retirement rows remain present, including their partial statistics; this played-match sensitivity retains them. Those eligibility and update decisions were unresolved in Phase 1B. Phase 1L separately approves primary retirement/walkover exclusion in PROJECT_CONTEXT.md, without implementing a canonical selector or altering this quarantine policy. No current factor/rating/forecast admission follows from these percentages.
 
 ## Reproducibility, limits and next step
 

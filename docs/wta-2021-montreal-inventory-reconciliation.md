@@ -1,14 +1,12 @@
 # WTA 2021 Montreal inventory reconciliation
 
-Phase 1J, 2026-09-20. **Inventory reconciliation: REVIEW_REQUIRED.** Source rows: 55. This is not an event-admission pass.
+Phase 1L, 2026-09-21. **Inventory reconciliation: COMPLETE.** Source rows: 55. This is not event admission.
 
-## Contract fixed before comparison
+## Current boundaries
 
-The implementation defines fourteen criteria before comparing totals. COMPLETE requires every criterion: independent singles isolation and bracket traversal; entrants/byes/round advancement; resolved event identities; unique keys and one-to-one non-bye links in both directions; agreeing rounds, winners and scores; status/reference differences covered by an existing exact scoped policy; accounted code gaps; immutable evidence and separate recovery layers. Parser insufficiency yields BLOCKED_INSUFFICIENT_LOCAL_EVIDENCE; unresolved comparisons yield REVIEW_REQUIRED. Source row totals are not parser targets.
+Event admission and analytical coverage remain NOT_EVALUATED; modeling_authorized remains FALSE. Actual chronology and same-day ordering remain unresolved. The approved PROJECT_CONTEXT.md excludes retirements and walkovers from primary Four Factors, Elo updates and evaluation; that population design is not implemented here. No canonical analytical table is created. Publication remains blocked pending rights review.
 
-Event admission and analytical coverage remain NOT_EVALUATED; modeling_authorized remains FALSE. Chronology and retirement/walkover analytical eligibility remain unresolved. Publication remains blocked pending rights review.
-
-## Independently extracted official inventories
+## Independent inventories
 
 | representation | bracket_positions | entrants | byes | bracket_blocks | nonbye_results | walkovers | explicit_retirements | unresolved_status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -16,9 +14,7 @@ Event admission and analytical coverage remain NOT_EVALUATED; modeling_authorize
 | PDF | 64 | 56 | 8 | 63 | 55 | 1 | 5 | 0 |
 
 
-HTML extraction isolates the data-event-type=LS tab, excluding LD doubles and RS qualifying. It traverses every round container and match table, including byes and cards with no LS code. IDs, abbreviations, full player slugs, winner indicators, score cells, tie-break superscripts, status attributes, markers/omissions and DOM locators remain separate observations.
-
-PDF extraction uses the pinned one-page MAIN DRAW SINGLES header, Montreal/year checks, independently read left-column entrants and measured result-column coordinates. Word-level segments separate adjacent columns that pdftotext merges into one line. Feeder pairs are constructed from prior PDF advancement, never Sackmann. Entrant/result coordinates and original compact scores remain local. The complete PDF layout was visually inspected. Neither parser receives source rows as a template.
+HTML isolates main-draw singles, traversing all six rounds, byes and uncoded cards. PDF independently extracts the left roster and word-coordinate result columns, then follows bracket advancement. Neither parser uses source rows as its template. Original names, scores, markers, omissions, locators and reference fingerprints remain in unchanged local extraction tables.
 
 | round | HTML_nonbye | PDF_nonbye |
 | --- | --- | --- |
@@ -30,7 +26,7 @@ PDF extraction uses the pinned one-page MAIN DRAW SINGLES header, Montreal/year 
 | F | 1 | 1 |
 
 
-## Linkage and comparison results
+## Linkage and status resolution
 
 | measure | value |
 | --- | --- |
@@ -40,48 +36,27 @@ PDF extraction uses the pinned one-page MAIN DRAW SINGLES header, Montreal/year 
 | duplicate_source_keys | 0 |
 | duplicate_HTML_keys | 0 |
 | duplicate_PDF_keys | 0 |
-| ambiguous_or_unmatched_identities | 0 |
+| unresolved_identities | 0 |
 | winner_conflicts | 0 |
-| score_conflicts | 0 |
-| raw_status_detail_differences | 5 |
-| existing_scoped_resolutions | 2 |
-| unresolved_status_differences | 3 |
-| unresolved_HTML_PDF_conflicts | 3 |
+| numeric_score_conflicts | 0 |
+| raw_HTML_retirement_omissions | 5 |
+| Phase_1I_scoped_resolutions | 2 |
+| Phase_1L_inventory_resolutions | 3 |
+| unresolved_status_details | 0 |
+| unresolved_reference_conflicts | 0 |
 
 
-Links use the event/draw, round and unordered resolved source-player ID pair. Winner, score and status comparisons occur afterward. Source match_num is retained only in the audit identifier; row order and match number are not dates, sequencing or linkage keys.
+Links use event/draw, round and unordered player IDs, followed by winner, score and status comparison. Source row order and match_num never establish chronology. Numeric agreement is not raw-string equality; RET and suffix evidence remain separate.
 
-HTML and PDF each yield 63 bracket blocks: eight bye advancements and 55 non-bye results. The latter include one walkover; 54 describe apparent play. Score agreement here means normalized winner-oriented numeric score agreement, with RET/WO/suffix detail retained and separately evaluated; it does not mean the raw strings agree.
+Policy validation: all_three_resolved
 
-## Identity decisions
+[WTA Montreal inventory status-detail policy 1.0.0](wta-2021-montreal-inventory-status-policy.md) is separately adopted for LS036/266, LS054/248 and LS026/276. The resolution is pdf_retirement_corroborated_html_omission_preserved. All three must pass fresh pinned-byte validation, exact scope, source/PDF RET, named PDF legend identity, matching pair/round/advancement/score, unique linkage, unchanged HTML omission/F metadata and required locators. Any failed condition withholds all three derived resolutions.
 
-The event-scoped table records all 56 entrants, source candidate IDs/names, official IDs, both original labels, normalization method and opponent/round corroboration. No fuzzy matching is used. Case, punctuation, name order and explicit ñ-to-n normalization are formatting rules. General transliteration on this runtime split Garbiñe incorrectly; the explicit character rule preserves Garbine without changing originals.
+Raw official extractions and source rows are not rewritten. The separate ignored inventory-status-resolutions.csv preserves source/PDF scores, PDF legend text/locator, named retiring player, HTML omission and F metadata, fingerprints, original conflict history and policy/version. All five original HTML retirement omissions remain visible. LS042/LS049 retain their two existing Phase 1I resolutions; LS001-LS007 recovery, H64/H61 and the immutable Phase 1I release are not altered.
 
-Cori Gauff/Coco Gauff extends the already documented LS006 linkage only within this event, after all four opponent/round pairings agree, including the uncoded walkover. Alison Riske/Alison Riske Amritraj is a bounded exact candidate decision corroborated by the shared R64 Sorana Cirstea pairing in both official representations and source. It is not a global alias or a claim about the reason for the name change. All other full event-roster names resolve by deterministic normalization.
+## Completion criteria
 
-## LS-code sequence
-
-| unique_codes | duplicate_codes | absent_code_labels | uncoded_records | uncoded_record_ids | state | cause |
-| --- | --- | --- | --- | --- | --- | --- |
-| 62 | FALSE | LS013 | 1 | draw_html:R16:6 | code_gap_accounted_for_by_uncoded_walkover_card_no_code_assigned | Underlying reason for omitted code attribute unknown; no LS013 code synthesized |
-
-
-The HTML contains 62 unique supplied LS codes in the LS001–LS063 range. The uncoded R16 block at position 6, between coded LS012 and LS014 blocks, contains Gauff versus Konta and an explicit WO advancement. The PDF independently shows the same pair and walkover, and the source has its corresponding row. Thus an uncoded card accounts for the result at the code-sequence gap; no match is synthesized and no LS013 code is assigned. The publisher's reason for omitting the attribute remains unknown. Eight bye cards are retained separately; they do not explain this particular gap.
-
-## Remaining blockers
-
-| source_audit_id | official_code | round | source_status | html_status | pdf_status | comparison_state |
-| --- | --- | --- | --- | --- | --- | --- |
-| sackmann:WTA:2021-806:276 | LS026 | R32 | retirement | unresolved | retirement | linked_with_status_detail_difference |
-| sackmann:WTA:2021-806:248 | LS054 | R64 | retirement | unresolved | retirement | linked_with_status_detail_difference |
-| sackmann:WTA:2021-806:266 | LS036 | R64 | retirement | unresolved | retirement | linked_with_status_detail_difference |
-
-
-LS036 (Sakkari–Bouzkova), LS054 (Konta–Zhang) and LS026 (Gauff–Potapova) have RET in source/PDF but no retirement marker in the HTML draw; numeric scores and advancing players agree. They remain unresolved status-detail/reference conflicts. The saved PDF also names the retiring players in its retirement legend. No new match-page evidence was acquired, and the existing LS042/LS049 policy was not extended to these matches.
-
-The adopted policy resolves only LS042/Martincova and LS049/Tomljanovic in this audit, preserving their raw HTML omissions, source scores and EventScheduled observations in the unchanged Phase 1I layer. H64/H61 remain unexplained. The seven completed-match recovery resolutions are neither rewritten nor generalized. There are no remaining identity, round, winner, normalized numeric score, duplicate or unmatched conflicts; the three status differences prevent COMPLETE.
-
-## Criterion results
+COMPLETE requires all fourteen pre-existing criteria; no criterion was removed or weakened. Missing extraction evidence yields BLOCKED_INSUFFICIENT_LOCAL_EVIDENCE; unresolved comparisons yield REVIEW_REQUIRED. Completion is an inventory result only.
 
 | criterion | passed |
 | --- | --- |
@@ -95,43 +70,48 @@ The adopted policy resolves only LS042/Martincova and LS049/Tomljanovic in this 
 | every_source_has_one_official_nonbye | TRUE |
 | every_official_nonbye_has_one_source | TRUE |
 | round_winner_score_agree | TRUE |
-| status_differences_within_existing_policy_scope | FALSE |
-| HTML_PDF_agree_or_existing_scoped_resolution | FALSE |
+| status_differences_within_existing_policy_scope | TRUE |
+| HTML_PDF_agree_or_existing_scoped_resolution | TRUE |
 | code_gaps_accounted_for_without_inventing_codes | TRUE |
 | source_reference_overlay_layers_separate | TRUE |
 
 
-## Evidence, separation and rights
+## Identity and code-sequence findings
 
-All twelve files in [the Montreal manifest](../data/manifests/montreal-reference-files.csv), relevant annual files and the three Phase 1I manifest pins are revalidated. Archive revision remains 83733587353df8a41f2fd4f516147d5aa83f5a8d. The Phase 1I release is rebuilt in memory and compared with the existing RDS; its bytes, size and timestamp remain unchanged. No recovered count is merged into this inventory. The audit labels 47 original bundles and seven supplemental bundles separately, and retains no analytical eligibility decision.
+The 56 event identities use deterministic normalization and exact roster decisions, including bounded Gauff/Cori-Coco and Riske/Riske Amritraj aliases, plus explicit ñ normalization. No fuzzy matching or global identity rule is introduced. The original HTML contains 62 unique LS codes and an uncoded Gauff-Konta R16 walkover card between LS012 and LS014. No LS013 identifier or missing match is synthesized; the publisher's reason for omitting the attribute remains unknown.
 
-Source-only statistical presence remains 47/54 = 87.0370%; the separate implemented source-plus-overlay presence remains 54/54 = 100%. Neither is valid analytical coverage. The 90% event and 95% tour-season thresholds are unchanged; no admission gate or tour-season coverage test was performed.
+## Historical record
 
-Raw pages, full draw extractions, event identity decisions, linkage/conflict tables and the recovery release remain ignored and untracked. Only code, tests, aggregate findings and the minimum blocker identifiers are committed. Local research authorization is not provider permission. [DATA_LICENSE.md](../DATA_LICENSE.md) and [recovery policy 1.0.0](wta-2021-montreal-recovery-policy.md) continue to govern; match-level and aggregate publication require separate rights review. Portfolio is untouched.
+Phase 1J independently linked all 55 rows but returned REVIEW_REQUIRED: five HTML retirement omissions, two adopted Phase 1I resolutions and three unresolved details (LS036, LS054, LS026), with 12/14 criteria passing. Phase 1K drafted proposal 0.1.0 with D1-D8 pending; its commit was not approval. The Phase 1L user prompt explicitly approved those decisions and the project context. Current computed tables above, rather than approval alone, determine whether implementation passes.
+
+## Evidence, preservation and rights
+
+All twelve [Montreal references](../data/manifests/montreal-reference-files.csv), four relevant ATP/WTA 2021/2023 annual files and the three Phase 1I manifest pins are revalidated. Archive revision remains 83733587353df8a41f2fd4f516147d5aa83f5a8d. The Phase 1I release is reconstructed in memory and compared to the existing RDS; its bytes and timestamp remain unchanged. No new acquisition or dependency is used.
+
+Historical source-only statistical presence remains 47/54 = 87.0370%; separate implemented source-plus-overlay presence remains 54/54 = 100%, from 47 original and seven supplemental bundles. These are apparent-play presence measures, not the approved completed-match population's analytical coverage. The 90% event and 95% tour-season thresholds remain unchanged; neither admission nor a new eligible denominator is calculated.
+
+Raw pages, complete official extractions, identities, linkage/conflict tables and populated recovery/status decisions remain ignored and untracked. Only code, tests, aggregate findings, policy and minimum audit identifiers are committed. [DATA_LICENSE.md](../DATA_LICENSE.md) remains controlling. User approval is not provider permission; publication of match-level or aggregate outputs requires rights review. Portfolio is untouched.
 
 ## Reproduction and verification
-
-Run from the repository root with existing base R, SHA-256 tools and pdftotext:
 
 ```sh
 Rscript R/reconcile_montreal_inventory.R
 Rscript R/test_montreal_inventory.R
+Rscript R/test_montreal_recovery.R
 ```
 
-Generated local tables live in data/pilot/development-2021/montreal-inventory/: html-draw.csv, pdf-draw.csv, pdf-entrant-positions.csv, identity-decisions.csv, source-inventory.csv, reconciliation-links.csv, reference-comparisons.csv, official-only.csv, criteria.csv, code-sequence.csv, summary.csv and provenance.csv. No new dependency or network access is used. Missing fingerprints stop before output; parser insufficiency is reported explicitly.
+The existing ignored Montreal inventory directory retains its twelve Phase 1J tables and adds only inventory-status-resolutions.csv as a separate derived layer. The raw html-draw, pdf-draw, pdf-entrant-positions, identity-decisions, source-inventory and provenance tables remain unchanged. Links, reference comparisons, criteria and summary reflect approved policy resolution without erasing original statuses.
 
-Tests cover singles isolation; independent HTML/PDF rounds and bracket traversal; doubles/qualifying contamination; code uniqueness/gaps; entrants/byes/progression; walkover and retirement omissions; tie-break/incomplete scores; reversed orientation; exact names and bounded aliases; ambiguous/unmatched identities; unmatched/duplicate keys; winner/score/reference conflicts; exact existing-policy scope; one-to-one gates; source-order independence; separate overlay; immutable files; deterministic outputs; Git ignore/tracking boundaries. Synthetic deletion, duplication and changed-match cases must never report COMPLETE. Existing relevant Phase 1E–1I tests are run without weakening historical gates.
+Tests retain the historical fourteen-criterion/no-new-policy controls and add the adopted 1.0.0 rule: exact scope and three resolutions, named legend evidence, unchanged observations, zero unresolved conflicts, all criteria passing, no partial application, fingerprint/identity/result/round/score/marker/legend/status/locator mutations, other-event/match rejection, deterministic reruns, overlay immutability and Git boundaries. Relevant Phase 1E-1K regressions are run; current verification is recorded in [status](status.md).
 
-**Phase 1J verification:** all 18 new named tests and all 38 existing Phase 1I checks passed. Relevant Phase 1E/1F/1G suites and Phase 1H evidence checks passed without weakening gates. All 117 protected pre-existing files, including 91 existing data files and the Phase 1I release, retain SHA-256, size and modification time. Documentation links/anchors, whitespace, restricted-data staging/tracking and the full diff are checked before commit. The initial preflight printed an oversized validation object; later checks suppress object printing. This affected tool output only, not data or verification.
-
-Development checks stopped on PDF bye text attributes, tie-break tokens, and a final-column coordinate that also matched part of a semifinal score. The parser now uses explicit bye text, complete tie-break tokens and the bounded final-box vertical range. Word coordinates separate the overlapping Pavlyuchenkova/adjacent-score line. No source record was used to fill a PDF gap. The first identity pass exposed the Riske label difference and platform-specific ñ transliteration; both received explicit bounded handling with original observations preserved.
+The initial Phase 1L record-equality check rejected PDF roster attributes even though the recorded fields matched. It was corrected to compare every field value while retaining separate full-bracket validation. No partial resolution was applied during that failed development run.
 
 ## Standing future-model requirement
 
-User requirement: future factors and models must target performance on future matches, not reproduce one season or a few observed seasons. Use chronological development/validation and prevent later information entering earlier predictions. Preserve 2021–2023 development, 2024 validation/model selection and locked 2025 final testing. Specify the complete tuning/evaluation protocol before modeling. Favor stable interpretable specifications and assess sensitivity across seasons, surfaces, events, ATP and WTA. Phase 1J neither designs that protocol nor accesses 2025 data.
+[PROJECT_CONTEXT.md](../PROJECT_CONTEXT.md) is adopted. Future factors and models must target future matches, not reproduce a few observed seasons. Preserve chronological 2021-2023 development, 2024 validation/model selection and locked 2025 final testing. Specify the complete tuning/evaluation protocol before modeling, prevent leakage, and assess stability across seasons, surfaces, events and tours. Phase 1L does not design that protocol or access 2025 data.
 
 ## Smallest recommended follow-up
 
-Historical Phase 1J recommendation: draft an inventory-only policy for LS036, LS054 and LS026. Phase 1K has now produced [policy proposal 0.1.0](draft-wta-2021-montreal-inventory-status-policy.md), PROPOSED_NOT_APPROVED and not implemented. D1-D8 await user review; the three blockers and REVIEW_REQUIRED remain unchanged. If explicitly approved, the next bounded task may implement only those approved inventory-status decisions with passing tests. Preserve every omission and leave retirement eligibility, chronology, analytical coverage, admission and models blocked. No new URL is required for the current proposal; any later acquisition needs its own exact allowlist and authorization.
+A bounded offline audit of Montreal completed-match eligibility and count coverage under the approved context is recommended next, using existing saved evidence and separate recovery provenance. It must preserve every excluded audit record, report any remaining status/count blockers, and leave admission, chronology, canonical inputs and models unimplemented unless separately authorized. Actual dates/same-day ordering, wider data acquisition and publication rights remain separate decisions.
 
-Phase 1J starts at 13be0fd3f8d2d222e51c972319a540f8db798429. Completion commit message: Reconcile Montreal inventory offline. The final response records the resulting hash and Git state. Every next task requires a response-only ChatGPT Handoff of approximately 2,000 words and no more than 2,000 words.
+Phase 1L starts at bded8069163d41c886cf1576ea0fdd4cc1054b7b. Its commits are Adopt project research context and Implement Montreal inventory status policy; exact hashes and Git state are recorded in the final response. Every next task requires a response-only ChatGPT Handoff of approximately 2,000 words and no more than 2,000 words.

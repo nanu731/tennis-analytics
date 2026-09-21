@@ -111,7 +111,85 @@ test_montreal_inventory <- function() {
   for(path in outpaths[startsWith(outpaths,"data/")])mro_git_boundary(path)
   stopifnot(!length(system("git diff --cached --name-only -- data/raw data/pilot",intern=TRUE)))
   pass("all restricted outputs ignored; no raw/extracted/recovered data staged or tracked")
-  message(length(results)," Phase 1J checks passed.")
+  # Historical controls above intentionally omit the separately adopted 1L policy.
+  # The production path below must pass the new policy with immutable evidence.
+  proof<-mji_status_evidence()
+  adopted<-function(a=h,b=p,z=s,evidence=proof)mji_compare(a,b,z,overlay,TRUE,evidence)
+  current<-adopted();policy<-mji_status_policy()
+  stopifnot(policy$name=="WTA Montreal inventory status-detail policy",policy$version=="1.0.0",
+    current$state=="COMPLETE",all(current$criteria$passed),nrow(current$criteria)==14,
+    nrow(current$status_resolutions)==3,setequal(current$status_resolutions$official_code,c("LS036","LS054","LS026")),
+    all(current$status_resolutions$resolution==policy$resolution),!any(current$links$unresolved),
+    all(current$reference_comparisons$resolved),nrow(current$official_only)==0)
+  pass("Phase 1L adopted name/version, exact three derived resolutions, all fourteen criteria and COMPLETE")
+  stopifnot(identical(current$html,h),identical(current$pdf,p),identical(current$source_inventory,o$source_inventory),
+    sum(current$html$retirement_marker)==0,sum(current$pdf$retirement_marker)==5,
+    sum(current$links$comparison_state=="existing_adopted_match_scoped_resolution")==2,
+    all(current$status_resolutions$html_omission_preserved),all(current$status_resolutions$original_reference_conflict),
+    all(current$status_resolutions$html_status_metadata=="data-status=F"),
+    all(grepl("RET",current$status_resolutions$source_score)),all(grepl("RET",current$status_resolutions$pdf_raw_score)),
+    all(nzchar(current$status_resolutions$pdf_legend_raw)),all(nzchar(current$status_resolutions$pdf_legend_locator)))
+  pass("all five HTML omissions, source/PDF raw observations, legend provenance and two Phase 1I resolutions preserved")
+  withheld<-function(a=h,b=p,z=s,evidence=proof){
+    r<-tryCatch(adopted(a,b,z,evidence),error=function(e)NULL)
+    if(!is.null(r))stopifnot(r$state!="COMPLETE",nrow(r$status_resolutions)==0,
+      !any(r$links$adopted_resolution==policy$resolution,na.rm=TRUE))
+  }
+  for(code in c("LS036","LS054","LS026")) {
+    ai<-which(h$official_code==code);li<-which(current$links$official_code==code)
+    bi<-which(p$record_id==current$links$pdf_record_id[li]);si<-which(paste0("sackmann:WTA:2021-806:",s$match_num)==current$links$source_audit_id[li])
+    bad<-s;bad$score[si]<-sub(" RET","",bad$score[si],fixed=TRUE);withheld(z=bad)
+    bad<-p;bad$retirement_marker[bi]<-FALSE;bad$raw_score[bi]<-sub(" RET","",bad$raw_score[bi],fixed=TRUE);withheld(b=bad)
+    pass(paste(code,"missing source or PDF RET withholds all three decisions"))
+  }
+  for(field in c("sha256","byte_size","local_path")) {
+    bad<-proof;bad$reference_manifest[[field]][1]<-NA;withheld(evidence=bad)
+    pass(paste("missing reference",field,"rejected without partial application"))
+  }
+  bad<-proof;bad$source_provenance$sha256[2]<-paste(rep("0",64),collapse="");withheld(evidence=bad)
+  bad<-proof;bad$details$retiring_player[1]<-"Different Player";withheld(evidence=bad)
+  bad<-proof;bad$details$legend_raw[1]<-"";withheld(evidence=bad)
+  bad<-proof;bad$details$legend_locator[1]<-"";withheld(evidence=bad)
+  pass("changed source fingerprint, wrong/missing PDF legend name and unavailable legend locator rejected")
+  ai<-which(h$official_code=="LS036");bi<-which(p$record_id==current$links$pdf_record_id[which(current$links$official_code=="LS036")])
+  for(field in c("reference_sha256","locator","raw_status_marker","raw_text","official_code","round","winner","player_two_full","normalized_score")) {
+    bad<-h;bad[[field]][ai]<-switch(field,reference_sha256="",locator="",raw_status_marker="explicit_normal_completion_no_retirement",
+      raw_text=paste(bad$raw_text[ai],"explicit non-retirement"),official_code="LS099",round="R32",winner=bad$player_two_full[ai],
+      player_two_full="unmatched player",normalized_score="6-0 6-0")
+    withheld(a=bad)
+    pass(paste("HTML",field,"mutation rejected without partial application"))
+  }
+  bad<-h;bad$retirement_marker[ai]<-TRUE;withheld(a=bad)
+  bad<-h;bad$walkover_marker[ai]<-TRUE;withheld(a=bad)
+  bad<-p;bad$player_two_full[bi]<-"Different Retiring Player";withheld(b=bad)
+  bad<-p;bad$locator[bi]<-"";withheld(b=bad)
+  bad<-proof;bad$details$html_raw_block[1]<-paste(bad$details$html_raw_block[1],"non-retirement");withheld(evidence=bad)
+  pass("changed omission representation, contradictory walkover, different retiring player and unavailable PDF locator rejected")
+  withheld(a=rbind(h,h[ai,]));withheld(z=rbind(s,s[1,]))
+  bad<-s;bad$winner_id[bad$winner_name=="Maria Sakkari"][1]<-"ambiguous-id";withheld(z=bad)
+  bad<-s;bad$tourney_id<-"2022-806";withheld(z=bad)
+  bad<-proof;bad$targets$code[1]<-"LS042";withheld(evidence=bad)
+  bad<-proof;bad$targets$audit_id[1]<-"sackmann:ATP:2021-806:266";withheld(evidence=bad)
+  pass("duplicate links, ambiguous identities, another event/tour/match cannot receive this policy")
+  stopifnot(identical(o$links[o$links$official_code %in% c(sprintf("LS%03d",1:7),"LS042","LS049"),],
+    current$links[current$links$official_code %in% c(sprintf("LS%03d",1:7),"LS042","LS049"),]),
+    identical(readRDS(mro_path()),overlay),first$summary$reconciliation_state=="COMPLETE",
+    first$summary$event_admission=="NOT_EVALUATED",first$summary$analytical_coverage=="NOT_EVALUATED",!first$summary$modeling_authorized,
+    first$summary$chronology=="UNRESOLVED",first$summary$retirement_walkover_eligibility=="EXCLUDED_BY_APPROVED_PRIMARY_DESIGN_NOT_APPLIED")
+  pass("Phase 1I scope/release unchanged; approved eligibility design is not canonical implementation or admission")
+  stopifnot(setequal(proof$source_provenance$year,c(2021,2023)),!any(grepl("2025",proof$source_provenance$path,fixed=TRUE)),all(grepl("montreal-2021",proof$reference_manifest$local_path,fixed=TRUE)))
+  pass("active evidence paths limited to saved 2021 references and 2021/2023 annuals; no 2025 input")
+  # Capture report writes in memory: failed runs must not reuse the success narrative.
+  report<-mji_report;capture<-new.env(parent=globalenv());environment(report)<-capture
+  capture$file.exists<-function(...)FALSE
+  capture$writeLines<-function(text,...)capture$lines<-text
+  report(o,55)
+  stopifnot(any(grepl("Reconciliation state: **REVIEW_REQUIRED**",capture$lines,fixed=TRUE)),
+    !any(grepl("Policy validation: all_three_resolved",capture$lines,fixed=TRUE)))
+  report(list(state="BLOCKED_INSUFFICIENT_LOCAL_EVIDENCE",html=NULL,pdf=NULL,error="synthetic missing evidence"),55)
+  stopifnot(any(grepl("Extraction blocker: synthetic missing evidence",capture$lines,fixed=TRUE)))
+  pass("failed/insufficient report retains truthful state without reusing successful-run findings")
+  message(length(results)," Phase 1J/1L checks passed.")
   invisible(results)
 }
 if(sys.nframe()==0L)test_montreal_inventory()

@@ -102,7 +102,7 @@ Require matching identity/numeric score, a named retiring player on the match ca
 | LS042 / 2021-806:260 | Tereza Martincova retired; `official_retirement_confirmed_suffix_meaning_unresolved` | `6-1 4-3 RET+H64` |
 | LS049 / 2021-806:253 | Ajla Tomljanovic retired; `official_retirement_confirmed_source_marker_missing` | `2-6 6-2` |
 
-Keep H64 and H61 unresolved. No RET insertion/removal, extra set, inferred suffix semantics, overwritten populated count or historical cohort change is permitted. Retirement occurrence does not decide eligibility for Four Factors, Elo, ratings or forecasts; all such eligibility decisions remain deferred.
+Keep H64 and H61 unresolved. No RET insertion/removal, extra set, inferred suffix semantics, overwritten populated count or historical cohort change is permitted. Retirement occurrence does not decide eligibility for Four Factors, Elo, ratings or forecasts; those eligibility decisions were deferred in Phase 1I. Phase 1L separately approves primary retirement/walkover exclusion in PROJECT_CONTEXT.md, without implementing a canonical selector or altering this recovery policy.
 
 ## Provenance and local release schema
 
@@ -129,7 +129,7 @@ Separate `status_resolutions`, `structural_checks`, `official_supporting_observa
 
 Historical Phase 1G candidate/hypothetical 54/54 and strict-exclusion 47/54 remain historical scenarios. Do not replace source-only coverage, shrink denominators or select only enough matches to cross 90%. The 90% event and 95% tour-season thresholds remain unchanged. Overlay presence alone passes no admission gate.
 
-Complete inventory, actual dates/same-day order, retirement/walkover eligibility, pre-2021 history, common model populations and publication rights remain unresolved. Published dates and source match numbers are not chronology substitutes. No canonical data, features, models, new seasons, dependencies or portfolio work are authorized.
+Historical Phase 1I left inventory and eligibility unresolved. Phase 1L completes inventory and separately approves primary retirement/walkover exclusion; canonical populations, actual dates/same-day order, pre-2021 history and publication rights remain unresolved or unimplemented. Published dates and source match numbers are not chronology substitutes. No canonical data, features, models, new seasons, dependencies or portfolio work are authorized.
 
 The [WTA Indian Wells quarantine](wta-anomaly-and-quarantine-policy.md) and [ATP precedence policy](atp-inventory-reference-precedence-policy.md) remain unchanged. Montreal's scoped rule cannot clear Andreescu–Stearns' count conflicts or expand either policy.
 
@@ -147,7 +147,7 @@ All ten decisions were approved explicitly in the Phase 1I prompt; none awaits r
 | D4 | Scoped completed evidence controls, preserve EventScheduled | Implemented for LS001–LS007 only |
 | D5 | Corroborated LS042/LS049 retirement observations | Implemented separately; counts/scores preserved |
 | D6 | Keep H64/H61 unresolved | No inferred meaning or suffix-dependent recovery |
-| D7 | Defer retirement model eligibility | NOT_EVALUATED |
+| D7 | Phase 1I deferred retirement model eligibility | Historical decision; Phase 1L separately approves primary exclusion, canonical selector not implemented |
 | D8 | Keep 90%/95% thresholds | Unchanged; no new admission gate evaluation |
 | D9 | Keep admission, chronology, analytical/model use blocked | Continuing restriction |
 | D10 | Block publication pending rights review | Continuing restriction, including review of aggregate exports |
@@ -161,6 +161,6 @@ Rscript R/implement_montreal_recovery.R
 Rscript R/test_montreal_recovery.R
 ```
 
-No network or package installation occurs. Missing/changed evidence stops execution. See [verification](wta-2021-montreal-recovery-verification.md) for recovery checks. **Phase 1J follow-up:** the [full inventory audit](wta-2021-montreal-inventory-reconciliation.md) now links all 55 source rows but remains REVIEW_REQUIRED because LS036, LS054 and LS026 have unresolved retirement-detail differences outside this policy. Its smallest recommended follow-up is a separate inventory-only policy draft for those three matches; no scope extension or admission is adopted here.
+No network or package installation occurs. Missing/changed evidence stops execution. See [verification](wta-2021-montreal-recovery-verification.md) for recovery checks. Historical Phase 1J linked all 55 rows but left three retirement-detail differences outside this policy. Phase 1L now resolves those under a [separate inventory policy](wta-2021-montreal-inventory-status-policy.md), with [all inventory criteria passing](wta-2021-montreal-inventory-reconciliation.md). This changes neither this policy scope nor the recovery release and does not admit the event.
 
 Every later task must end with a response-only ChatGPT Handoff of approximately 2,000 words and no more than 2,000 words.
