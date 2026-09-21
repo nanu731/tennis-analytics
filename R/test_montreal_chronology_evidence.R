@@ -112,7 +112,12 @@ test_montreal_chronology_evidence <- function() {
     s$canonical_analytical_population=="NOT_IMPLEMENTED",s$tour_season_gate=="NOT_TESTED",
     s$publication=="BLOCKED_PENDING_RIGHTS_REVIEW")
   pass("all 13 decisions remain proposed; narrow evidence coverage never implies model readiness")
-  proposal <- readLines("docs/wta-2021-montreal-chronology-policy-proposal.md")
+  # The proposal was renamed on adoption; test the exact historical Git object.
+  proposal_ref <- "5156ac2c34972bbef4584df62667f0bfda6f44c0:docs/wta-2021-montreal-chronology-policy-proposal.md"
+  stopifnot(identical(system2("git",c("rev-parse",shQuote(proposal_ref)),stdout=TRUE),
+    "6e383568aaac82d235c2a4f13f6683fb09c3545a"))
+  proposal <- system2("git",c("show",shQuote(proposal_ref)),stdout=TRUE)
+  stopifnot(is.null(attr(proposal,"status")))
   stopifnot(sum(grepl("^### D[0-9]+\\.",proposal))==13,
     sum(grepl("Approval: PENDING_USER_APPROVAL; implemented: FALSE",proposal,fixed=TRUE))==13,
     any(grepl("PROPOSED_NOT_APPROVED",proposal,fixed=TRUE)))

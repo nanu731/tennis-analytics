@@ -1,4 +1,6 @@
 # Phase 1N: evidence and a proposal only; no operational chronology or models.
+# Historical reproduction: proposal-era states intentionally remain unchanged.
+# Current approval is recorded in docs/wta-2021-montreal-chronology-policy.md.
 source("R/audit_montreal_completed_match_coverage.R")
 
 mnc_dir <- function() "data/pilot/development-2021/montreal-chronology-evidence"
