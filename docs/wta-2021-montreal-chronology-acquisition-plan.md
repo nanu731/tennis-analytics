@@ -1,6 +1,6 @@
 # WTA Montreal 2021 chronology-evidence acquisition plan
 
-**Phase 1O. Plan version 0.1.0: PROPOSED_NOT_APPROVED. Acquisition authorization: FALSE.** No request, discovery search, download, scraping, hidden API use, browser automation or new raw-data file is authorized by this document. All A1–A10 decisions below are PENDING_USER_APPROVAL. This plan follows the separately [adopted chronology policy 1.0.0](wta-2021-montreal-chronology-policy.md); adoption of that policy does not approve this plan.
+**Phase 1P. Plan version 0.2.0: APPROVED_STAGE_A_ONLY; STAGE_A_STOPPED_RIGHTS.** The user approved A1–A4, A9 and A10 for Stage A only. A5–A8 remain PENDING_USER_APPROVAL. Stages B, C and D remain UNAUTHORIZED. One exact terms GET returned HTTP 200; programmatic access was assessed PROHIBITED and retention for that mode AMBIGUOUS_STOP_REQUIRED. Request two was not permitted or attempted. No further request is authorized by the unused numerical slot. This follows the separately [adopted chronology policy 1.0.0](wta-2021-montreal-chronology-policy.md); policy adoption itself grants no access.
 
 ## Purpose and verified local basis
 
@@ -10,15 +10,15 @@ Phase 1N preserves 55 results: 49 completed, five RET and one WO. Nine saved pag
 
 All 49 completed matches have within-event player chains accounted for, with 54 corroborated feeder edges overall and 45 completed-to-completed. Event-week 20210809, overview August 9–15 and PDF August 7–15 remain distinct. No actual start/completion dates, timestamps, timezone, suspension/resumption or historical availability times are verified. LS007 and LS003 publish August 14; other saved quarterfinals publish August 13. Neither those dates nor the EventScheduled/finished-card conflict is resolved by approval.
 
-Offline inspection found the exact href `https://www.wtatennis.com/tournaments/806/montreal/2021/order-of-play` in both saved overview and draw HTML. **Verified: the link occurs locally. Unverified: the target's existence now, accessibility, historical content, semantics and suitability.** No request was made. Previously documented sources are recorded in the [contract](data-source-contract.md#5-source-by-source-findings), [reference report](wta-2021-montreal-reference-feasibility.md) and [research report](../tennis-analytics-public-data-research.pdf). Their historical claims are not fresh provider verification.
+Offline inspection found the exact href `https://www.wtatennis.com/tournaments/806/montreal/2021/order-of-play` in both saved overview and draw HTML. **Verified: the link occurs locally. Unverified: the target's existence now, accessibility, historical content, semantics and suitability.** No request to that target was made in Phase 1O or Phase 1P. Previously documented sources are recorded in the [contract](data-source-contract.md#5-source-by-source-findings), [reference report](wta-2021-montreal-reference-feasibility.md) and [research report](../tennis-analytics-public-data-research.pdf). Their historical claims are not fresh provider verification.
 
 ## Common controls for every candidate group
 
-The group-specific entries below inherit these controls; exceptions are stated explicitly. Proposed paths do not exist as new artifacts from this phase and require approval before creation.
+The group-specific entries below inherit these controls; exceptions are stated explicitly. Phase 1P approves and creates the Stage A ignored roots only; all later-stage paths remain proposals requiring separate approval.
 
 - **Request accounting:** ceilings count every attempted outbound request, including failures, HEAD, retries, redirects, discovery queries and archive-index lookups. A file count is a maximum, not a promise of availability. No automatic redirects, retries, hidden endpoints, alternate slugs, login, paywall or bot-check bypass. Stop at the first disallowed destination or access restriction. Return the failure for review; do not spend a larger stage's budget implicitly.
 - **Rights:** free access, research permission, local retention, raw redistribution and derivative publication are separate fields. Existing WTA restrictions and [DATA_LICENSE.md](../DATA_LICENSE.md) remain controlling. User approval authorizes a bounded action, not third-party rights. Ambiguous or prohibitive terms stop collection for the affected use; retain a blocker, not an invented permission. All publication, including aggregates, stays blocked pending review.
-- **Storage proposal:** new original bytes, if separately authorized, go under ignored `data/raw/reference/montreal-2021-chronology/`, with provider and stage names in immutable filenames. Local manifests, extraction and comparisons go under ignored `data/pilot/development-2021/montreal-chronology-acquisition/`. Never overwrite Phase 1G references, the Phase 1I overlay or Phase 1N outputs. No directories or manifests are created now. Only minimal metadata and aggregate reports may later be proposed for Git; restricted official tables remain ignored.
+- **Storage proposal:** new original bytes, if separately authorized, go under ignored `data/raw/reference/montreal-2021-chronology/`, with provider and stage names in immutable filenames. Local manifests, extraction and comparisons go under ignored `data/pilot/development-2021/montreal-chronology-acquisition/`. Never overwrite Phase 1G references, the Phase 1I overlay or Phase 1N outputs. Phase 1P creates only the Stage A raw terms file, immutable request/response/review records with seals, and its ignored manifest. Only minimal metadata and aggregate reports may later be proposed for Git; restricted official tables remain ignored.
 - **Manifest proposal:** acquisition group/stage/approval ID; requested and resolved URL; provider/original creator/upstream chain; discovery-parent URL and exact locator; request time, HTTP outcome, retrieval method and redirects rejected; byte count, media type, SHA-256 and immutable revision/release/capture when available; local path; original event/match/player identifiers and spellings; terms URL/version/hash/access date, permitted research/retention scope, attribution, redistribution and derivative restrictions; parser/version/transformations; completeness and known limitations. Failed requests receive no fictitious file/hash. Retrieval and capture times remain provenance, not play dates.
 - **Chronology observations:** retain literal field/text, locator, semantic role, precision, stated timezone/time basis, publication/revision time and its meaning, scheduled versus actual versus completion/resumption/availability status, verification evidence, missingness reason and disagreement. No imputation from duration, event week, adjacent matches, filenames or row order. Record bounds as bounds; never manufacture exact timestamps.
 - **Validation/linkage:** exact WTA 2021 Montreal singles event, code when supplied, both identities, round and result must reconcile to the validated local inventory. Use existing player IDs and bounded aliases; no name-only/fuzzy/global alias inference. For schedule-only documents with no result, establish the unique scheduled pairing/event/round and keep it schedule-only. Separate cancellation, retirement, walkover, suspension and completion. Isolate historical content from current news/widgets. Reject duplicate or conflicting attribution; preserve every original observation.
@@ -102,12 +102,12 @@ The group-specific entries below inherit these controls; exceptions are stated e
 
 ### Stage A — rights and semantic triage
 
-Recommend this as the **only next collection milestone offered for approval**: at most **two direct public-page GET attempts / two response files**, in order:
+**Approved for Phase 1P and now stopped at its rights gate**: at most **two direct public-page GET attempts / two response files**, in order:
 
 1. `https://www.wtatennis.com/terms-and-conditions`
 2. `https://www.wtatennis.com/tournaments/806/montreal/2021/order-of-play`
 
-The second request is conditional on the first review finding the specifically proposed access/retention mode permissible. An unresolved restriction stops the stage for user/provider clarification, without bypass or a more permissive assumption. Terms review is not new legal permission. Exact proposed Stage A paths are `data/raw/reference/montreal-2021-chronology/wta-stage-a-terms.html` and `data/raw/reference/montreal-2021-chronology/wta-stage-a-oop-index.html`; the local manifest would be `data/pilot/development-2021/montreal-chronology-acquisition/stage-a-manifest.csv`. Do not overwrite any existing file; a changed acquisition needs a separately reviewed version/path. No match pages, document links, search queries, scripts, APIs or archives are automatically followed. No automatic browser rendering/subresource loading is proposed.
+The second request is conditional on the first review finding the specifically proposed access/retention mode permissible. An unresolved restriction stops the stage for user/provider clarification, without bypass or a more permissive assumption. Terms review is not new legal permission. Approved Stage A paths are `data/raw/reference/montreal-2021-chronology/wta-stage-a-terms.html` and `data/raw/reference/montreal-2021-chronology/wta-stage-a-oop-index.html`; the local manifest is `data/pilot/development-2021/montreal-chronology-acquisition/stage-a-manifest.csv`. Do not overwrite any existing file; a changed acquisition needs a separately reviewed version/path. No match pages, document links, search queries, scripts, APIs or archives are automatically followed. No automatic browser rendering/subresource loading is proposed.
 
 Deliver a bounded access/semantics report, exact candidate daily-document links if present, and a request-level allowlist for subsequent review. If the page lacks historical content or cannot explain timing, report insufficiency and propose only the separately bounded discovery described in G5 if justified. This may legitimately conclude that the route is unusable. It does not require collecting more pages to demonstrate that conclusion.
 
@@ -143,31 +143,31 @@ G6's maximum is **four documentation requests plus one separately approved scope
 
 ## New acquisition decisions for the user
 
-These A-numbered decisions are separate from the already approved chronology decisions. No approval is inferred from adopting policy 1.0.0 or committing this plan.
+These A-numbered decisions are separate from the approved chronology decisions. The Phase 1P user prompt explicitly approves A1–A4, A9 and A10 only for Stage A. No later-stage approval is inferred.
 
 ### A1. Discovery and provider scope
 
 Recommend WTA Stage A only as the next bounded access milestone: the two exact URLs above. No broad search, organizer crawl, hidden APIs, browser automation, contact or alternative providers. G5 discovery, G6 access and G7 archives need distinct later approval.
 
-Approval: PENDING_USER_APPROVAL; acquisition implemented: FALSE.
+Approval: APPROVED_STAGE_A_ONLY; acquisition implemented: STAGE_A_ONLY.
 
 ### A2. Request ceiling and transport
 
 Recommend two direct GET attempts maximum for Stage A, no redirects/retries/subresource loads. Count failures against the ceiling. Later B/C/D ceilings are 3/49/5 respectively, separately approved, with no pooled or carried-over budget. Optional semantics discovery and archives remain separate 5/4 ceilings, inactive.
 
-Approval: PENDING_USER_APPROVAL; acquisition implemented: FALSE.
+Approval: APPROVED_STAGE_A_ONLY; acquisition implemented: STAGE_A_ONLY.
 
 ### A3. Local storage and provenance
 
-Approve or revise the two proposed ignored directories, immutable stage/provider filenames and common manifest fields before creation. Preserve all existing raw, overlay and historical audit bytes; no raw or restricted table enters Git. Later manifests must record failures honestly.
+The user approved the two ignored directories, immutable stage/provider filenames and common manifest fields for Stage A. Preserve all existing raw, overlay and historical audit bytes; no raw or restricted table enters Git. Later manifests must record failures honestly.
 
-Approval: PENDING_USER_APPROVAL; acquisition implemented: FALSE.
+Approval: APPROVED_STAGE_A_ONLY; acquisition implemented: STAGE_A_ONLY.
 
 ### A4. Rights constraints
 
 Recommend rights-first conditional access and local retention only when the proposed mode is supported. Stop on prohibitions or unresolved scope; obtain separate clarification rather than treating educational intent as permission. No publication, raw redistribution or licensing assumption is approved.
 
-Approval: PENDING_USER_APPROVAL; acquisition implemented: FALSE.
+Approval: APPROVED_STAGE_A_ONLY; acquisition implemented: STAGE_A_ONLY.
 
 ### A5. Diagnostic sample and evidence acceptance
 
@@ -197,16 +197,20 @@ Approval: PENDING_USER_APPROVAL; acquisition implemented: FALSE.
 
 Recommend stopping on request limits, access/rights restrictions, current-content contamination, identity conflicts, ambiguous semantics, inadequate availability evidence or changed saved artifacts. Return negative findings and residual gaps; never infer dates, expand scope or weaken coverage thresholds to get a pass.
 
-Approval: PENDING_USER_APPROVAL; acquisition implemented: FALSE.
+Approval: APPROVED_STAGE_A_ONLY; acquisition implemented: STAGE_A_ONLY.
 
 ### A10. Review deliverables and next authorization
 
 Recommend aggregate access/semantics findings, a local evidence/unknowns matrix and the next exact allowlist for user review. A successful stage does not approve another stage, operational chronology, history windows, batching, models, event admission or publication. Require a response-only ChatGPT Handoff of no more than 2,000 words.
 
-Approval: PENDING_USER_APPROVAL; acquisition implemented: FALSE.
+Approval: APPROVED_STAGE_A_ONLY; acquisition implemented: STAGE_A_ONLY.
 
 ## Current completion and unchanged gates
 
-This phase implements documentation and verification only. The acquisition plan is complete as a proposal; **acquisition performed: NONE**. No new URL was checked, no source rights were newly verified and no raw file was created. The policy is ADOPTED; operational chronology is NOT_IMPLEMENTED; chronology/model readiness is BLOCKED; event admission is NOT_EVALUATED; canonical analytical population is NOT_IMPLEMENTED; 95% tour-season gate is NOT_TESTED; modeling authorization is FALSE; publication is BLOCKED_PENDING_RIGHTS_REVIEW. Fixed panel, ATP/WTA separation, development/validation/locked-test splits, deferred Challenger work and portfolio boundaries remain unchanged.
+Phase 1P completed the bounded triage as **STAGE_A_STOPPED_RIGHTS**. Request 1: GET https://www.wtatennis.com/terms-and-conditions at 2026-09-22T14:41:17Z, HTTP 200, curl exit 0, no redirect, 199865 bytes, text/html;charset=utf-8. The saved response was readable. Its Rules of Conduct restrict automated access; the personal-copy provision does not clear that method. Operational access result: PROHIBITED; retention for the proposed mode: AMBIGUOUS_STOP_REQUIRED. This is a bounded operational assessment, not a legal conclusion.
 
-The smallest next milestone is user review of this plan and, only after explicit approval of the applicable scope/ceiling/storage/rights/stopping decisions, the two-request Stage A triage. Approval of Stage A must identify which decisions it covers and must not activate B–D, semantic searches or archives. If access is not approved or rights remain unresolved, stop at the documented blocker.
+Request 2, the exact Montreal 2021 order-of-play URL, was NOT_ATTEMPTED_RIGHTS_GATE. One of two attempt slots was consumed; the other remains numerically unused but is not authorized. No daily-document or semantic link was acquired or followed. Historical content, actual dates/times, timezone, completion and availability remain unassessed at that target. The [Stage A report](wta-2021-montreal-chronology-stage-a.md) records response provenance, term locators, verification and limitations.
+
+The policy is ADOPTED; operational chronology is NOT_IMPLEMENTED; chronology/model readiness is BLOCKED; event admission is NOT_EVALUATED; canonical analytical population is NOT_IMPLEMENTED; 95% tour-season gate is NOT_TESTED; modeling authorization is FALSE; publication is BLOCKED_PENDING_RIGHTS_REVIEW. Fixed panel, ATP/WTA separation, development/validation/locked-test splits, deferred Challenger work and portfolio boundaries remain unchanged.
+
+The smallest recommended next milestone is an offline rights-resolution decision brief: define the exact method and permission questions and decide whether the user wants to seek provider clarification. Do not contact anyone or request any source. Alternatively, the user may separately authorize a bounded alternative-source rights/documentation review. A5–A8 and every later stage remain pending; more user approval alone cannot override provider restrictions.

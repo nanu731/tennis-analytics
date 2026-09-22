@@ -28,7 +28,11 @@ validate_montreal_chronology_plan <- function(lines) {
 }
 
 test_montreal_chronology_acquisition_plan <- function() {
-  lines<-readLines("docs/wta-2021-montreal-chronology-acquisition-plan.md")
+  # Preserve all Phase 1O proposal assertions against its exact committed text.
+  # Phase 1P separately tests current Stage A approval and request artifacts.
+  ref<-"10816b9f839d6e501674cc6efe3d2053a7826d5f:docs/wta-2021-montreal-chronology-acquisition-plan.md"
+  lines<-system2("git",c("show",shQuote(ref)),stdout=TRUE)
+  stopifnot(is.null(attr(lines,"status")))
   validate_montreal_chronology_plan(lines)
   reject<-function(x)stopifnot(inherits(tryCatch(validate_montreal_chronology_plan(x),error=identity),"error"))
   reject(c(lines,"### A1. Duplicate"));reject(c(lines,"### G1. Duplicate"))
@@ -61,9 +65,10 @@ test_montreal_chronology_acquisition_plan <- function() {
     html<-paste(readLines(refs$local_path[refs$reference_id==id],warn=FALSE),collapse="\n")
     stopifnot(grepl(paste0('href="',target,'"'),html,fixed=TRUE))
   }
-  stopifnot(!dir.exists("data/raw/reference/montreal-2021-chronology"),
-    !dir.exists("data/pilot/development-2021/montreal-chronology-acquisition"))
-  message("Plan contracts passed; eight invalid-document mutations rejected; 45/42/3 scope and two local order-of-play links verified; no acquisition artifacts.")
+  source("R/acquire_montreal_chronology_stage_a.R")
+  current<-msa_audit()
+  stopifnot(nrow(current)==1,current$rights=="PROHIBITED",!current$another_request_authorized)
+  message("Historical plan contracts passed; eight invalid-document mutations rejected; 45/42/3 scope and two local links verified; current authorized Stage A artifacts validated offline.")
   invisible(TRUE)
 }
 if(sys.nframe()==0L)test_montreal_chronology_acquisition_plan()
