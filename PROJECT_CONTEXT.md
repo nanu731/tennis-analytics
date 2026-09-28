@@ -55,6 +55,23 @@ Required protections include chronological processing, lagged features, pre-matc
 
 Assess stability across seasons, surfaces, events, ATP, and WTA. Report uncertainty, negative results, and unstable coefficients. Prefer a simpler stable specification when added complexity does not produce a repeatable validation improvement. Revisit an assumption when diagnostics or validation reveal a weakness, but do not search indefinitely for a specification that flatters one validation slice.
 
+## Overfitting and missing-data comparisons
+
+**Approved standing guidance, Phase 1S, 2026-09-28; not implemented.** Avoiding overfitting is a requirement to demonstrate through chronological out-of-sample validation, not a result to claim in advance. Factor selection, transformations, weights, Elo settings, and imputation choices must use development data and 2024 validation only. Freeze the complete pipeline before inspecting 2025 outcomes.
+
+Future missing-data analysis must distinguish structural, sporadic, and eligibility-related missingness. When modeling is authorized, formally compare:
+
+- No imputation or appropriate complete-case analysis.
+- Mean imputation.
+- Mean imputation with a missingness indicator where justified.
+- Multiple imputation using predictive mean matching (PMM).
+
+Fit every imputation procedure inside the chronological training sample or resample only. Never use future matches, validation/test outcomes, or the full dataset to construct imputed values. Never impute match outcomes or convert unavailable statistics to zero. These comparisons do not override eligibility exclusions, statistical quarantine, undefined denominators, coverage gates, or chronology and rights requirements.
+
+Evaluate alternatives using out-of-sample calibration, Brier score, log loss, coefficient/factor stability, and sensitivity across tours, surfaces, seasons, and events. Do not preselect mean imputation or PMM. Prefer the simplest method whose performance and assumptions remain stable. Surface-adjusted Elo normally should not require statistical imputation because its core inputs are eligible match results.
+
+No imputation procedure, factor selection, weight estimation, Elo calculation, or model is implemented or authorized by this guidance. Any required dependency still needs separate approval.
+
 ## Match eligibility
 
 ### Approved primary analytical population design
