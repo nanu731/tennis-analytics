@@ -111,6 +111,18 @@ Begin factor weighting with interpretable multiple linear regression, using Net 
 
 Use match winning as a separate external check and forecasting outcome. A factor can correlate with same-match Net Point Rating yet fail to improve future forecasts. The final four and their weights must satisfy both interpretation and out-of-time validation rather than maximize in-sample fit.
 
+## Final Four Factors success criteria
+
+**User-approved goals, Phase 2B; not established findings.** Seek four interpretable, auditable tennis metrics representing distinct mechanisms of creating an advantage. They must have no exact or near-duplicate relationship, manageable multicollinearity, distinct interpretation and stable incremental information after accounting for the other factors. Require meaningful relationships with Net Point Rating and match winning, direction and usefulness that replicate separately across ATP/WTA, seasons, surfaces and events, and out-of-time evidence of future-match value rather than reproduction of the construction sample.
+
+Zero correlation is neither realistic nor required. Practical modeling independence means no algebraic duplication, no near-redundancy, manageable multicollinearity and stable incremental information; it does not assert probabilistic independence or causality. High same-match correlation alone is insufficient because a candidate can share counts directly with NPR or match outcomes. Normally use one auditable metric per mechanism; any composite requires separate justification and user approval.
+
+Current hypothesis families remain Serve Creation, Second-Serve Security, Return Pressure, and Conversion and Recovery. These names do not guarantee four factors or require one factor per family. If evidence supports only three distinct, stable mechanisms, report three. Revise, replace, split or remove a failed family transparently rather than forcing four.
+
+Current evidence: the Phase 2A hard-court convenience pilots contain 15 candidate-difference columns but rank 10, five exact identities, broad NPR decompositions and no assessable surface or independent season stability. Four independent factors, stable incremental value and freedom from overfitting have not been demonstrated. Later success requires valid broader admitted development evidence, nonredundancy and collinearity checks, multivariable contributions, event/player-aware uncertainty, stability across intended contexts, 2024 validation and the locked 2025 evaluation, followed by the already-prespecified forecasting comparison.
+
+The [Phase 2B definition and selection protocol](docs/four-factors-definition-protocol.md) specifies these future gates and transparent Shapley/LMG-style R-squared allocation; it selects no final factors and fits no coefficients, weights or imputation. All existing eligibility, chronology, overfitting, missing-data comparisons and locked-2025 rules remain in force. Design approval is separate from implementation authority.
+
 ## Elo benchmark
 
 Build Elo in chronological order. Start with overall Elo, surface-specific Elo, and a documented blend that shrinks surface ratings toward overall ratings.
