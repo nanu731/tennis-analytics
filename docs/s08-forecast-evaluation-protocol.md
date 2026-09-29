@@ -1,6 +1,10 @@
 # Phase 2Q: S08 forecasting and paired evaluation protocol
 
-Version 1.0.0. Specification only, from clean `main` at `8caaa5600949867a47b43d7ca122c9b4749e0596`. No model, score or generated output is created. This protocol recommends one model under **SOURCE_LABEL_EVENT_BATCHING_FOR_DEVELOPMENT_SENSITIVITY**. **NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE** remains in force. S02 stays paused; S08 provisional.
+Version 1.1.0. Phase 2R prospective correction; original Phase 2Q specification was from clean `main` at `8caaa5600949867a47b43d7ca122c9b4749e0596`. Phase 2Q created no model, score or generated output. Phase 2R explicitly authorizes implementation of this corrected model under **SOURCE_LABEL_EVENT_BATCHING_FOR_DEVELOPMENT_SENSITIVITY**. **NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE** remains in force. S02 stays paused; S08 provisional.
+
+## Phase 2R prospective structural correction
+
+Recorded before loading outcomes or empirical fitting/scoring, under the explicit Phase 2R user instruction from `72780222565a6fb9e0ea04fe9b5f33955a2ea2ff`: fix the forecast intercept at zero, divide each difference by its training sample SD without mean-centering, and require predictor rank four. Thus eta(-x)=-eta(x) and p(-x)=1-p(x) for every fixed fitted model. No intercept/centering alternatives are compared. All other readiness thresholds, collinearity definitions, calibration rules and evaluation policies remain unchanged. Calibration still fits its diagnostic intercept and slope; that is not a forecast intercept. Pearson/Spearman correlations, centered auxiliary-regression VIF and centered standardized condition indices retain their registered definitions; centering those diagnostics does not center model inputs. The corrected authority is pinned before outcomes are read. Implementation results belong in [the Phase 2R report](s08-paired-evaluation-results.md).
 
 ## Authority and frozen inputs
 
@@ -12,13 +16,13 @@ A later implementation must verify provenance, literal input hashes, unique IDs 
 
 ## One parsimonious model
 
-Fit separate unpenalized ATP and WTA binomial logistic regressions with an intercept. For match i, `y_i=1` when the frozen neutral player A won and 0 otherwise. Predictors, in fixed order, are `dM03`, `dM05`, `dM11`, `dM12`, the saved A-minus-B histories. For each training fold, use `z_ij=(dM_j-mean_train_j)/sd_train_j`, with sample SD (n−1 denominator). Then `eta_i=beta_0+sum_j(beta_j*z_ij)` and `p_A=plogis(eta_i)`. Freeze those training means, SDs and coefficients for the entire target batch.
+Fit separate unpenalized ATP and WTA binomial logistic regressions with the intercept fixed at zero. For match i, `y_i=1` when the frozen neutral player A won and 0 otherwise. Predictors, in fixed order, are `dM03`, `dM05`, `dM11`, `dM12`, the saved A-minus-B histories. For each training fold, use `z_ij=dM_j/sd_train_j`, with sample SD (n−1 denominator). Then `eta_i=sum_j(beta_j*z_ij)` and `p_A=plogis(eta_i)`. Do not mean-center. Freeze those training SDs and coefficients for the entire target batch.
 
 Keep the Phase 2N pooled-count formulas: M03 own first-serve points won / first serves in; M05 own double faults / second-serve opportunities; M11 opponent break points faced / opponent service games; M12 opponent break points converted / faced. M05 remains lower-is-better without reversing its saved difference or imposing a coefficient sign. M12 is conversion/execution, not established resilience or clutch performance. Empty histories and zero-opportunity rates stay undefined. Never recompute a training row's history using information available only at the later fitting cutoff.
 
 Include no interactions, surface/event indicators, nonlinear terms, sign constraints, Elo feature, imputation or history-window choice. Coefficients are forecast parameters, not Dean Oliver importance weights, variance shares or final factor qualifications. Report coefficient signs without selecting a preferred sign after fitting.
 
-Preserve neutral IDs rather than orienting winners into slot A. Because the requested intercept is free, swapping only a target's slots under a fixed fitted model need not complement its probability: this is an explicit orientation limitation. Test global relabeling of both training and target slots, reversing outcomes and differences together, which must complement predictions and preserve paired losses. Do not duplicate matches, suppress the intercept or silently symmetrize predictions. A later change to this convention requires approval.
+Preserve neutral IDs rather than orienting winners into slot A. The zero-intercept, SD-only model guarantees target-slot complementarity. Test isolated target swaps and global relabeling of training and target slots, reversing outcomes and differences together. Do not duplicate matches or compare a fitted-intercept alternative.
 
 ## Whole-batch folds and fixed readiness
 
@@ -28,9 +32,9 @@ The following fixed gates are conventions chosen before fitting, not performance
 
 1. At least **five prior contributing batches**: each counted batch contains at least one complete training match. Empty-feature batches do not count.
 2. At least **100 complete training matches** and **25 outcomes in each A-win class**.
-3. All four predictors finite and nonconstant; finite positive training SDs; intercept-plus-predictor design rank five using base R QR tolerance `1e-7`.
+3. All four predictors finite and nonconstant; finite positive training SDs; four-predictor design rank four using base R QR tolerance `1e-7`.
 4. Apply the registered training-design collinearity diagnostics without changing thresholds: absolute correlation 0.80/0.90 warnings, 0.95 near-redundancy, VIF 5 concern / 10 unacceptable, condition index 30 failure review. For this automatic walk-forward runner, any absolute correlation >=0.95, VIF >=5 or condition index >=30 withholds the fold pending review. Lower warning bands are disclosed, not used to remove features. Record Pearson and Spearman and the strongest applicable disposition. These are conservative forecast-readiness rules, not retrospective changes to Phase 2J.
-5. One base-R `glm(..., family=binomial(link="logit"))` attempt with `epsilon=1e-8`, `maxit=25`; require convergence, full fitted rank, finite coefficients/linear predictors, no boundary flag, no fitting warning, and no detected separation.
+5. One base-R `glm(y ~ 0 + dM03 + dM05 + dM11 + dM12, family=binomial(link="logit"))` attempt with `epsilon=1e-8`, `maxit=25`; require convergence, full fitted rank, finite coefficients/linear predictors, no boundary flag, no fitting warning, and no detected separation.
 
 Use the saved diagnostic approach prospectively: record warnings, convergence, boundary/extreme probabilities, and signed-linear-predictor separation witnesses. For finite fitted eta, let `m_i=(2*y_i-1)*eta_i`. If all margins are >= `-1e-8` and at least one is > `1e-8`, flag a complete/quasi separation indication and fail the fold; report the tolerance as numerical, not a practical-effect threshold. Also fail training fits with any fitted probability <= `1e-8` or >= `1-1e-8` as `EXTREME_TRAINING_PROBABILITY`, without claiming that extremes alone prove separation. Diagnostic errors or unavailable checks fail closed. Test complete and quasi-separated fixtures. A passing status means **NO_SEPARATION_DETECTED_BY_REGISTERED_DIAGNOSTICS**, not a mathematical certificate that separation is absent; finite convergence alone is insufficient. No general separation solver or new dependency is assumed to exist.
 
@@ -75,7 +79,7 @@ Keep paired IDs identical for all three models within each deletion. Zero retain
 
 Unknown actual timing, event overlap and historical availability remain; earlier source labels are an assumption. Retrospective source inclusion/admission, unequal coverage and short ATP history limit generalization. Preserve 2021–2023 development, 2024 validation/model selection and locked 2025. Any later preprocessing, tuning or approved model choice belongs inside chronological training folds; this fixed protocol performs no tuning. No 2024/2025 access or deployable forecasting claim follows.
 
-## Next executable phase and approval
+## Phase 2Q historical next-step recommendation (approved by Phase 2R)
 
 Recommend **Phase 2R: implement the fixed S08 walk-forward runner and paired descriptive evaluation offline in base R**. Freeze input pins and readiness before fitting. Validate training-only scaling/labels, same-date cutoffs, frozen row histories, failure precedence, separated/constant/rank-deficient fixtures, global slot relabeling, stable losses, exact paired masks, both-slot player deletion, full coverage, deterministic reruns and historical preservation. If no fold passes, deliver measured failures and zero scored coverage rather than rescue the model. A next prompt must specify exact tracked files and ignored output scope before execution.
 
@@ -83,7 +87,7 @@ Exact approval language: **“Approve Phase 2R: implement the fixed Phase 2Q S08
 
 Phase 2Q authorizes this specification only. It creates no code, model, score, dependency or generated output. Completed reports retain their historical recommendations and authority fingerprints. Implementation, performance and separation diagnostic adequacy are not claimed verified here.
 
-## Validation record
+## Phase 2Q historical validation record
 
 Focused checks passed for agreement across the four current documents, **17 local links/anchors**, whitespace, exact four-file scope, and unchanged historical status/contract content (apart from the contract current/completed label). The pinned Phase 2N features and Phase 2P probability files retain their SHA-256 hashes and exactly matching 2,580 unique IDs. Independent checks of slot/vector completeness and batch/count readiness reproduce the counts above without loading outcomes, fitting or scoring.
 
