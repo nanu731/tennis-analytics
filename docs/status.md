@@ -6,6 +6,10 @@ Historical Phase 1S completed its bounded preflight with a rights stop. The [rep
 
 Q3/Q4: APPROVED_DOCUMENTATION_PREFLIGHT_ONLY for the completed Phase 1S review, with OTD now paused. Q1/Q2/Q6/Q8/Q9/Q10/Q11: PENDING_USER_APPROVAL. Q5/Q7/Q12: APPROVED_SPECIFICATION_FEASIBILITY_ONLY for the completed Phase 1R scope. The [Phase 1R audit](event-boundary-feasibility.md) still has 40 cells, 3,832 source rows and all 2,377 conditional dependencies blocked. Match-sequential forecasting remains the primary target; no event-entry role or lag is selected. Operational chronology and event-entry batching remain NOT_IMPLEMENTED; canonical population NOT_IMPLEMENTED; event admission NOT_EVALUATED; modeling authorization FALSE; publication BLOCKED_PENDING_RIGHTS_REVIEW. Montreal inventory remains COMPLETE, 14/14 criteria; completed count coverage remains 49/49 with separate recovery bundles.
 
+Repository workflow now uses progressive disclosure: routine tasks read this current snapshot only, then open named historical sections or artifacts when the requested work depends on them. The scientific record below remains preserved.
+
+<!-- CURRENT_SNAPSHOT_END -->
+
 Phase 1P remains STAGE_A_STOPPED_RIGHTS: its one exact WTA terms GET returned readable HTTP 200 without redirect. Access for the proposed programmatic research mode is PROHIBITED; local retention remains AMBIGUOUS_STOP_REQUIRED. Request two was not permitted or attempted. A1–A4, A9 and A10 were approved only for Stage A; A5–A8 and later stages remain pending. The permission draft is unsent; [Stage A evidence](wta-2021-montreal-chronology-stage-a.md) and chronology policy 1.0.0 remain unchanged.
 
 ## Completed and verified
