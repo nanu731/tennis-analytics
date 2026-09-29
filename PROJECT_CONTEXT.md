@@ -22,6 +22,12 @@ Being wrong during development is acceptable. Concealing a failed idea, keeping 
 
 Iteration must stay inside the evaluation design. Develop candidate measures and models with 2021–2023, compare prespecified choices with 2024, and freeze the full pipeline before viewing 2025 outcomes. A coding defect discovered after freezing should be fixed and disclosed. Do not use the locked test results to redesign the model and then present the same test as untouched evidence.
 
+## Occam’s razor
+
+> Start with the simplest method that can answer the research question. Add a feature, rule, adjustment, data source, or model component only when it fixes a demonstrated problem or earns a stable out-of-time improvement. Remove complexity that does not earn its place.
+
+**Adopted in Phase 2G.** Apply this rule to factor selection, Elo design, imputation, data sources, testing and future model extensions. Retain the smallest interpretable candidate comparison; add Elo rules or model components only for a named defect or stable chronological gain; introduce imputation only for an actual eligible missingness problem; add sources only for an unresolved evidence need. Test substantive invariants and affected behavior, and preserve historical version boundaries instead of repeatedly rerunning unrelated full suites. Simplicity never waives rights, scientific validity, retirement exclusions or leakage safeguards. Three supported factors are better than four forced factors.
+
 ## Fixed research scope
 
 Analyze ATP and WTA separately across these ten event families:
@@ -59,7 +65,7 @@ Assess stability across seasons, surfaces, events, ATP, and WTA. Report uncertai
 
 **Approved standing guidance, Phase 1S, 2026-09-28; not implemented.** Avoiding overfitting is a requirement to demonstrate through chronological out-of-sample validation, not a result to claim in advance. Factor selection, transformations, weights, Elo settings, and imputation choices must use development data and 2024 validation only. Freeze the complete pipeline before inspecting 2025 outcomes.
 
-Future missing-data analysis must distinguish structural, sporadic, and eligibility-related missingness. When modeling is authorized, formally compare:
+Future missing-data analysis must distinguish structural, sporadic, and eligibility-related missingness. Phase 2G prospectively refines the earlier blanket comparison requirement: begin with no imputation or appropriate complete cases. Only an actual admitted sporadic-missingness problem justifies further comparison, using the simplest defensible alternatives from the approved menu below; do not automatically implement every method. Structural opportunity gaps, excluded records and absent matches are not imputation targets. When such a comparison is separately authorized, its menu remains:
 
 - No imputation or appropriate complete-case analysis.
 - Mean imputation.
@@ -109,7 +115,7 @@ Use missing values when a denominator is unavailable. Account for opponent stren
 
 Begin factor weighting with interpretable multiple linear regression, using Net Point Rating as the tennis analogue of net performance. Standardize predictors before comparing their contributions. Do not publish raw coefficients as importance weights when predictors use different scales or share variance. Estimate each factor's share of explained variation with uncertainty, then test whether the weights remain stable across ATP, WTA, surfaces, seasons, and reasonable model specifications.
 
-Use match winning as a separate external check and forecasting outcome. A factor can correlate with same-match Net Point Rating yet fail to improve future forecasts. The final four and their weights must satisfy both interpretation and out-of-time validation rather than maximize in-sample fit.
+Use match winning as a separate external check and forecasting outcome. A factor can correlate with same-match Net Point Rating yet fail to improve future forecasts. The final supported factor set and its weights must satisfy both interpretation and out-of-time validation rather than maximize in-sample fit.
 
 ## Final Four Factors success criteria
 
@@ -119,9 +125,21 @@ Zero correlation is neither realistic nor required. Practical modeling independe
 
 Current hypothesis families remain Serve Creation, Second-Serve Security, Return Pressure, and Conversion and Recovery. These names do not guarantee four factors or require one factor per family. If evidence supports only three distinct, stable mechanisms, report three. Revise, replace, split or remove a failed family transparently rather than forcing four.
 
-Current evidence: the Phase 2A hard-court convenience pilots contain 15 candidate-difference columns but rank 10, five exact identities, broad NPR decompositions and no assessable surface or independent season stability. Four independent factors, stable incremental value and freedom from overfitting have not been demonstrated. Later success requires valid broader admitted development evidence, nonredundancy and collinearity checks, multivariable contributions, event/player-aware uncertainty, stability across intended contexts, 2024 validation and the locked 2025 evaluation, followed by the already-prespecified forecasting comparison.
+Historical Phase 2A evidence: the hard-court convenience pilots contain 15 candidate-difference columns but rank 10, five exact identities, broad NPR decompositions and no assessable surface or independent season stability. Four independent factors, stable incremental value and freedom from overfitting have not been demonstrated. Later success requires valid broader admitted development evidence, nonredundancy and collinearity checks, multivariable contributions, event/player-aware uncertainty, stability across intended contexts, 2024 validation and the locked 2025 evaluation, followed by the already-prespecified forecasting comparison.
 
-The [Phase 2B definition and selection protocol](docs/four-factors-definition-protocol.md) specifies these future gates and transparent Shapley/LMG-style R-squared allocation; it selects no final factors and fits no coefficients, weights or imputation. All existing eligibility, chronology, overfitting, missing-data comparisons and locked-2025 rules remain in force. Design approval is separate from implementation authority.
+The [Phase 2B definition and selection protocol](docs/four-factors-definition-protocol.md) specifies these future gates and transparent Shapley/LMG-style R-squared allocation; it selects no final factors and fits no coefficients, weights or imputation. Existing eligibility, chronology, overfitting and locked-2025 safeguards remain in force. Phase 2G explicitly refines the imputation-comparison trigger above and the prospective admission estimand below; historical protocol text and results remain unchanged. Design approval is separate from implementation authority.
+
+## Phase 2G provisional candidates and data standard
+
+**Adopted design; broader admission not implemented.** Retain only **S02 = M01 + M05 + M11 + M12** and **S08 = M03 + M05 + M11 + M12** as provisional primary alternatives. M05 is the clearest second-serve-security interpretation; M11 is provisional return pressure; M12 is break-point conversion or execution, not established recovery, resilience or clutch performance. M01 is more mechanism-focused but had weak or unstable incremental evidence; M03 was stronger in the pilot but is more outcome-coupled. Chronological validation must decide whether its extra value is stable.
+
+Pause S01/S03/S07/S09 because M04/M06 add interpretive complexity without demonstrated stable out-of-time value over M05; preserve their definitions and results. M02 and S04–S06 stay paused for the ATP/WTA conditional-sign reversal. M07 remains a sensitivity, M08/M15 benchmarks, and no final factors, weights or practical-effect thresholds are selected. The historical Conversion and Recovery family name does not confer those properties on M12.
+
+**ADOPT_SOURCE_DEFINED_MODELING_COHORT:** future development may target eligible records present in an authorized, pinned source, conditional on source inclusion, conservatively classified source-reported normal completion, reliable identity/context and valid required statistics. Missing matches remain absent and cannot be imputed or presented as complete tournament coverage. Require reproducible inclusion/exclusion reasons and honest cell/field/selection reporting. Source-reported completion is not independent official confirmation; known conflicts, ambiguous status, retirements, walkovers, incomplete matches and invalid bundles remain excluded. Safe chronology remains a separate prerequisite for forecasting.
+
+This is an explicit prospective estimand change, not a lower historical threshold. The official-reconciliation standard and 90% event / 95% full-panel tour-season gates remain for complete-event/full-panel admission claims; their frozen results are unchanged and source-row denominators cannot pass them. No replacement percentage gate, new source, panel change or split change is adopted. Actual broader breadth, eligibility and rights remain to be audited; no new cell is admitted here.
+
+The [Phase 2G decision](docs/occam-candidate-and-data-decision.md) gives the ordered rationale and exact next approval: **Phase 2H source-record admission audit**, limited to the saved Phase 2F-pinned ATP 2023 and WTA 2021/2023 files within the ten-family panel, producing actual auditable dispositions and measured breadth. This future implementation requires separate approval; it calculates no candidate metrics or models and does not resume acquisition.
 
 ## Elo benchmark
 
@@ -161,10 +179,10 @@ The `tennis-analytics` repository owns the research and reproducible outputs. Th
 
 ## Sources of truth
 
-- `AGENTS.md` defines how Codex must work in this repository.
+- `AGENTS.override.md` supplies active workflow instructions; `AGENTS.md` is the preserved detailed reference.
 - `PROJECT_CONTEXT.md` defines the stable research purpose and methodological direction.
 - `docs/status.md` records the current completed phase, blockers, and next decision.
 - `docs/data-source-contract.md` defines data provenance, validation, rights, and eligibility boundaries.
 - Adopted policy documents govern only their stated versions and scopes.
 
-Read docs/status.md before starting a new phase. Keep every affected source-of-truth document current and distinguish approved design, implemented behavior and remaining decisions. The completed-match-only population and primary Elo rules are approved; their analytical implementation remains future work.
+Read docs/status.md only through CURRENT_SNAPSHOT_END for routine work, then consult named historical sections when needed. Keep every affected source-of-truth document current and distinguish approved design, implemented behavior and remaining decisions. The completed-match-only population and primary Elo rules are approved; their analytical implementation remains future work.
