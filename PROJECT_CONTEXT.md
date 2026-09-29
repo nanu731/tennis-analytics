@@ -55,7 +55,7 @@ Do not inspect 2025 performance while choosing formulas, thresholds, features, E
 
 ## Generalization and leakage
 
-Design every method for future use rather than for reproducing the observed seasons. Every prediction must use only information available before the match.
+Design every method for future use rather than for reproducing the observed seasons. Verified historical or operational predictions must use only information available before the match. Phase 2L separately adopts the source-label development sensitivity below: earlier source batches define assumed availability solely for that labeled analysis, without establishing actual pre-match availability or relaxing verified-forecast evidence gates.
 
 Required protections include chronological processing, lagged features, pre-match ratings, outcome-neutral player orientation, and tests that fail when future information enters a feature. Choose among reasonable specifications with development data and 2024 validation. Do not keep changing the method after seeing 2025 results.
 
@@ -149,11 +149,21 @@ The [Phase 2G decision](docs/occam-candidate-and-data-decision.md) preserves the
 
 M03 remains outcome-coupled, M05 second-serve security, M11 provisional return pressure and M12 conversion/execution. No shared-family revision, final factor selection or weights are implemented. `UNCERTAINTY_NOT_ESTABLISHED` applies: no validated player-and-event-aware intervals, IID inferential substitutes or practical-effect margin. ATP season stability and future-match value are unavailable. Source-defined sampling, count exclusions and zero-opportunity selection remain limitations.
 
-**Next recommended approval:** Phase 2K offline chronology and pre-match availability audit of the frozen 2,580 IDs and already authorized saved evidence, producing a temporal-evidence ledger and aggregate report. Distinguish actual match timestamps from event start dates; report ordering gaps without inventing times, acquisition, histories or predictive fitting. The report gives the exact approval text; no successor work is authorized by completing Phase 2J. Separate approval remains required for interval methods, factor revisions and forecasting implementation.
+**Completed successor:** the [Phase 2K audit](docs/pre-match-chronology-audit.md) returned **NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE** for all 2,580 matches. Its evidence finding and historical recommendations remain unchanged. Phase 2L adopts only the separate source-label sensitivity convention below; no history or forecast implementation follows from that adoption.
+
+## Phase 2L source-label development convention
+
+**SOURCE_LABEL_EVENT_BATCHING_FOR_DEVELOPMENT_SENSITIVITY — adopted, not implemented.** The explicit Phase 2L prompt approves [the convention and acceptance criteria](docs/source-label-event-batching-decision.md). Analyze ATP and WTA separately. Each `(tour, source tourney_date)` is one event batch; events sharing a source date are simultaneous. Freeze every target match's features before its batch and use only eligible information from strictly earlier source dates. No within-event rating or factor-history updates; update eligible results after the complete batch, processing same-date events together without order-dependent intermediate state. Four Factors and surface Elo must use identical information cutoffs.
+
+Retirements, walkovers, quarantined records and all other frozen exclusions cannot update histories/ratings. Do not calculate elapsed-time features, inactivity adjustments or time decay. Fit preprocessing and later model choices inside chronological training folds only, with entire batches kept together. Label all results as source-label development sensitivities, never verified historical or deployable forecasts. Missing/invalid labels and empty histories must be explicit; no inferred timestamps or raw repairs.
+
+This is an assumed information schedule. Different-label events may overlap and historical result/statistics availability remains unknown; Phase 2K's **NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE** still governs verified forecasting. Preserve S02's pause, S08's provisional status, all frozen membership/exclusions and historical releases. No new source/year, OTD work, dependency, history, model or portfolio work is authorized in this documentation phase. Separate implementation approval remains necessary.
+
+**Next bounded implementation:** Phase 2M offline base-R batch-key and candidate history-membership builder for all 2,580 frozen targets, identifying strictly earlier-batch eligible match IDs for both players with no selected history window, factor aggregation, rating or model. The decision document gives exact approval language and checks for complete accounting, tied-date exclusion, permutation/slot invariance and deterministic output. Later history aggregation, initialization, synchronous Elo arithmetic and model/fold choices remain unspecified.
 
 ## Elo benchmark
 
-Build Elo in chronological order. Start with overall Elo, surface-specific Elo, and a documented blend that shrinks surface ratings toward overall ratings.
+Build verified-forecast Elo in evidenced chronological order. Any separately approved Phase 2L development sensitivity instead follows its simultaneous source-label batch convention and identical cutoffs for the comparison models. Start with overall Elo, surface-specific Elo, and a documented blend that shrinks surface ratings toward overall ratings.
 
 Treat the first Elo implementation as a benchmark, not an untouchable final model. Check rating initialization, update size, surface blending, inactivity, match format, calibration, and cold-start behavior. Correct implementation errors when found. Compare justified alternatives with development and 2024 validation, record unsuccessful changes, and keep an added rule only when it produces a stable improvement or fixes a documented conceptual problem.
 
