@@ -399,7 +399,19 @@ The protocol requires twenty-cell inventory reporting, permits resolution of inc
 
 SELECTION_UNRESOLVED, S02 paused, S08 provisional, M05_CROSS_TOUR_DIRECTION_REQUIREMENT_NOT_SATISFIED and UNCERTAINTY_NOT_ESTABLISHED persist, with source-label/chronology limitations. Membership, raw sources, admission rules, protocol and historical releases remain unchanged.
 
-**Next requiring approval:** Phase 2AJ batch-key and candidate-history membership construction only for the unchanged 1,878 admitted records, under the [exact approval](docs/2025-source-conflict-review.md#one-bounded-next-approval). Preserve earlier-batch cutoffs, neutral slots, empty histories and exclusions; no feature aggregation, rating, fitting or scoring authority follows.
+**Completed successor:** Phase 2AJ below implements the approved membership inventory without changing the admission or claim-scope decision.
+
+## Phase 2AJ locked 2025 candidate history membership
+
+**2025_EVENT_BATCH_MEMBERSHIP_BUILT**, release 2AJ-1.0.0. The [audit](docs/2025-event-batch-membership-audit.md) accounts for all 1,878 targets / 3,756 neutral slots. Exact-player, same-tour memberships use all frozen admitted development and 2024 v2 records plus strictly earlier admitted 2025 source-date batches. Original IDs and three cohort-qualified namespaces coexist; equal-date events are simultaneous. Context-only readers skip outcomes, scores and statistical components. No admission or historical release changes.
+
+Measured: 146,374 links and 102 empty placeholders. ATP has 68,604 links (23,435 development / 30,204 2024 / 14,965 earlier-2025) and 59 empty slots; WTA has 77,770 (39,213 / 26,738 / 11,819) and 43 empties. Median/maximum slot depths are 30/108 ATP and 39/163 WTA. All 105 eligible 2024 PM-context records contribute, totaling 3,533 links; the five historical Toronto retirements contribute zero. All 190 blocked 2025 WTA PM and six ATP format-conflict rows contribute zero.
+
+There are eighteen admitted batches/cells, with all twenty expected cells retained in summaries. WTA Canada/Cincinnati each have zero targets and 95 exclusions; no full-ten-family WTA claim. Every output states **2025 locked source-label final-test sensitivity**, NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE and UNCERTAINTY_NOT_ESTABLISHED. Source-label timing/availability, missing 2022, unequal histories and official recall UNKNOWN remain. S02 paused, S08 provisional and the failed M05 cross-tour requirement remain binding.
+
+The three ignored outputs are target-batches.csv, candidate-history-membership.csv and summary.csv. The 559 focused checks and four installed-output checks pass; no membership issue was found. No factor aggregation, rating, fitting, scoring, acquisition, dependency, OTD, portfolio or publication work occurred.
+
+**Next requiring approval:** one combined Phase 2AK for frozen S08 history aggregation and primary surface/overall-only Elo probabilities, using the report's [exact approval](docs/2025-event-batch-membership-audit.md#limits-and-one-combined-next-approval) and a separately specified file/output scope. Reconcile carried Phase 2AE terminal states; preserve all frozen formulas, cutoffs, targets and limitations. Fitting and scoring remain outside that phase.
 
 ## Data and publication boundaries
 
