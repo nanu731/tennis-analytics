@@ -411,7 +411,19 @@ There are eighteen admitted batches/cells, with all twenty expected cells retain
 
 The three ignored outputs are target-batches.csv, candidate-history-membership.csv and summary.csv. The 559 focused checks and four installed-output checks pass; no membership issue was found. No factor aggregation, rating, fitting, scoring, acquisition, dependency, OTD, portfolio or publication work occurred.
 
-**Next requiring approval:** one combined Phase 2AK for frozen S08 history aggregation and primary surface/overall-only Elo probabilities, using the report's [exact approval](docs/2025-event-batch-membership-audit.md#limits-and-one-combined-next-approval) and a separately specified file/output scope. Reconcile carried Phase 2AE terminal states; preserve all frozen formulas, cutoffs, targets and limitations. Fitting and scoring remain outside that phase.
+**Completed successor:** Phase 2AK below implements both approved constructions without fitting or scoring.
+
+## Phase 2AK locked 2025 features and Elo
+
+**2025_FEATURES_AND_ELO_CONSTRUCTED**, release 2AK-1.0.0. The [audit](docs/2025-feature-elo-construction-audit.md) pools all 146,374 frozen Phase 2AJ links into 3,756 slots / 1,878 targets and constructs both frozen Elo benchmarks. The complete development and Phase 2AE replays match saved bytes; combined terminal chains reconcile exactly, including untouched development states. No prior vector, admission or historical release changes.
+
+Full-S08 both/one/neither strata are **951/60/0 ATP and 826/39/2 WTA**. Reduced-component completeness equals 951/826, with both candidates still restricted to full-S08-complete eligibility. Empty histories remain 59/43 slots; one additional ATP M12 zero denominator remains undefined. Six WTA M11 rates exceed one (maximum 1.1470588), uncapped. M05 stays lower-is-better with unreversed neutral differences. No imputation, window or weighting.
+
+Both Elo probabilities are finite for all 1,878 targets, including 101 factor-incomplete targets. Overall/surface cold slots are 59/154 ATP and 43/106 WTA. Saved states continue without reset; initialization 1500, scale 400, K=32, blend 0.5G+0.5S and independent component expectations remain frozen. Every simultaneous batch uses pre-batch ratings and summed post-batch deltas. The 3,900 update rows balance within the existing 1e-10 tolerance; no clipping, fit, loss or calibration calculation occurs.
+
+All twenty expected cells remain reported; WTA Canada/Cincinnati have zero targets. The 2025 locked source-label final-test sensitivity label, NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE, UNCERTAINTY_NOT_ESTABLISHED, S02 paused, S08 provisional and M05_CROSS_TOUR_DIRECTION_REQUIREMENT_NOT_SATISFIED remain binding. No full-panel WTA claim or final Four Factors qualification. Five ignored outputs are installed; 263 focused plus six installed-output checks pass, with historical artifacts preserved.
+
+**Next requiring approval:** Phase 2AL locked factor fitting and four-method final evaluation under the unchanged protocol and the report's [exact approval](docs/2025-feature-elo-construction-audit.md#limits-and-one-next-approval). Use original prior training vectors, identical full-S08 eligibility, frozen Phase 2AK inputs and every locked readiness/comparison/failure rule. Define its exact file/output scope separately; no tuning, rescue or model selection.
 
 ## Data and publication boundaries
 
