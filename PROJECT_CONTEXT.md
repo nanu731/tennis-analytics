@@ -361,7 +361,21 @@ All 20 batch and 344 both-slot player deletions are evaluable; no paired compari
 
 **SOURCE_LABEL_EVENT_BATCHING_FOR_DEVELOPMENT_SENSITIVITY**, **NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE** and **UNCERTAINTY_NOT_ESTABLISHED** persist. No confidence intervals or p-values. Source selection, unverified availability/overlap, missing 2022 and unequal histories remain. Protocol, admissions, histories, Elo and historical releases are immutable. No tuning, rescue, acquisition, 2025 access, dependency, OTD, portfolio or publication work.
 
-**Next requiring approval:** Phase 2AG documentation-only pipeline freeze and locked final-test protocol, retaining both roles and the failed M05 interpretation requirement. Use the [results' exact approval](docs/2024-validation-results.md#limitations-and-one-next-approval) with separately defined documentation scope. No final-test data, URL, metadata, schema or result access follows.
+**Completed successor:** Phase 2AG below freezes the final-test pipeline without accessing 2025; the Phase 2AF release and interpretation failure remain unchanged.
+
+## Phase 2AG locked final-test freeze
+
+**2025_LOCKED_FINAL_TEST_PROTOCOL_FROZEN_PENDING_DATA_AUTHORIZATION.** The [locked protocol](docs/2025-locked-final-test-protocol.md) freezes full S08, reduced M03/M11/M12, primary surface Elo and overall-only sensitivity. SELECTION_UNRESOLVED persists; 2025 evaluates both scientific roles without selecting, tuning or redesigning them. S02 paused, S08 provisional. M05_CROSS_TOUR_DIRECTION_REQUIREMENT_NOT_SATISFIED remains binding even if future signs, losses or calibration are favorable; this pipeline cannot confer final Four Factors qualification.
+
+The same panel/admission gates apply; the exact 2024 WTA PM exception cannot transfer to 2025. Source-label same-date batches remain simultaneous. Carry admitted development/2024 histories without reset, original complete training vectors, and reconciled Phase 2AE terminal overall/surface states including untouched development states. Add eligible 2025 results only after complete earlier batches. Both factor models use full-S08 eligibility, zero intercept and training-SD-only scaling with frozen readiness/numerical gates; Elo parameters and synchronous updates are unchanged. No imputation, rescue, decay or within-batch updates.
+
+Use one four-method common mask, separate tours, natural-log loss and Brier. Each candidate receives a lower locked-test loss label versus primary surface Elo only when both losses are strictly lower in both tours, all required gates pass and every whole-batch deletion preserves strict direction; the symmetric condition favors Elo. Any mixed result, tie (including deletion ties), failure, missing/nonfinite comparison or unevaluable deletion yields LOCKED_TEST_LOSS_COMPARISON_MIXED_OR_UNRESOLVED. This prospective rule preserves the historical 2024 convention unchanged. Overall-only remains sensitivity, never a replacement primary benchmark.
+
+Calibration remains descriptive under frozen support gates: DESCRIPTIVELY_BETTER_CALIBRATION_THAN_SURFACE_ELO requires no larger absolute intercept or absolute slope deviation from one, with at least one strictly closer in each tour. Otherwise CALIBRATION_COMPARISON_UNRESOLVED. All-target coverage, fixed-.5 accuracy, batch and both-slot player deletions, failures and coding-defect disclosures remain required. No statistical-superiority claim or final factor approval; UNCERTAINTY_NOT_ESTABLISHED and source-label/chronology limitations persist.
+
+Planned ATP/WTA 2025 annual names extend the saved naming convention at revision 83733587353df8a41f2fd4f516147d5aa83f5a8d; existence, rights recheck, metadata, schema, hashes, coverage and contents remain NOT_ACCESSED_PENDING_AUTHORIZATION. No 2025 probe, generated output or historical revision occurred.
+
+**Next requiring approval:** Phase 2AH bounded source acquisition and admission audit only, under the [exact approval](docs/2025-locked-final-test-protocol.md#next-acquisition-only-approval) and a separately specified file/output/request scope. No histories, ratings, fitting or scoring follows from admission readiness.
 
 ## Data and publication boundaries
 
