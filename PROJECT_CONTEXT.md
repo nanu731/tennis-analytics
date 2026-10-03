@@ -325,7 +325,17 @@ Measured: ATP 41,138 links (26,324 development / 14,814 earlier-2024), 71 empty 
 
 Three ignored outputs contain target batches, candidate memberships and summaries. This is **SOURCE_LABEL_EVENT_BATCHING_FOR_DEVELOPMENT_SENSITIVITY**; **NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE** and **UNCERTAINTY_NOT_ESTABLISHED** persist. Membership is not verified historical availability. S02 paused, S08 provisional, canonical M05 unchanged; no aggregation, rating, fit, scoring, acquisition, 2025, OTD or portfolio work.
 
-**Next requiring approval:** Phase 2AD pools cumulative S08 component counts only from these frozen memberships, preserving all targets/slots and undefined empty or zero-opportunity rates under registered formulas. Use the report's exact approval and a separately specified scope; no Elo or model work follows automatically.
+**Completed successor:** Phase 2AD below aggregates the frozen memberships with registered S08 formulas. Ratings and models remain separate work.
+
+## Phase 2AD 2024 S08 cumulative histories
+
+**2024_S08_BATCH_HISTORIES_AGGREGATED.** The [report](docs/2024-s08-batched-history-aggregation.md) preserves all 1,901 targets / 3,802 neutral slots and 101,983 frozen earlier-batch contributions. Phase 2N component/ownership/pooling functions are reused after exact Phase 2AC validation. Qualified count keys preserve cohort distinction; original output IDs remain unchanged. Pool own first-serve wins/in (M03), own double faults/second-serve opportunities (M05), opponent break points faced/service games (M11), and opponent break points converted/faced (M12), then form neutral A-minus-B differences.
+
+ATP: M03/M05/M11 each available for 1,817 slots / 875 differences; M12 1,813 slots / 871 differences. WTA: all four available for 1,869 slots / 912 differences. Full-S08 and reduced-component completeness are both 871 ATP / 912 WTA (1,783 total); both future candidates retain the full-S08-complete feature criterion, plus later fold gates. All 118 incomplete targets remain. Empty histories: 71 ATP / 45 WTA; four additional ATP M12 zero-opportunity slots stay undefined. Thirty WTA M11 rates exceed one (maximum 1.25), uncapped. Median/max history depths remain 19/71 ATP and 27/115 WTA.
+
+M05 remains **Double-Fault Rate per Second-Serve Opportunity**, lower-is-better and unreversed, with unresolved tour-specific forecast interpretation. No weight, smoothing, imputation, window, decay or replacement factor is introduced. S02 paused, S08 provisional; **SOURCE_LABEL_EVENT_BATCHING_FOR_DEVELOPMENT_SENSITIVITY**, **NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE** and **UNCERTAINTY_NOT_ESTABLISHED** persist. Frozen admissions, memberships and historical releases are unchanged. No rating, fit, scoring, acquisition, 2025, dependency, OTD or portfolio work.
+
+**Next requiring approval:** Phase 2AE implements only the frozen 2024 event-batched surface-Elo and overall-only benchmarks, carrying forward verified Phase 2P terminal states with synchronous updates and full-S08 coverage strata. No tuning, factor fitting or scoring. Use the report's exact approval and separately specified scope.
 
 ## Data and publication boundaries
 
