@@ -305,7 +305,17 @@ Saved evidence uniquely links 55 Toronto records (2024-806, source date 20240805
 
 All 110 retain level_conflict in Phase 2Z. Of these, 105 have no other saved exclusion; five Toronto retirements also retain status and unevaluable-game reasons. This reason accounting does not create new admissions. The frozen release remains 1,796 admitted with two wholly blocked cells and official recall UNKNOWN. No membership, code, data, manifest, test, factor or model changes. S02 paused, S08 provisional; M05 naming/formula unchanged. **UNCERTAINTY_NOT_ESTABLISHED**, **SOURCE_LABEL_EVENT_BATCHING_FOR_DEVELOPMENT_SENSITIVITY** and **NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE** persist; 2025 remains inaccessible.
 
-**Next requiring approval:** Phase 2AB implements only this exact context exception in a new versioned admission release, preserves Phase 2Z byte-for-byte and validates the disposition delta plus all twenty cells. Use the decision's exact approval and a separately specified implementation scope. Histories, ratings, fitting, scoring, acquisition, OTD, dependencies and portfolio work remain outside authority.
+**Completed successor:** Phase 2AB below implements this exact exception in a separate release, preserving Phase 2Z and all independent gates.
+
+## Phase 2AB revised 2024 source admission
+
+**2024_SOURCE_COHORT_READY_FOR_HISTORY_BUILD.** The [report](docs/2024-source-admission-v2.md) documents release 2AB-2.0.0 from the same verified saved sources. All four exception keys must match: WTA, 2024, frozen Canada/Cincinnati family, raw PM. Literal PM is retained without semantic or global-equivalence claims. Every other admission rule is rerun unchanged; the original six Phase 2Z tables must reproduce byte-for-byte first.
+
+Measured delta: exactly 110 level-conflict reasons removed, 105 newly admitted, five Toronto retirements still excluded with all independent reasons; zero changed ATP or other WTA rows. Revised ATP 944 admitted / 54 excluded and WTA 957 / 41 give 1,901 admissions and 95 exclusions from 1,996 panel records. All twenty cells contain admissions; no absent or wholly blocked cell. Retention 94.59% ATP / 95.89% WTA is source-record retention, not official coverage; official recall UNKNOWN. Phase 2Z remains frozen at 1,796 admissions and its historical partial-review result.
+
+Only the new runner, tests, report and six ignored v2 outputs are created, alongside these current-document updates. Existing code, tests, manifest, raw files, protocol, reports and releases remain unchanged. S02 paused, S08 provisional, canonical M05 unchanged; **UNCERTAINTY_NOT_ESTABLISHED**, **SOURCE_LABEL_EVENT_BATCHING_FOR_DEVELOPMENT_SENSITIVITY** and **NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE** persist. No history, rating, fit, score, 2025, acquisition, dependency, OTD or portfolio work.
+
+**Next requiring approval:** Phase 2AC builds only source-label batch keys and candidate history memberships for the frozen v2 cohort, using admitted development and strictly earlier admitted 2024 same-tour batches, preserving simultaneous dates and cold starts. No factor aggregation or ratings. Use the report's exact approval and a separately defined scope; readiness is not authorization.
 
 ## Data and publication boundaries
 
