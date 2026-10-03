@@ -245,9 +245,21 @@ Phase 2V completes the terminology adoption. It does not establish future utilit
 
 ATP historical forecast coefficients are negative and WTA coefficients positive. This association remains tour-specific and unqualified; positive WTA coefficients do not imply that double faults improve performance. The clarification does not resolve forecast instability or qualify M05. S02 stays paused and S08 provisional. All historical models, coefficients, predictions, results and terminology remain preserved; only current naming/role guidance changes.
 
-Recommend Phase 2W, a bounded development-only M05 ablation using frozen Phase 2R full-model predictions and a separately approved reduced M03/M11/M12 fit on identical training IDs/cutoffs. Compare paired forecast losses on identical eligible scored IDs, preserve all-target coverage, retain failures and adapt only the rank requirement to three predictors. This addresses missing M05-specific incremental forecast evidence; it is not implemented or authorized by Phase 2V and would not waive interpretation or final qualification gates. The decision contains the exact approval and bounded scope; the next prompt must define implementation files and tests. No factor-status change or new threshold follows automatically.
+Phase 2W now implements that bounded development-only ablation under its explicit instruction, as recorded below. The Phase 2V decision preserves its historical recommendation and proposed difference orientation; Phase 2W explicitly registers reduced minus full S08 before fitting. No factor-status change, qualification waiver or new threshold follows automatically.
 
 **UNCERTAINTY_NOT_ESTABLISHED**, **SOURCE_LABEL_EVENT_BATCHING_FOR_DEVELOPMENT_SENSITIVITY** and **NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE** persist, with 2024 validation and locked 2025 untouched. No model is refitted or score recomputed by the clarification.
+
+## Phase 2W M05 ablation
+
+**M05_ABLATION_MIXED.** [The results](docs/m05-ablation-results.md) compare one reduced M03/M11/M12 model with frozen full-S08 predictions, separately by tour. The user-approved classification was registered before empirical fitting: both losses positive in both tours means full descriptively better; both negative means reduced descriptively better; ties, mixed directions or failed tour comparisons mean mixed. Differences are **reduced minus full S08**; negative favors reduced. No practical margin, new sign rule or superiority inference is introduced.
+
+All eighteen reduced fits pass the unchanged safeguards with rank three, zero intercept and training-SD-only scaling. The exact Phase 2R training IDs, eighteen attempted folds, 1,278 scored IDs and source-batch cutoffs are preserved. All 2,580 targets remain in coverage; original reasons for twelve never-attempted folds and 1,302 nonpredictions remain visible. No new row becomes eligible because M05 is removed. No full model is refitted.
+
+ATP (211 pairs) reduced-minus-full log loss/Brier are **+0.000036952014 / +0.000023825914**; WTA (1,067) **−0.000759150161 / −0.000408917587**. ATP signs reverse under two batch deletions and 33/29 player deletions (log loss/Brier). WTA log loss reverses under one batch deletion; Brier under none, and neither under any player deletion. WTA 2021 favors full on both losses while 2023 favors reduced. These are dependent descriptive score deletions, not refits or uncertainty intervals.
+
+M05 remains **Double-Fault Rate per Second-Serve Opportunity**, lower-is-better within the broader Second-Serve Security candidate family; no label, formula, status or historical prediction changes. S02 stays paused and S08 provisional. **UNCERTAINTY_NOT_ESTABLISHED**, **SOURCE_LABEL_EVENT_BATCHING_FOR_DEVELOPMENT_SENSITIVITY** and **NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE** remain. The mixed ablation does not resolve the WTA performance-direction conflict, establish a causal effect or qualify either candidate for final use. 2024 validation and locked 2025 remain untouched.
+
+Recommend Phase 2X, a bounded pre-validation candidate decision from the frozen evidence under existing interpretation and selection rules: decide which already-tested candidates, if any, may advance to a separately approved 2024 protocol. The report gives exact approval wording; a later prompt must define documentation scope. No additional fit, model search, status change or validation access is authorized automatically.
 
 ## Data and publication boundaries
 
