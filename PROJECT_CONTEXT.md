@@ -315,7 +315,17 @@ Measured delta: exactly 110 level-conflict reasons removed, 105 newly admitted, 
 
 Only the new runner, tests, report and six ignored v2 outputs are created, alongside these current-document updates. Existing code, tests, manifest, raw files, protocol, reports and releases remain unchanged. S02 paused, S08 provisional, canonical M05 unchanged; **UNCERTAINTY_NOT_ESTABLISHED**, **SOURCE_LABEL_EVENT_BATCHING_FOR_DEVELOPMENT_SENSITIVITY** and **NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE** persist. No history, rating, fit, score, 2025, acquisition, dependency, OTD or portfolio work.
 
-**Next requiring approval:** Phase 2AC builds only source-label batch keys and candidate history memberships for the frozen v2 cohort, using admitted development and strictly earlier admitted 2024 same-tour batches, preserving simultaneous dates and cold starts. No factor aggregation or ratings. Use the report's exact approval and a separately defined scope; readiness is not authorization.
+**Completed successor:** Phase 2AC below implements only candidate membership for the frozen v2 targets. Factor aggregation, ratings and models remain separate work.
+
+## Phase 2AC 2024 candidate history membership
+
+**2024_EVENT_BATCH_MEMBERSHIP_BUILT.** The [audit](docs/2024-event-batch-membership-audit.md) covers all 1,901 targets / 3,802 neutral slots in twenty tour/source-date batches. All admitted same-tour development matches involving the player, plus strictly earlier admitted 2024 batches, are eligible candidates. Equal-date events are simultaneous; no window, surface restriction or within-batch order applies. Original match IDs stay intact with additional DEVELOPMENT/VALIDATION_2024-qualified keys. Selection uses frozen linkage and labels, not target outcomes or statistics.
+
+Measured: ATP 41,138 links (26,324 development / 14,814 earlier-2024), 71 empty slots, median/max depth 19/71; WTA 60,845 (46,625 / 14,220), 45 empty slots, median/max 27/115. Total 101,983 contributions plus 116 explicit empty placeholders; no exclusion, same/later batch or cross-tour record contributes. Frozen cohorts and releases are preserved. Missing 2022 and unequal tour history depth remain.
+
+Three ignored outputs contain target batches, candidate memberships and summaries. This is **SOURCE_LABEL_EVENT_BATCHING_FOR_DEVELOPMENT_SENSITIVITY**; **NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE** and **UNCERTAINTY_NOT_ESTABLISHED** persist. Membership is not verified historical availability. S02 paused, S08 provisional, canonical M05 unchanged; no aggregation, rating, fit, scoring, acquisition, 2025, OTD or portfolio work.
+
+**Next requiring approval:** Phase 2AD pools cumulative S08 component counts only from these frozen memberships, preserving all targets/slots and undefined empty or zero-opportunity rates under registered formulas. Use the report's exact approval and a separately specified scope; no Elo or model work follows automatically.
 
 ## Data and publication boundaries
 
