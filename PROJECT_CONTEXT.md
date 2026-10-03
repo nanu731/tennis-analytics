@@ -295,7 +295,17 @@ The unchanged ten-family admission rules, conservative completion, identity/dupl
 
 Only the seven authorized tracked files, four ignored acquired files and six ignored audit tables are created/updated. The initial local helper-binding failure and bounded same-endpoint recovery are disclosed in the report and manifest; final files passed all checks. The frozen validation protocol and every historical release remain unchanged. S02 paused, S08 provisional, canonical M05 Double-Fault Rate per Second-Serve Opportunity and its interpretation limits persist. **UNCERTAINTY_NOT_ESTABLISHED**, **SOURCE_LABEL_EVENT_BATCHING_FOR_DEVELOPMENT_SENSITIVITY** and **NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE** remain. No histories, factors, ratings, fitting, scoring, OTD, portfolio or publication work is authorized by this admission result; 2025 remains inaccessible.
 
-**Next requiring approval:** Phase 2AA, a bounded documentation-only decision using saved evidence on WTA Canada/Cincinnati's 2024 source-level conflicts. Determine whether a 2024-specific context mapping is defensible or the cells must remain blocked, preserving the frozen audit and protocol. The report gives exact approval language; a subsequent prompt must define documentation scope. No automatic admission revision or history build follows.
+**Completed successor:** Phase 2AA below adopts a prospective exact context mapping. The frozen Phase 2Z release and validation protocol remain unchanged; a new revised admission release requires separate approval.
+
+## Phase 2AA 2024 WTA PM context decision
+
+**ADOPT_EXACT_2024_WTA_PM_CONTEXT_MAPPING.** The [decision](docs/2024-wta-pm-context-decision.md) adopts only WTA / 2024 / already established Canada or Cincinnati family / raw level PM, subject to all unchanged context and independent admission checks. Preserve literal PM; no global PM=P equivalence, semantic meaning, new family or alias is established. Implementation must be a separately approved new revised admission release, never a rewrite of Phase 2Z.
+
+Saved evidence uniquely links 55 Toronto records (2024-806, source date 20240805) and 55 Cincinnati records (2024-1017, 20240812) to the frozen families. Both are Hard, best-of-three, raw draw_size 64, with 56 observed player IDs and round counts 24/16/8/4/2/1 from R64 through F. All-annual candidate searches find no competing P edition or extra mapping; source keys, encounters and saved identity checks have no conflicts. These are source-context observations, not verified timing or official completeness.
+
+All 110 retain level_conflict in Phase 2Z. Of these, 105 have no other saved exclusion; five Toronto retirements also retain status and unevaluable-game reasons. This reason accounting does not create new admissions. The frozen release remains 1,796 admitted with two wholly blocked cells and official recall UNKNOWN. No membership, code, data, manifest, test, factor or model changes. S02 paused, S08 provisional; M05 naming/formula unchanged. **UNCERTAINTY_NOT_ESTABLISHED**, **SOURCE_LABEL_EVENT_BATCHING_FOR_DEVELOPMENT_SENSITIVITY** and **NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE** persist; 2025 remains inaccessible.
+
+**Next requiring approval:** Phase 2AB implements only this exact context exception in a new versioned admission release, preserves Phase 2Z byte-for-byte and validates the disposition delta plus all twenty cells. Use the decision's exact approval and a separately specified implementation scope. Histories, ratings, fitting, scoring, acquisition, OTD, dependencies and portfolio work remain outside authority.
 
 ## Data and publication boundaries
 
