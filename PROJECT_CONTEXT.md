@@ -373,9 +373,21 @@ Use one four-method common mask, separate tours, natural-log loss and Brier. Eac
 
 Calibration remains descriptive under frozen support gates: DESCRIPTIVELY_BETTER_CALIBRATION_THAN_SURFACE_ELO requires no larger absolute intercept or absolute slope deviation from one, with at least one strictly closer in each tour. Otherwise CALIBRATION_COMPARISON_UNRESOLVED. All-target coverage, fixed-.5 accuracy, batch and both-slot player deletions, failures and coding-defect disclosures remain required. No statistical-superiority claim or final factor approval; UNCERTAINTY_NOT_ESTABLISHED and source-label/chronology limitations persist.
 
-Planned ATP/WTA 2025 annual names extend the saved naming convention at revision 83733587353df8a41f2fd4f516147d5aa83f5a8d; existence, rights recheck, metadata, schema, hashes, coverage and contents remain NOT_ACCESSED_PENDING_AUTHORIZATION. No 2025 probe, generated output or historical revision occurred.
+At the Phase 2AG freeze, planned ATP/WTA 2025 names extended the saved naming convention at revision 83733587353df8a41f2fd4f516147d5aa83f5a8d; existence, rights recheck, metadata, schema, hashes, coverage and contents were NOT_ACCESSED_PENDING_AUTHORIZATION. That documentation phase performed no probe or generated-output work; the separately authorized Phase 2AH below records subsequent source access.
 
-**Next requiring approval:** Phase 2AH bounded source acquisition and admission audit only, under the [exact approval](docs/2025-locked-final-test-protocol.md#next-acquisition-only-approval) and a separately specified file/output/request scope. No histories, ratings, fitting or scoring follows from admission readiness.
+**Completed successor:** Phase 2AH below implements only the separately authorized acquisition/admission audit; the locked protocol and comparison rules remain unchanged.
+
+## Phase 2AH locked-source admission audit
+
+**2025_SOURCE_COHORT_PARTIAL_REVIEW_REQUIRED.** The [audit](docs/2025-source-admission-audit.md) acquired only the ATP/WTA 2025 annual files and revision-bound metadata at 83733587353df8a41f2fd4f516147d5aa83f5a8d. Saved rights/provenance and twelve authority pins were checked before requesting data. Code/tests and admission rules were frozen after 167 fixture checks; their recorded hashes remain unchanged. Four requests succeeded without redirects or retries. Both files pass metadata, size, SHA-256, Git-blob and fixed-schema verification; no post-access correction or rule change occurred.
+
+All 5,739 annual rows are retained once: 2,156 panel and 3,583 outside-panel. ATP admits 1,011/1,078 with 67 exclusions; WTA admits 867/1,078 with 211 exclusions. All twenty cells are observed, eighteen contain admissions, none are absent, and WTA Canada/Cincinnati are wholly blocked by 190 literal PM records (95 each). The 2024 exception is not transferred. Among them, 182 have only level_conflict and eight have independent status/count exclusions; none is admitted. Six ATP Roland-Garros best-of conflicts remain excluded alongside four retirements/two walkovers. No identity, duplicate or source-edition conflict was found. Source-record retention is not official coverage; official recall UNKNOWN.
+
+The seven-file change creates acquisition code, focused tests, a source manifest and report, with only context/status/contract updates. Four acquired files and six audit CSVs remain ignored. All 5,040 focused offline checks pass, including exact raw values and memberships, overlapping reasons, all cells/fields, neutral orientation, independent byte-identical reruns and atomic installation. Historical releases and the locked protocol remain unchanged. No histories, factors, ratings, fitting, scoring or outcome relationships were calculated.
+
+SELECTION_UNRESOLVED, S02 paused, S08 provisional, canonical M05 and M05_CROSS_TOUR_DIRECTION_REQUIREMENT_NOT_SATISFIED persist. SOURCE_LABEL_EVENT_BATCHING_FOR_DEVELOPMENT_SENSITIVITY, NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE and UNCERTAINTY_NOT_ESTABLISHED remain; no final-test performance claim follows from admission.
+
+**Next requiring approval:** Phase 2AI documentation-only saved admission-conflict review under the [exact approval](docs/2025-source-admission-audit.md#limits-and-one-next-approval). Preserve the locked rules and partial release; assess evidence and implications without implementing a mapping, repair or exception. No history build is authorized.
 
 ## Data and publication boundaries
 
