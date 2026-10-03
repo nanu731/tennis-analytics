@@ -387,7 +387,19 @@ The seven-file change creates acquisition code, focused tests, a source manifest
 
 SELECTION_UNRESOLVED, S02 paused, S08 provisional, canonical M05 and M05_CROSS_TOUR_DIRECTION_REQUIREMENT_NOT_SATISFIED persist. SOURCE_LABEL_EVENT_BATCHING_FOR_DEVELOPMENT_SENSITIVITY, NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE and UNCERTAINTY_NOT_ESTABLISHED remain; no final-test performance claim follows from admission.
 
-**Next requiring approval:** Phase 2AI documentation-only saved admission-conflict review under the [exact approval](docs/2025-source-admission-audit.md#limits-and-one-next-approval). Preserve the locked rules and partial release; assess evidence and implications without implementing a mapping, repair or exception. No history build is authorized.
+**Completed successor:** Phase 2AI below resolves conflict/claim scope without changing Phase 2AH's partial admission release or the locked protocol.
+
+## Phase 2AI conflict and final-test scope review
+
+The [review](docs/2025-source-conflict-review.md) records **RETAIN_2025_WTA_PM_EXCLUSIONS_FOR_LOCKED_TEST**, **RETAIN_2025_ATP_FORMAT_EXCLUSIONS_NO_MEMBERSHIP_EFFECT** and **LOCKED_PARTIAL_COHORT_MAY_PROCEED_WITH_SCOPED_CLAIMS**. Restricted context/reason checks verify 95 Canada and 95 Cincinnati PM rows: 182 sole-level exclusions and eight with independent exclusions. No saved identity, duplicate, surface, date, family or edition conflict accompanies their level conflicts. All six ATP Roland-Garros best_of=3 conflicts independently retain four retirement/two walkover exclusions. No outcomes, scores, count values or performance evidence were analyzed.
+
+The locked protocol explicitly keeps 2025 PM conflicts excluded. Outcome-neutral context evidence cannot convert a post-access mapping into the original test; no exception or repair is implemented. A possible mapping is outside the primary test and cannot be recommended for implementation before it. No ATP cause or format exception is inferred.
+
+The protocol requires twenty-cell inventory reporting, permits resolution of incomplete claim scope without loosening gates, and defines required folds over admitted batches. It does not require twenty populated admission cells for a conditional evaluation. Phase 2AH therefore remains 2025_SOURCE_COHORT_PARTIAL_REVIEW_REQUIRED with unchanged 1,878 admitted records: 1,011 ATP across ten cells and 867 WTA across eight. All future results must disclose excluded WTA Canada/Cincinnati and condition claims on this cohort and the later four-method common mask. No blanket ten-family WTA, complete-event or operational claim; all frozen readiness, comparison and failure gates still apply. This is no prediction-availability or performance result.
+
+SELECTION_UNRESOLVED, S02 paused, S08 provisional, M05_CROSS_TOUR_DIRECTION_REQUIREMENT_NOT_SATISFIED and UNCERTAINTY_NOT_ESTABLISHED persist, with source-label/chronology limitations. Membership, raw sources, admission rules, protocol and historical releases remain unchanged.
+
+**Next requiring approval:** Phase 2AJ batch-key and candidate-history membership construction only for the unchanged 1,878 admitted records, under the [exact approval](docs/2025-source-conflict-review.md#one-bounded-next-approval). Preserve earlier-batch cutoffs, neutral slots, empty histories and exclusions; no feature aggregation, rating, fitting or scoring authority follows.
 
 ## Data and publication boundaries
 
