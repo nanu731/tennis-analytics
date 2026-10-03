@@ -347,7 +347,21 @@ Overall cold slots: 71 ATP / 45 WTA; surface cold slots: 243 / 149. Full-S08 bot
 
 All outputs retain **SOURCE_LABEL_EVENT_BATCHING_FOR_DEVELOPMENT_SENSITIVITY**, **NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE** and **UNCERTAINTY_NOT_ESTABLISHED**. S02 paused, S08 provisional; canonical lower-is-better M05 and its unresolved forecast interpretation persist. Source-label availability/overlap, missing 2022, unequal depth, retrospective admission and official recall UNKNOWN remain limitations. No S08 fit, score, tuning, acquisition, 2025, dependency, OTD, portfolio or publication work.
 
-**Next requiring approval:** Phase 2AF implements the frozen 2024 whole-batch full/reduced factor fits and paired descriptive validation, with the already frozen common cohort, readiness/failure gates and selection/abstention map. No new candidate search or weakened rule. Use the [audit's exact approval](docs/2024-surface-elo-baseline-audit.md#limits-and-one-next-approval); the next prompt must specify exact files and tests.
+**Completed successor:** Phase 2AF below implements the frozen validation protocol; Elo and histories remain unchanged.
+
+## Phase 2AF rolling 2024 validation
+
+**SELECTION_UNRESOLVED.** The [results](docs/2024-validation-results.md) implement the unchanged frozen protocol with original development features, strictly earlier complete 2024 rows and identical full/reduced training and target IDs. All twenty required batches pass both models: forty zero-intercept, training-SD-only fits. Full/reduced ranks remain four/three; no numerical, warning, boundary or separation gate fails. No protocol, threshold, eligibility or candidate was changed after outcomes were loaded.
+
+All 1,901 admitted targets remain in coverage. Common four-method pairs: 871 ATP / 912 WTA; 73/45 structurally incomplete targets are unscored. Both Elo methods retain all-target availability, but scoring uses the exact factor-common IDs. Reduced-minus-full log loss/Brier: ATP **-0.0003474321 / -0.0001484733**, WTA **+0.0006422503 / +0.0003490372**. Both factor candidates have higher descriptive losses than both Elo benchmarks. No final superiority or practical-significance claim follows.
+
+All 20 batch and 344 both-slot player deletions are evaluable; no paired comparison reverses or ties for either loss. The tours nevertheless favor different factor models, so the frozen selection rule retains both specifications. Calibration is supported descriptively for each method at tour/2024-season/Hard scopes, not as a forecast correction or selection tie-breaker.
+
+**M05_CROSS_TOUR_DIRECTION_REQUIREMENT_NOT_SATISFIED:** full-model M05 coefficients are negative in five of ten ATP folds and nine of ten WTA folds; the remainder are positive. M05 remains Double-Fault Rate per Second-Serve Opportunity, lower-is-better. Positive conditional coefficients do not mean double faults improve performance. No sign averaging, constrained rescue or Four Factors qualification. S02 paused, S08 provisional; reduced remains three factors.
+
+**SOURCE_LABEL_EVENT_BATCHING_FOR_DEVELOPMENT_SENSITIVITY**, **NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE** and **UNCERTAINTY_NOT_ESTABLISHED** persist. No confidence intervals or p-values. Source selection, unverified availability/overlap, missing 2022 and unequal histories remain. Protocol, admissions, histories, Elo and historical releases are immutable. No tuning, rescue, acquisition, 2025 access, dependency, OTD, portfolio or publication work.
+
+**Next requiring approval:** Phase 2AG documentation-only pipeline freeze and locked final-test protocol, retaining both roles and the failed M05 interpretation requirement. Use the [results' exact approval](docs/2024-validation-results.md#limitations-and-one-next-approval) with separately defined documentation scope. No final-test data, URL, metadata, schema or result access follows.
 
 ## Data and publication boundaries
 
