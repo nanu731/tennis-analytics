@@ -335,7 +335,19 @@ ATP: M03/M05/M11 each available for 1,817 slots / 875 differences; M12 1,813 slo
 
 M05 remains **Double-Fault Rate per Second-Serve Opportunity**, lower-is-better and unreversed, with unresolved tour-specific forecast interpretation. No weight, smoothing, imputation, window, decay or replacement factor is introduced. S02 paused, S08 provisional; **SOURCE_LABEL_EVENT_BATCHING_FOR_DEVELOPMENT_SENSITIVITY**, **NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE** and **UNCERTAINTY_NOT_ESTABLISHED** persist. Frozen admissions, memberships and historical releases are unchanged. No rating, fit, scoring, acquisition, 2025, dependency, OTD or portfolio work.
 
-**Next requiring approval:** Phase 2AE implements only the frozen 2024 event-batched surface-Elo and overall-only benchmarks, carrying forward verified Phase 2P terminal states with synchronous updates and full-S08 coverage strata. No tuning, factor fitting or scoring. Use the report's exact approval and separately specified scope.
+**Completed successor:** Phase 2AE below carries verified Phase 2P terminal states into the frozen 2024 benchmarks. Factor fitting and scoring remain separate work.
+
+## Phase 2AE 2024 synchronous Elo benchmarks
+
+**2024_SURFACE_ELO_BENCHMARK_BUILT.** The [audit](docs/2024-surface-elo-baseline-audit.md) implements the unchanged primary 0.5G+0.5S and overall-only G benchmarks. Both provide finite probabilities for all 1,901 admitted targets (944 ATP / 957 WTA), across twenty tour/date batches. No loss, accuracy, calibration or ranking is computed.
+
+Before processing 2024, the complete Phase 2P replay reproduces its three saved outputs byte-for-byte. Terminal saved states carry forward: ATP 193 overall / 388 surface; WTA 267 / 599. Saved chains reconcile exactly; maximum terminal serialization residual 5.002221e-12 is below the existing 1e-10 arithmetic tolerance. No reset or missing-season fill. Unseen G/S states initialize at 1500, scale 400, K=32 independently. Freeze all batch probabilities, sum each component's match deltas, then apply after the simultaneous batch; no clipping or within-batch update.
+
+Overall cold slots: 71 ATP / 45 WTA; surface cold slots: 243 / 149. Full-S08 both/one/neither strata remain 871/71/2 ATP and 912/45/0 WTA. All 118 factor-incomplete targets predict and update Elo. The ledger has 3,962 state updates and 3,802 player-match contributions per component. Phase 2AC prior exposure and Phase 2AD completeness agree exactly; exclusions and historical artifacts remain frozen.
+
+All outputs retain **SOURCE_LABEL_EVENT_BATCHING_FOR_DEVELOPMENT_SENSITIVITY**, **NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE** and **UNCERTAINTY_NOT_ESTABLISHED**. S02 paused, S08 provisional; canonical lower-is-better M05 and its unresolved forecast interpretation persist. Source-label availability/overlap, missing 2022, unequal depth, retrospective admission and official recall UNKNOWN remain limitations. No S08 fit, score, tuning, acquisition, 2025, dependency, OTD, portfolio or publication work.
+
+**Next requiring approval:** Phase 2AF implements the frozen 2024 whole-batch full/reduced factor fits and paired descriptive validation, with the already frozen common cohort, readiness/failure gates and selection/abstention map. No new candidate search or weakened rule. Use the [audit's exact approval](docs/2024-surface-elo-baseline-audit.md#limits-and-one-next-approval); the next prompt must specify exact files and tests.
 
 ## Data and publication boundaries
 
