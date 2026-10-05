@@ -62,7 +62,7 @@ Calibration on 2025 was unresolved for both candidates: in ATP the factor models
 - **Uncertainty is not estimated.** Deletion checks show the direction is stable, but they are not confidence intervals.
 - **Coverage is partial.** Development lacks 2022 and ATP 2021. The 2025 WTA cohort covers eight of ten events, and official tournament coverage is unknown.
 - **M05 failed its direction test.** Its 2024 coefficients were mixed in sign (ATP 5 negative / 5 positive; WTA 9 / 1), so the requirement for a negative direction in every fold of both tours is not met. The all-negative 2025 signs do not reverse that ([2024 M05 signs](docs/2024-validation-results.md#selection-and-separate-interpretation)).
-- **Factor importance is not estimated.** Model coefficients are forecast parameters, not factor weights.
+- **Factor weights are descriptive only.** Same-match shares of explained Net Point Rating now exist ([factor weights](docs/factor-weights-results.md#result)), but they are not forecast importance or causal effects and have no uncertainty intervals. Forecast-model coefficients are not factor weights.
 
 The full list is in [methodology and limitations](docs/methodology-and-limitations.md#limitations).
 
@@ -71,7 +71,7 @@ The full list is in [methodology and limitations](docs/methodology-and-limitatio
 These parts of the original plan were not done:
 
 - Official ranking or ranking-points baseline
-- Factor weights with uncertainty
+- Uncertainty intervals for factor weights (descriptive point shares exist; intervals are not established)
 - Reliability curves
 - Player factor profiles
 - Interval estimates (confidence intervals or equivalent)

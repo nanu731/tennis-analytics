@@ -50,7 +50,7 @@ Phase results: [development paired evaluation](s08-paired-evaluation-results.md)
 ## Not completed
 
 - Official ranking or ranking-points baseline
-- Factor weights with uncertainty (for example, shares of explained Net Point Rating variation)
+- Uncertainty intervals for factor weights. Descriptive point shares of explained Net Point Rating exist ([Phase 2AN](factor-weights-results.md#result)), but the event–player dependence leaves one joint block per tour, so no valid interval exists yet.
 - Reliability curves
 - Player factor profiles
 - Interval estimates

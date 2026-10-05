@@ -1,16 +1,18 @@
 # Tennis analytics status
 
-**Phase 2AM COMPLETE — locked 2025 result and project limitations documented.** [README](../README.md) and [methodology and limitations](methodology-and-limitations.md) now give an outside reader the question, data scope and splits, S08 and Elo in plain words, a results table and the attribution. No new analysis, rerun or publication. Each number cites a committed report.
+**Phase 2AN COMPLETE — descriptive Four Factors weights on Net Point Rating.** See the [results](factor-weights-results.md). Development 2021–2023 is the headline fit; 2024 is a separate out-of-time check. No 2025 data was read. Same-match LMG/Shapley shares of NPR R², M03 / M11 / M12 / M05: ATP 44.0 / 36.7 / 17.1 / 2.2% (R² 0.873, n=773); WTA 47.3 / 34.2 / 15.9 / 2.7% (R² 0.896, n=1,655). The 2024 refits keep the same order, and the development fit applied unchanged to 2024 gives R² 0.889 ATP and 0.895 WTA.
 
-**Standing result (Phase 2AL, unchanged):** SURFACE_ELO_HAS_LOWER_LOCKED_TEST_LOSS_THAN_CANDIDATE for both full S08 and reduced M03/M11/M12; CALIBRATION_COMPARISON_UNRESOLVED for both ([results](2025-locked-final-evaluation-results.md)). In this cohort the factor models did not match Elo's forecast loss. Descriptive or explanatory value was not assessed. No model selection, significance, superiority or final Four Factors qualification.
+**Verdict:** FOUR_DISTINCT_STABLE_FACTORS_SUPPORTED_DESCRIPTIVELY_ON_NPR under the strictest prespecified rule. All four keep their expected direction, a positive unique increment and passing gates in every season, surface, leave-one-event and leave-one-player context (425 ATP, 490 WTA). This is same-match explanatory evidence only: not forecast importance, not causal, and not final factor or weight selection. Single-event M05 reversals reported in Phase 2J are outside this context set. M05_CROSS_TOUR_DIRECTION_REQUIREMENT_NOT_SATISFIED stays binding. The locked 2025 forecast result (surface Elo has lower loss than both candidates) is unchanged.
 
-**Not completed:** official ranking baseline, factor weights with uncertainty, reliability curves, player factor profiles, interval estimates, full-panel WTA coverage, Challenger project, portfolio.
+**Uncertainty:** the event–player graph is a single connected component in every tour/split, so joint block resampling is degenerate. UNCERTAINTY_NOT_ESTABLISHED; no interval was substituted.
 
-**Open user inputs:** `TODO_USER_COPY` markers in the README and methodology page need your motivation and interpretation.
+**Validation:** 3,750 focused checks, including exact reuse and reproduction of the Phase 2J reconstruction, an independent Shapley formula and a byte-identical independent rerun. Four ignored outputs were inspected.
 
-**Limits:** NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE; UNCERTAINTY_NOT_ESTABLISHED; official recall UNKNOWN; WTA 2025 covers eight of ten event families; SELECTION_UNRESOLVED, S02 paused, S08 provisional and M05_CROSS_TOUR_DIRECTION_REQUIREMENT_NOT_SATISFIED remain binding. Publication requires a separate rights review.
+**Not completed:** official ranking baseline, uncertainty intervals for factor weights, reliability curves, player factor profiles, interval estimates, full-panel WTA coverage, Challenger project, portfolio. `TODO_USER_COPY` markers in the README, methodology and factor-weights report await your interpretation.
 
-**Next requiring approval:** fill the `TODO_USER_COPY` markers, which is your copy. Then decide whether to start one item from "Not completed" as a new, separately scoped phase. Any new analysis would fall outside the locked 2025 test.
+**Limits:** same-match NPR shares are partly mechanical, because the factors share counts with NPR. Development lacks 2022 and ATP 2021, so ATP season stability is not assessable. NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE, SELECTION_UNRESOLVED, S02 paused and S08 provisional remain binding.
+
+**Next requiring approval:** player factor profiles, a separately scoped descriptive phase that uses these same-match components on development and 2024 rows. Or fill the `TODO_USER_COPY` markers first.
 
 Use progressive disclosure: this snapshot is current authority; older next-step recommendations below are historical and superseded.
 
