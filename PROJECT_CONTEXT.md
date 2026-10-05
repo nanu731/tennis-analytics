@@ -423,7 +423,7 @@ Both Elo probabilities are finite for all 1,878 targets, including 101 factor-in
 
 All twenty expected cells remain reported; WTA Canada/Cincinnati have zero targets. The 2025 locked source-label final-test sensitivity label, NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE, UNCERTAINTY_NOT_ESTABLISHED, S02 paused, S08 provisional and M05_CROSS_TOUR_DIRECTION_REQUIREMENT_NOT_SATISFIED remain binding. No full-panel WTA claim or final Four Factors qualification. Five ignored outputs are installed; 263 focused plus six installed-output checks pass, with historical artifacts preserved.
 
-**Next requiring approval:** Phase 2AL locked factor fitting and four-method final evaluation under the unchanged protocol and the report's [exact approval](docs/2025-feature-elo-construction-audit.md#limits-and-one-next-approval). Use original prior training vectors, identical full-S08 eligibility, frozen Phase 2AK inputs and every locked readiness/comparison/failure rule. Define its exact file/output scope separately; no tuning, rescue or model selection.
+**Completed successor:** Phase 2AL fitted both frozen candidates and scored all four methods on the unchanged cohort ([results](docs/2025-locked-final-evaluation-results.md)). Surface Elo has lower locked-test log loss and Brier than both full S08 and reduced M03/M11/M12 in both tours, and every batch deletion holds that direction. Calibration comparisons are unresolved. No model is selected, and Four Factors receives no final qualification.
 
 ## Data and publication boundaries
 
