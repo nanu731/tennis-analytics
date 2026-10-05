@@ -1,14 +1,16 @@
 # Tennis analytics status
 
-**Phase 2AL COMPLETE — locked 2025 evaluation: SURFACE_ELO_HAS_LOWER_LOCKED_TEST_LOSS_THAN_CANDIDATE for both full S08 and reduced M03/M11/M12; CALIBRATION_COMPARISON_UNRESOLVED for both.** See the [results](2025-locked-final-evaluation-results.md). Release 2AL-1.0.0 ran once from clean `cac6ff7` under the unchanged locked protocol and Phase 2AK inputs.
+**Phase 2AM COMPLETE — locked 2025 result and project limitations documented.** [README](../README.md) and [methodology and limitations](methodology-and-limitations.md) now give an outside reader the question, data scope and splits, S08 and Elo in plain words, a results table and the attribution. No new analysis, rerun or publication. Each number cites a committed report.
 
-**Measured:** all 18 required batches passed every gate for both models. Common mask: 951 ATP and 826 WTA of 1,878 targets. The 101 nonpredicted targets all have incomplete full-S08 vectors (empty histories, plus one ATP M12 zero denominator). Candidate minus primary surface Elo, log loss / Brier: full +0.0225 / +0.0087 ATP and +0.0207 / +0.0078 WTA; reduced +0.0220 / +0.0085 ATP and +0.0224 / +0.0086 WTA. Every batch deletion keeps a strictly positive difference, with no ties or reversals. Calibration: an ATP slope/intercept tradeoff, and primary Elo closer on both measures in WTA. Overall-only Elo, a sensitivity, also has lower loss than both candidates. Full-model M05 signs: 10/10 ATP and 8/8 WTA negative, none missing; this is replication evidence only.
+**Standing result (Phase 2AL, unchanged):** SURFACE_ELO_HAS_LOWER_LOCKED_TEST_LOSS_THAN_CANDIDATE for both full S08 and reduced M03/M11/M12; CALIBRATION_COMPARISON_UNRESOLVED for both ([results](2025-locked-final-evaluation-results.md)). In this cohort the factor models did not match Elo's forecast loss. Descriptive or explanatory value was not assessed. No model selection, significance, superiority or final Four Factors qualification.
 
-**Validation:** 4,440 synthetic checks passed before any 2025 outcome was read. Runner/test SHA-256 values were recorded before the run, and 59 input pins plus a zero-residual development→2024→2025 Elo chain were verified. After the run, 18 installed-output checks passed, including a byte-identical independent rerun on real inputs. Six ignored outputs were inspected. No historical suite was rerun or repinned.
+**Not completed:** official ranking baseline, factor weights with uncertainty, reliability curves, player factor profiles, interval estimates, full-panel WTA coverage, Challenger project, portfolio.
 
-**Limits:** 2025 locked source-label final-test sensitivity; NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE; UNCERTAINTY_NOT_ESTABLISHED (no p-values or intervals); official recall UNKNOWN. WTA covers eight of ten event families (Canada/Cincinnati wholly blocked). SELECTION_UNRESOLVED, S02 paused, S08 provisional and M05_CROSS_TOUR_DIRECTION_REQUIREMENT_NOT_SATISFIED remain binding. No model selection and no final Four Factors qualification. No tuning, rescue, acquisition, dependency, OTD, portfolio or publication work.
+**Open user inputs:** `TODO_USER_COPY` markers in the README and methodology page need your motivation and interpretation.
 
-**Next requiring approval:** Phase 2AM, a documentation-only flagship closeout. It would record the locked negative forecast result, its scope and its limitations in the README and methodology, with `TODO_USER_COPY` wherever interpretation is needed. It would include no new analysis.
+**Limits:** NO_FORECAST_CHRONOLOGY_SUPPORTED_BY_SAVED_EVIDENCE; UNCERTAINTY_NOT_ESTABLISHED; official recall UNKNOWN; WTA 2025 covers eight of ten event families; SELECTION_UNRESOLVED, S02 paused, S08 provisional and M05_CROSS_TOUR_DIRECTION_REQUIREMENT_NOT_SATISFIED remain binding. Publication requires a separate rights review.
+
+**Next requiring approval:** fill the `TODO_USER_COPY` markers, which is your copy. Then decide whether to start one item from "Not completed" as a new, separately scoped phase. Any new analysis would fall outside the locked 2025 test.
 
 Use progressive disclosure: this snapshot is current authority; older next-step recommendations below are historical and superseded.
 
