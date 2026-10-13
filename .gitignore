@@ -51,3 +51,21 @@ rsconnect/
 # Local third-party source data and generated pilot subsets
 data/raw/
 data/pilot/
+
+# Local working instructions and agent context (preserve local copies).
+AGENTS*.md
+CLAUDE*.md
+agents*.md
+claude*.md
+/PROJECT_CONTEXT.md
+/PRODUCT.md
+/DESIGN.md
+/.agents/
+/.codex/
+/.claude/
+/.impeccable/
+/skill-observations/
+/cross-cutting-principles.md
+/docs/status.md
+/docs/*ROADMAP*.md
+/docs/*ARCHITECTURE*.md

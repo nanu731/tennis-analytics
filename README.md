@@ -2,7 +2,7 @@
 
 Can a small set of interpretable tennis statistics (a tennis version of basketball's "Four Factors") forecast match winners as well as, or better than, a surface-adjusted Elo rating?
 
-This repository holds the data audits, R code, tests and reports for that question. The question and design are set out in [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md#central-question).
+This repository holds the data audits, R code, tests and reports for that question. See the [methodology and limitations](docs/methodology-and-limitations.md) for the design and evidence boundaries.
 
 TODO_USER_COPY: why this question matters to you and what you wanted to learn from it.
 
@@ -15,12 +15,12 @@ TODO_USER_COPY: your interpretation of what this result means for the project.
 ## Data and splits
 
 - **Source.** Jeff Sackmann / Tennis Abstract ATP and WTA annual match files, read from a pinned archival mirror (see [Data attribution and licensing](#data-attribution-and-licensing)).
-- **Panel.** ATP and WTA main-draw singles at ten event families: the four Grand Slams, Indian Wells, Miami, Madrid, Rome, Canada and Cincinnati ([scope](PROJECT_CONTEXT.md#fixed-research-scope)).
+- **Panel.** ATP and WTA main-draw singles at ten event families: the four Grand Slams, Indian Wells, Miami, Madrid, Rome, Canada and Cincinnati ([scope](docs/methodology-and-limitations.md#design)).
 - **Admission.** A match enters only if the source reports a normal completion, the player identities and event context check out, and all needed serve and return counts are valid. Retirements, walkovers and invalid statistic bundles are excluded, never imputed. Coverage is "present in the source", not verified official tournament coverage.
 
 | Split | Role | Admitted matches | Source |
 | --- | --- | --- | --- |
-| Development | Build and test candidate measures | 2,580 (ATP 2023: 846; WTA 2021 and 2023: 1,734); 2022 is missing | [Phase 2H audit](docs/source-defined-cohort-audit.md), [Elo baseline](PROJECT_CONTEXT.md#phase-2o-fixed-development-baseline--implemented-in-phase-2p) |
+| Development | Build and test candidate measures | 2,580 (ATP 2023: 846; WTA 2021 and 2023: 1,734); 2022 is missing | [Phase 2H audit](docs/source-defined-cohort-audit.md), [Elo baseline](docs/surface-elo-baseline-audit.md) |
 | Validation | Compare prespecified models | 1,901 (ATP 944; WTA 957) | [2024 results](docs/2024-validation-results.md#implementation-and-coverage) |
 | Locked final test | One frozen evaluation | 1,878 (ATP 1,011 in ten cells; WTA 867 in eight cells) | [2025 results](docs/2025-locked-final-evaluation-results.md#coverage-and-folds) |
 
@@ -28,7 +28,7 @@ WTA Canada and Cincinnati 2025 are wholly excluded because of source event-conte
 
 ## What the models use
 
-**Net Point Rating** is the project's net-performance outcome: points won minus points lost, as a share of all points, times 100 ([definition](PROJECT_CONTEXT.md#net-point-rating-and-four-factors)). It is the explanatory outcome for factor design. The forecasts below predict match wins.
+**Net Point Rating** is the project's net-performance outcome: points won minus points lost, as a share of all points, times 100 ([definition](docs/methodology-and-limitations.md#features-and-models)). It is the explanatory outcome for factor design. The forecasts below predict match wins.
 
 **S08** is the provisional factor set. Each player's value is pooled from their earlier matches only, and the model uses the difference between the two players ([pooling table](docs/2025-feature-elo-construction-audit.md#frozen-implementation)):
 
@@ -41,7 +41,7 @@ WTA Canada and Cincinnati 2025 are wholly excluded because of source event-conte
 
 Two candidates were tested: the **full** model (all four) and a **reduced** model without M05 (three factors). Both are logistic regressions with no intercept, refit before each tournament batch using only earlier matches.
 
-**Elo benchmark.** Every player starts at 1,500. After each tournament batch, the rating moves by 32 times the gap between the result and the expected result, with separate overall and surface ratings. The primary benchmark averages the two ratings; overall-only Elo is a sensitivity check. There are no bonuses for round or prestige ([Elo design](PROJECT_CONTEXT.md#phase-2o-fixed-development-baseline--implemented-in-phase-2p)).
+**Elo benchmark.** Every player starts at 1,500. After each tournament batch, the rating moves by 32 times the gap between the result and the expected result, with separate overall and surface ratings. The primary benchmark averages the two ratings; overall-only Elo is a sensitivity check. There are no bonuses for round or prestige ([Elo design](docs/surface-elo-baseline-audit.md)).
 
 ## Results
 
@@ -82,7 +82,7 @@ These parts of the original plan were not done:
 ## Repository layout
 
 - `R/`: phase scripts, mostly paired with a test file. Generated outputs go to `data/pilot/`, which is not tracked.
-- `docs/`: phase reports, protocols and the current [status](docs/status.md).
+- `docs/`: public phase reports, protocols and [methodology](docs/methodology-and-limitations.md).
 - `data/manifests/`: source provenance and checksums. No match rows are tracked.
 
 ## Data attribution and licensing
