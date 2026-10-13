@@ -69,3 +69,8 @@ claude*.md
 /docs/status.md
 /docs/*ROADMAP*.md
 /docs/*ARCHITECTURE*.md
+
+# Local working records; historical public commits are not erased.
+/AGENTS*.md
+/CLAUDE*.md
+/docs/codex-task-template.md

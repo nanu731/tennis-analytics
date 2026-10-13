@@ -90,3 +90,9 @@ These parts of the original plan were not done:
 Repository code is under the [MIT license](LICENSE). That license does not cover the tennis data or outputs derived from it.
 
 Match data: **Jeff Sackmann / Tennis Abstract** ([ATP](https://github.com/JeffSackmann/tennis_atp), [WTA](https://github.com/JeffSackmann/tennis_wta)), read from the [Aneeshers archival mirror](https://github.com/Aneeshers/tennis-sackmann-archive/tree/83733587353df8a41f2fd4f516147d5aa83f5a8d) at commit `83733587353df8a41f2fd4f516147d5aa83f5a8d`. The saved source documentation identifies [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/): credit the creator, noncommercial use only, share adaptations alike. The mirror adds no rights. This project uses the data for noncommercial educational research. Raw files and match-level outputs stay out of Git, and nothing here is a public player-statistics dataset. Publication of derived ratings or exports needs a separate rights review. Details and per-year manifests: [DATA_LICENSE.md](DATA_LICENSE.md) and [data/manifests/](data/manifests/).
+
+## Working-record exposure
+
+Local contributor instructions and internal working records are excluded from
+the current public snapshot. Earlier public commits remain available by design;
+ignore rules and current-file removal do not erase that earlier exposure.
