@@ -35,8 +35,31 @@ Raw bytes were not changed. Local transformations select Indian Wells rows, pars
 
 Suggested attribution for future permitted uses: “Source: Jeff Sackmann / Tennis Abstract, ATP and WTA tennis data, via the Aneeshers archival mirror at commit 83733587353df8a41f2fd4f516147d5aa83f5a8d; CC BY-NC-SA 4.0. Indian Wells selection and data-quality audit by this project.” Include the relevant source and license links and specify any subsequent transformations.
 
+## Match Charting Project source
+
+The descriptive action and point-phase work uses **The Tennis Abstract Match
+Charting Project; Jeff Sackmann and contributors**. Its
+[source repository at the recorded revision](https://github.com/JeffSackmann/tennis_MatchChartingProject/tree/1813a1309b7ed7ebf1c7e884b32bf675d00e4edf)
+and [pinned README](https://raw.githubusercontent.com/JeffSackmann/tennis_MatchChartingProject/1813a1309b7ed7ebf1c7e884b32bf675d00e4edf/README.md)
+identify CC BY-NC-SA 4.0. The
+[MCP manifest](data/manifests/mcp-source-files.csv) retains the acquisition times,
+source paths, attribution, exact checksums and recorded research-use boundary.
+
+This release includes original analysis code, source metadata and research
+reports. The parsers interpret recorded notation into actions, states and
+descriptive profiles; they preserve the source's limitations. Raw source files,
+generated point/player-level tables and the local viewer's data remain excluded.
+Retain MCP attribution and the source license for covered material and
+adaptations; the MIT code license does not replace those terms. This notice
+grants no tracking-data access, commercial-use permission or new right to
+redistribute a dataset.
+
 ## Before publication
 
 Review intended portfolio-use compatibility and the licensing treatment of player-level derived data, ratings, exports, and other research outputs before publishing them. Commercial use, raw redistribution, and broader third-party source adoption are not authorized by this notice. Recheck applicable terms when scope or source version changes.
 
-This document reports source terms and project handling; it is not legal advice. Source documentation was checked on 2026-09-14. See the [source contract](docs/data-source-contract.md) for remaining provenance and methodological limits.
+This document reports source terms and project handling; it is not legal advice.
+The original annual-source documentation was checked on 2026-09-14. The MCP
+manifest records its source revision and retrieval times. See the
+[source contract](docs/data-source-contract.md) for remaining provenance and
+methodological limits.

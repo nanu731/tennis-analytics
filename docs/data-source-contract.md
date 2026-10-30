@@ -1,5 +1,81 @@
 # Phase 1 tennis data-source contract
 
+## Current MCP action-workflow release, 2026-10-11
+
+**MODERN_DESCRIPTIVE_POINT_PHASE_PROFILES_BUILT — MCP_MODERN_POINT_PHASE_PROFILES_1.0.0.**
+See the [modern profile report](modern-point-phase-profiles.md). Metadata-only selection and one bounded
+five-advisor/five-fresh-reviewer council froze 2021–2025 before parsing. All
+1,261 context-eligible major/main-draw charts are included in inventory; no
+backward widening, recurring-player cap or outcome/retention selection.
+The 150/155 recurring source identities support this descriptive window.
+
+All 243,127 points are accounted for: 174,460 included, 6,260 completion-excluded
+and 62,407 QA-withheld. Men's/women's included counts are 122,102/52,358,
+with 74.33%/66.40% retention and 674/553 completion-eligible charts.
+All 40 event-year/category cells are observed, not officially complete events.
+Profiles retain all 450 category-qualified identities, including one with zero
+usable points. Eligible-chart retention ranges 21.45%–100% and 14.80%–100%.
+
+The prototype's exclusive endings, overlapping reach and serving/receiving
+conditional-win denominators are unchanged. Included +1 attempts total 99,553,
+including 21,857 attempted errors; +1 remains Rally-owned. Nine unknown Return
+reaches remain explicit. The report discloses export adapters and one unresolved
+duplicate +1 linkage; both candidate IDs are retained, with no point QA credit.
+No notation, completion, eligibility or historical release is changed.
+
+Thirteen ignored flat outputs under `data/pilot/mcp-modern-point-phase-v1-`
+contain selection, actions/states, completion, point/player profiles, coverage,
+failures and two visually inspected SVGs. Displays were frozen by exact recurring
+identity order: Adrian Mannarino (2,827/4,010 points), Ajla Tomljanovic (349/670).
+Unequal exposure and selective QA prevent fair comparisons, rankings or factor
+qualification. Source categories are not certified tours; official completion
+and availability remain unverified. All acquired years are exposed, 2026 is
+outside this cohort, and UNCERTAINTY_NOT_ESTABLISHED persists.
+
+**The user reports sending a TDI access request.** Delivery is not independently
+verified; no tracking access is secured. The private correspondence draft stays
+outside this code release. Tracking-dependent claim pauses remain unchanged:
+NO_QUALIFYING_FREE_PAIRED_STATE_SOURCE_VERIFIED and
+SERVE_CREATION_ATTRIBUTION_UNSUPPORTED.
+
+**MODERN_BREAK_POINT_AND_ENDING_EXTENSION_BUILT — MCP_MODERN_POINT_CONTEXT_1.0.0.**
+See the [context extension report](modern-point-context-extension.md). All 243,127 inventoried points and
+174,460 included points are unchanged. Known pre-point source score/server states agree with
+independent frozen replay; conflicts and unsupported prefixes remain unknown.
+The 22,020 known inventoried break points comprise 15,572 included (9,953 men's /
+5,619 women's), 6,021 QA-withheld and 427 completion-excluded. Tiebreaks never
+count. There are 848 unknown inventory score contexts and zero unknown included
+contexts. No point is rescued by context annotation.
+
+Included endings have exactly one supported recorded type, with zero unknown
+included classifications/physical actor slots. Ace/double fault remain distinct
+from other winners/unforced errors. The 3,825 collapsed unreturnable endings
+remain Other supported ending; 42 administrative endings remain nonphysical.
+The 68,667 nonincluded endings retain WITHHELD status. Four new ignored flat
+exports contain dispositions, both subset profiles, phase/type/actor counts and
+coverage. Serve +1 remains Rally-owned; recorded annotations are not causal credit.
+
+**LOCAL_FROZEN_POINT_PHASE_VIEWER_BUILT — CONTEXT_EXTENSION_EXPOSED.** See the
+[viewer report](modern-point-phase-viewer.md). All included points / Break points changes the frozen
+subset and denominator, preserving category/player/match selector behavior.
+Serving break points faced and receiving opportunities, ending types, actor
+perspectives, counts, unknowns and retention sit beside the existing phases.
+The original scientific payload remains byte-identical; no ranking, clutch or
+factor claim is introduced. Both subsets retain all 450 identities and 2,972
+views, with the prior exact selector exclusion unchanged. Fonts/rights and the
+portfolio are unchanged. Focused context checks (2,990,532), CSV/display fidelity
+and deterministic rebuilds passed; historical releases remain byte-identical.
+Actual visual, keyboard, console/network and load-performance verification stays
+NOT_BROWSER_VERIFIED under the recorded browser restriction. Next: a display-only
+review using user-supplied screenshots/observations; no browser workaround or
+website integration. Exact approval is in the extension report.
+
+Saved MCP rights, provenance, revision and parser/state pins verify before processing
+and installation. Raw values and source identifiers remain unchanged; derived
+files stay ignored and this release grants no new redistribution permission.
+
+## Historical phase boundaries
+
 **CURRENT PHASE 2AK — 2025_FEATURES_AND_ELO_CONSTRUCTED.** The [audit](2025-feature-elo-construction-audit.md) pools frozen histories for 1,878 targets / 3,756 slots and carries reconciled Phase 2AE states into both Elo benchmarks. Full-S08 availability is 951 ATP / 826 WTA; both Elo probabilities cover every target. All twenty cells remain reported, including zero-target WTA Canada/Cincinnati. No admission change, factor fitting or scoring occurs; every output remains a 2025 locked source-label final-test sensitivity.
 
 **COMPLETED PHASE 2AJ — 2025_EVENT_BATCH_MEMBERSHIP_BUILT.** The [audit](2025-event-batch-membership-audit.md) inventories 1,878 targets / 3,756 slots with 146,374 eligible prior links and 102 explicit empties. Preserve development, admitted 2024 v2 and strictly earlier admitted 2025 identities; no admission change. All twenty expected cells remain visible, including zero-target WTA Canada/Cincinnati. Every output is a 2025 locked source-label final-test sensitivity; no verified-availability claim. No factor aggregation, ratings, fitting or scoring is authorized by membership completion.

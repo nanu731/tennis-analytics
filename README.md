@@ -12,6 +12,10 @@ statistically significant advantage for Elo.
 
 ## Start here
 
+- Read the [descriptive point-phase study](docs/modern-point-phase-profiles.md)
+  and [local viewer notes](docs/modern-point-phase-viewer.md) for the newer Match
+  Charting Project work. Recorded actions and point endings do not establish
+  player rankings, causal skills or forecasting gains.
 - Read the [2025 results](docs/2025-locked-final-evaluation-results.md#result) for
   the main finding and its limits.
 - Read [methodology and limitations](docs/methodology-and-limitations.md) for the
@@ -24,6 +28,19 @@ statistically significant advantage for Elo.
 This repository documents the match-forecasting study. Its results do not assess
 whether the factors explain player performance or provide useful player profiles.
 The Four Factors framework remains provisional.
+
+The separate descriptive study parses recorded Match Charting Project actions
+and builds point-phase profiles and a local HTML viewer. Its raw inputs and
+generated player/point-level exports remain outside Git. The viewer requires
+those exact local exports; its source includes data checks, while actual browser
+and assistive-technology verification remains incomplete. Read its notes for the
+recorded font and input prerequisites.
+
+This reviewed release consolidates the earlier local MCP code and research
+records. Historical commit IDs in those records describe the original local
+workflow; this release does not publish that full working history or its private
+correspondence draft. Scientific source files and frozen specification hashes
+retain their recorded values.
 
 ## What's included
 
